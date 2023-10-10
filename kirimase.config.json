@@ -1,0 +1,13 @@
+{
+  "hasSrc": true,
+  "packages": [
+    "drizzle",
+    "next-auth"
+  ],
+  "preferredPackageManager": "pnpm",
+  "rootPath": "src/",
+  "driver": "mysql",
+  "provider": "planetscale",
+  "orm": "drizzle",
+  "auth": "next-auth"
+}
