@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# [FiveManager](https://fivemanager.red-cat.xyz)
 
-## Getting Started
+Introducing an open-source FiveM server management web application, powered by the latest Next.js 13. Experience cutting-edge technology and a user-friendly interface that simplifies server management. With real-time updates, scalability, and a strong focus on security, this platform is designed for gaming communities seeking a robust, future-proofed solution. Join the open-source community and take control of your FiveM servers like never before.
 
-First, run the development server:
+> **Warning**
+> This project is still in development and is not ready for production use.
+>
+> It uses new technologies (server actions, drizzle ORM) which are subject to change and may break your application.
+
+## Tech Stack
+
+- **Framework:** [Next.js](https://nextjs.org)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com)
+- **User Management:** [Auth js](https://authjs.dev)
+- **ORM:** [Drizzle ORM](https://orm.drizzle.team)
+- **UI Components:** [shadcn/ui](https://ui.shadcn.com)
+- **Email:** [React Email](https://react.email)
+
+## Features to be implemented
+
+- [ ] Authentication with **AuthJS**
+- [ ] Newsletter subscription with **React Email** and **Resend**
+- [ ] ORM using **Drizzle ORM**
+- [ ] Database on **PlanetScale**
+- [ ] Validation with **Zod**
+- [ ] User subscriptions
+- [ ] Blog using **MDX** and **Contentlayer**
+- [ ] Checkout with **Stripe Checkout**
+- [ ] Admin dashboard with servers, whitelist, stores, subscriptions
+
+## Running Locally
+
+1. Clone the repository
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/psnwd/fivemanager.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies using pnpm
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+3. Copy the `.env.example` to `.env` and update the variables.
 
-## Learn More
+```bash
+cp .env.example .env
+```
 
-To learn more about Next.js, take a look at the following resources:
+4. Start the development server
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+pnpm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+5. Push the database schema
 
-## Deploy on Vercel
+```bash
+pnpm run db:push
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## How do I deploy this?
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Follow the deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+
+## Contributing
+
+Contributions are welcome! Please open an issue if you have any questions or suggestions. Your contributions will be acknowledged. See the [contributing guide](./CONTRIBUTING.md) for more information.
+
+## Contributors
+
+Thanks goes to these wonderful people for their contributions:
+
+<p align="center">
+ <a href="https://github.com/psnwd/fivemanager/graphs/contributors">
+   <img src="https://contrib.rocks/image?repo=psnwd/fivemanager" />
+ </a>
+</p>
+
+<p align="center">
+ Made with <a rel="noopener noreferrer" target="_blank" href="https://contrib.rocks">contrib.rocks</a>
+</p>
+
+## License
+
+Licensed under the GPL-3.0 License. Check the [LICENSE](./LICENSE) file for details.
