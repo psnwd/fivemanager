@@ -1,4 +1,4 @@
-await import("./src/env.mjs");
+await import("./src/lib/env.mjs");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -8,4 +8,4 @@ const nextConfig = {
 	},
 };
 
-module.exports = nextConfig;
+export default nextConfig;
