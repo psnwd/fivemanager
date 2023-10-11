@@ -2,7 +2,7 @@ import * as React from "react"
 import Link from "next/link"
 import { ExclamationTriangleIcon } from "@radix-ui/react-icons"
 
-import { cn } from "@/utils"
+import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import {
   Card,
