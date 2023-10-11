@@ -1,5 +1,6 @@
-import type { Config } from "drizzle-kit";
-import { env } from "@/lib/env.mjs";
+import type { Config } from "drizzle-kit"
+
+import { env } from "@/lib/env.mjs"
 
 export default {
   schema: "./src/lib/db/schema",
@@ -7,5 +8,5 @@ export default {
   driver: "mysql2",
   dbCredentials: {
     connectionString: env.DATABASE_URL,
-  }
-} satisfies Config;
+  },
+} satisfies Config
