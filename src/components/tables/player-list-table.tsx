@@ -42,47 +42,53 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
-const data: Server[] = [
+const data: Player[] = [
   {
     id: "m5gr84i9",
-    name: "hawi server",
-    amount: 316,
-    status: "running",
+    name: "hawi",
+    role: "admin",
+    discordId: "258223336535511125",
+    status: "approved",
   },
   {
     id: "3u1reuv4",
-    name: "dezz nut server",
-    amount: 242,
-    status: "running",
+    name: "hecker",
+    role: "player",
+    discordId: "258223344535511125",
+    status: "banned",
   },
   {
     id: "derv1ws0",
-    name: "holy hell server",
-    status: "running",
-    amount: 837,
+    name: "catt",
+    role: "player",
+    discordId: "258223454535511125",
+    status: "approved",
   },
   {
     id: "5kma53ae",
-    name: "Nut case server",
-    status: "error",
-    amount: 874,
+    name: "dogg_engine",
+    role: "player",
+    discordId: "258223776535511125",
+    status: "approved",
   },
   {
     id: "bhqecj4p",
-    name: "Never seen server",
-    status: "offline",
-    amount: 721,
+    name: "Imposter",
+    role: "player",
+    discordId: "258223336665511125",
+    status: "waiting",
   },
 ]
 
-export type Server = {
+export type Player = {
   id: string
   name: string
-  amount: number
-  status: "running" | "error" | "offline"
+  role: string
+  discordId: string
+  status: "approved" | "waiting" | "banned"
 }
 
-export const columns: ColumnDef<Server>[] = [
+export const columns: ColumnDef<Player>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -118,26 +124,28 @@ export const columns: ColumnDef<Server>[] = [
     cell: ({ row }) => <div className="lowercase">{row.getValue("name")}</div>,
   },
   {
+    accessorKey: "role",
+    header: () => <div className="text-center">Role</div>,
+    cell: ({ row }) => {
+      return (
+        <div className="text-center font-medium">{row.getValue("role")}</div>
+      )
+    },
+  },
+  {
+    accessorKey: "discordId",
+    header: () => <div className="text-center">Discord ID</div>,
+    cell: ({ row }) => {
+      const discordId = parseFloat(row.getValue("discordId"))
+      return <div className="text-center font-medium">{discordId}</div>
+    },
+  },
+  {
     accessorKey: "status",
     header: "Status",
     cell: ({ row }) => (
       <div className="capitalize">{row.getValue("status")}</div>
     ),
-  },
-  {
-    accessorKey: "amount",
-    header: () => <div className="text-right">Amount</div>,
-    cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("amount"))
-
-      // Format the amount as a dollar amount
-      const formatted = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-      }).format(amount)
-
-      return <div className="text-right font-medium">{formatted}</div>
-    },
   },
   {
     id: "actions",
@@ -158,11 +166,10 @@ export const columns: ColumnDef<Server>[] = [
             <DropdownMenuItem
               onClick={() => navigator.clipboard.writeText(server.id)}
             >
-              Copy server ID
+              Copy player ID
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View server</DropdownMenuItem>
-            <DropdownMenuItem>View server details</DropdownMenuItem>
+            <DropdownMenuItem>View player details</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       )
@@ -170,7 +177,7 @@ export const columns: ColumnDef<Server>[] = [
   },
 ]
 
-export function ServerListTable() {
+export function PlayerListTable() {
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -202,7 +209,7 @@ export function ServerListTable() {
     <div className="w-full">
       <div className="flex items-center py-4">
         <Input
-          placeholder="Filter server name..."
+          placeholder="Filter player name..."
           value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
             table.getColumn("name")?.setFilterValue(event.target.value)
