@@ -1,4 +1,4 @@
-import { cn } from "@/utils"
+import { cn } from "@/lib/utils"
 import { Skeleton } from "@/components/ui/skeleton"
 
 interface FormLoadingProps {
