@@ -7,7 +7,7 @@ import { useMounted } from "@/hooks/use-mounted";
 import { Button, buttonVariants, type ButtonProps } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Icons } from "@/components/icons";
-import { cn } from "@/utils";
+import { cn } from "@/lib/utils";
 
 const LoadingButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
 	({ className, variant, size, ...props }, ref) => {
