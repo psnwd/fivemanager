@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
-import { env } from "@/lib/env.mjs"
 
-import { LogOutButtons } from "@/components/auth/logout-buttons"
+import { env } from "@/lib/env.mjs"
+import { Button } from "@/components/ui/button"
 import {
   PageHeader,
   PageHeaderDescription,
@@ -28,7 +28,7 @@ export default function SignOutPage() {
           Are you sure you want to sign out?
         </PageHeaderDescription>
       </PageHeader>
-      <LogOutButtons />
+      <Button>Log Out</Button>
     </Shell>
   )
 }
