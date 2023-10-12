@@ -14,12 +14,13 @@ export const supports = mysqlTable("supports", {
   supportedReason: varchar("supportedReason", { length: 256 }).notNull(),
   supportedStatus: int("supportedStatus").notNull(),
 })
-// Schema for CRUD - used to validate API requests
-export const insertComputerSchema = createInsertSchema(supports)
-export const selectComputerSchema = createSelectSchema(supports)
-export const computerIdSchema = selectComputerSchema.pick({ id: true })
-export const updateComputerSchema = selectComputerSchema
 
-export type Computer = z.infer<typeof selectComputerSchema>
-export type NewComputer = z.infer<typeof insertComputerSchema>
-export type ComputerId = z.infer<typeof computerIdSchema>["id"]
+// Schema for CRUD - used to validate API requests
+export const insertSupportSchema = createInsertSchema(supports)
+export const selectSupportSchema = createSelectSchema(supports)
+export const supportIdSchema = selectSupportSchema.pick({ id: true })
+export const updateSupportSchema = selectSupportSchema
+
+export type Support = z.infer<typeof selectSupportSchema>
+export type NewSupport = z.infer<typeof insertSupportSchema>
+export type SupportId = z.infer<typeof supportIdSchema>["id"]
