@@ -1,4 +1,7 @@
+"use client"
+
 import type { Metadata } from "next"
+import { signOut } from "next-auth/react"
 
 import { env } from "@/lib/env.mjs"
 import { Button } from "@/components/ui/button"
@@ -28,7 +31,7 @@ export default function SignOutPage() {
           Are you sure you want to sign out?
         </PageHeaderDescription>
       </PageHeader>
-      <Button>Log Out</Button>
+      <Button onClick={() => signOut()}>Log Out</Button>
     </Shell>
   )
 }
