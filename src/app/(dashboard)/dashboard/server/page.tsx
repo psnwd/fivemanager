@@ -13,10 +13,10 @@ function page() {
   return (
     <>
       <div className="flex-1 space-y-4 p-8 pt-6">
-        <Tabs defaultValue="giveawys" className="space-y-4">
+        <Tabs defaultValue="giveaways" className="space-y-4">
           <TabsList>
-            <TabsTrigger value="giveawys">Giveawys</TabsTrigger>
             <TabsTrigger value="analytics">Analytics</TabsTrigger>
+            <TabsTrigger value="giveaways">Giveaways</TabsTrigger>
           </TabsList>
           <Giveaway />
         </Tabs>
