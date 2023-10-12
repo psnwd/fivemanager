@@ -11,8 +11,8 @@ const navItems = [
     href: "/dashboard",
   },
   {
-    label: "Servers",
-    href: "/dashboard/servers",
+    label: "Server",
+    href: "/dashboard/server",
   },
   {
     label: "Players",

@@ -8,14 +8,14 @@ import { buttonVariants } from "@/components/ui/button"
 import { UserAuthForm } from "@/components/auth/user-auth-form"
 
 export const metadata: Metadata = {
-  title: "Authentication",
-  description: "Authentication forms built using the components.",
+  title: "FiveManager",
+  description: "FiveM server management web application",
 }
 
 export default function AuthenticationPage() {
   return (
     <>
-      <div className="md:hidden">
+      {/* <div className="md:hidden">
         <Image
           src="/images/background/bg_01.jpg"
           width={1280}
@@ -30,7 +30,7 @@ export default function AuthenticationPage() {
           alt="Authentication"
           className="hidden dark:block"
         />
-      </div>
+      </div> */}
       <div className="container relative hidden h-[100vh] flex-col items-center justify-center overflow-hidden md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
         <Link
           href="/examples/authentication"
@@ -44,27 +44,31 @@ export default function AuthenticationPage() {
         <div className="relative hidden h-full flex-col bg-muted p-10 text-white dark:border-r lg:flex">
           <div className="absolute inset-0 bg-zinc-900">
             <Image
-              src="/images/background/bg_01.jpg"
+              src={`/images/background/bg_${
+                Math.floor(Math.random() * 4) + 1
+              }.jpg`}
               width={1280}
               height={843}
               alt="Authentication"
               className="hidden dark:block"
             />
           </div>
-          <div className="relative z-20 flex items-center gap-2 text-lg font-medium">
-            <Gamepad />
-            FiveManager
-          </div>
+          <Link href="/">
+            <div className="relative z-20 flex items-center gap-2 text-lg font-medium">
+              <Gamepad />
+              FiveManager
+            </div>
+          </Link>
           <div className="relative z-20 mt-auto bg-black/80 p-2">
             <blockquote className="space-y-2">
               <p className="text-lg">
-                &ldquo;This library has saved me countless hours of work and
-                helped me deliver stunning designs to my clients faster than
-                ever before.&rdquo;
+                &ldquo;You Tell Me Exactly What You Want, And I Will Very
+                Carefully Explain To You Why It Cannot Be.&rdquo;
               </p>
               <footer className="text-sm">Sofia Davis</footer>
             </blockquote>
           </div>
+          <div></div>
         </div>
         <div className="lg:p-8">
           <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
