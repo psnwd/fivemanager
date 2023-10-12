@@ -1,4 +1,11 @@
+import type { Metadata } from "next"
+
 import { PlayerListTable } from "@/components/tables/player-list-table"
+
+export const metadata: Metadata = {
+  title: "Dashboard | Players",
+  description: "Admin dashbord for managing fiveM server and players.",
+}
 
 function page() {
   return (
