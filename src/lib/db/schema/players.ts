@@ -1,16 +1,22 @@
-import { mysqlTable, serial, varchar } from "drizzle-orm/mysql-core"
+import { mysqlTable, primaryKey, serial, varchar } from "drizzle-orm/mysql-core"
 import { createInsertSchema, createSelectSchema } from "drizzle-zod"
 import type { z } from "zod"
 
-export const players = mysqlTable("players", {
-  id: serial("id").primaryKey(),
-  name: varchar("name", { length: 256 }).notNull(),
-  discordId: varchar("discordId", { length: 256 }).notNull(),
-  email: varchar("email", { length: 256 }).notNull(),
-  cfxId: varchar("cfxId", { length: 256 }).notNull(),
-  lastLoginIp: varchar("lastLoginIp", { length: 256 }).notNull(),
-  lastLoginDate: varchar("lastLoginDate", { length: 256 }).notNull(),
-})
+export const players = mysqlTable(
+  "players",
+  {
+    id: serial("id").primaryKey(),
+    name: varchar("name", { length: 256 }).notNull(),
+    discordId: varchar("discordId", { length: 256 }).notNull(),
+    email: varchar("email", { length: 256 }).notNull(),
+    cfxId: varchar("cfxId", { length: 256 }).notNull(),
+    lastLoginIp: varchar("lastLoginIp", { length: 256 }).notNull(),
+    lastLoginDate: varchar("lastLoginDate", { length: 256 }).notNull(),
+  },
+  (player) => ({
+    compoundKey: primaryKey(player.id),
+  })
+)
 
 // Schema for CRUD - used to validate API requests
 export const insertPlayersSchema = createInsertSchema(players)

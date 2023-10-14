@@ -1,19 +1,31 @@
-import { int, mysqlTable, serial, varchar } from "drizzle-orm/mysql-core"
+import {
+  int,
+  mysqlTable,
+  primaryKey,
+  serial,
+  varchar,
+} from "drizzle-orm/mysql-core"
 import { createInsertSchema, createSelectSchema } from "drizzle-zod"
 import type { z } from "zod"
 
-export const supports = mysqlTable("supports", {
-  id: serial("id").primaryKey(),
-  userId: varchar("userId", { length: 256 }).notNull(),
-  message: varchar("message", { length: 256 }).notNull(),
-  date: varchar("date", { length: 256 }).notNull(),
-  ip: varchar("ip", { length: 256 }).notNull(),
-  supportedBy: varchar("supportedBy", { length: 256 }).notNull(),
-  supportedDate: varchar("supportedDate", { length: 256 }).notNull(),
-  supportedIp: varchar("supportedIp", { length: 256 }).notNull(),
-  supportedReason: varchar("supportedReason", { length: 256 }).notNull(),
-  supportedStatus: int("supportedStatus").notNull(),
-})
+export const supports = mysqlTable(
+  "supports",
+  {
+    id: serial("id").primaryKey(),
+    userId: varchar("userId", { length: 256 }).notNull(),
+    message: varchar("message", { length: 256 }).notNull(),
+    date: varchar("date", { length: 256 }).notNull(),
+    ip: varchar("ip", { length: 256 }).notNull(),
+    supportedBy: varchar("supportedBy", { length: 256 }).notNull(),
+    supportedDate: varchar("supportedDate", { length: 256 }).notNull(),
+    supportedIp: varchar("supportedIp", { length: 256 }).notNull(),
+    supportedReason: varchar("supportedReason", { length: 256 }).notNull(),
+    supportedStatus: int("supportedStatus").notNull(),
+  },
+  (support) => ({
+    compoundKey: primaryKey(support.id),
+  })
+)
 
 // Schema for CRUD - used to validate API requests
 export const insertSupportSchema = createInsertSchema(supports)
