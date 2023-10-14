@@ -1,18 +1,30 @@
-import { int, mysqlTable, serial, varchar } from "drizzle-orm/mysql-core"
+import {
+  int,
+  mysqlTable,
+  primaryKey,
+  serial,
+  varchar,
+} from "drizzle-orm/mysql-core"
 import { createInsertSchema, createSelectSchema } from "drizzle-zod"
 import type { z } from "zod"
 
-export const servers = mysqlTable("servers", {
-  id: serial("id").primaryKey(),
-  name: varchar("name", { length: 256 }).notNull(),
-  ip: varchar("ip", { length: 256 }).notNull(),
-  port: int("port").notNull(),
-  status: int("status").notNull(),
-  lastEditedBy: varchar("lastEditBy", { length: 256 }).notNull(),
-  lastEditedAt: varchar("lastEditDate", { length: 256 }).notNull(),
-  createdBy: varchar("createdBy", { length: 256 }).notNull(),
-  createdAt: varchar("createdDate", { length: 256 }).notNull(),
-})
+export const servers = mysqlTable(
+  "servers",
+  {
+    id: serial("id").primaryKey(),
+    name: varchar("name", { length: 256 }).notNull(),
+    ip: varchar("ip", { length: 256 }).notNull(),
+    port: int("port").notNull(),
+    status: int("status").notNull(),
+    lastEditedBy: varchar("lastEditBy", { length: 256 }).notNull(),
+    lastEditedAt: varchar("lastEditDate", { length: 256 }).notNull(),
+    createdBy: varchar("createdBy", { length: 256 }).notNull(),
+    createdAt: varchar("createdDate", { length: 256 }).notNull(),
+  },
+  (server) => ({
+    compoundKey: primaryKey(server.id),
+  })
+)
 
 // Schema for CRUD - used to validate API requests
 export const insertServersSchema = createInsertSchema(servers)

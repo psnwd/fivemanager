@@ -109,8 +109,8 @@ export function AccountForm() {
                 <Input placeholder="Your name" {...field} />
               </FormControl>
               <FormDescription>
-                This is your name. It's how private and will not be shown to
-                anyone.
+                This is your name. It&apos;s how private and will not be shown
+                to anyone.
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -147,8 +147,8 @@ export function AccountForm() {
                 <Input placeholder="blackcat" {...field} />
               </FormControl>
               <FormDescription>
-                This is your public discord username. It's how private and will
-                not be shown to anyone.
+                This is your public discord username. It&apos;s how private and
+                will not be shown to anyone.
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -164,8 +164,8 @@ export function AccountForm() {
                 <Input placeholder="blackcat@404.com" {...field} />
               </FormControl>
               <FormDescription>
-                This is your email from discord. It's private and will not be
-                shown to anyone.
+                This is your email from discord. It&apos;s private and will not
+                be shown to anyone.
               </FormDescription>
               <FormMessage />
             </FormItem>
