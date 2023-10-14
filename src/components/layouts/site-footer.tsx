@@ -39,7 +39,7 @@ export function SiteFooter() {
         <section
           id="footer-bottom"
           aria-labelledby="footer-bottom-heading"
-          className="flex items-center space-x-4"
+          className="flex flex-col-reverse md:flex-row items-center"
         >
           <div className="flex-1 text-left text-sm leading-loose text-muted-foreground">
             Built by{" "}
@@ -52,7 +52,6 @@ export function SiteFooter() {
               BlackCAT
               <span className="sr-only">Twitter</span>
             </Link>
-            .
           </div>
           <div className="flex items-center space-x-1">
             <Link
