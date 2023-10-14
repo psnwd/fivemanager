@@ -1,23 +1,35 @@
-import { int, mysqlTable, serial, varchar } from "drizzle-orm/mysql-core"
+import {
+  int,
+  mysqlTable,
+  primaryKey,
+  serial,
+  varchar,
+} from "drizzle-orm/mysql-core"
 import { createInsertSchema, createSelectSchema } from "drizzle-zod"
 import type { z } from "zod"
 
-export const whitelist = mysqlTable("whitelist", {
-  id: serial("id").primaryKey(),
-  discordId: varchar("discordId", { length: 256 }).notNull(),
-  discordName: varchar("discordName", { length: 256 }).notNull(),
-  steamId: varchar("steamId", { length: 256 }).notNull(),
-  fiveMId: varchar("fiveMId", { length: 256 }).notNull(),
-  reason: varchar("reason", { length: 256 }).notNull(), // Reason for wanting to be whitelisted
-  message: varchar("message", { length: 256 }).notNull(), // Message from the user
-  date: varchar("date", { length: 256 }).notNull(), // Date of submission
-  ip: varchar("ip", { length: 256 }).notNull(), // IP of the user who submitted the whitelist
-  approvedBy: varchar("approvedBy", { length: 256 }).notNull(), // User ID of the user who approved or denied the whitelist
-  approvedDate: varchar("approvedDate", { length: 256 }).notNull(), // Date of approval or denial
-  approvedIp: varchar("approvedIp", { length: 256 }).notNull(), // IP of the user who approved or denied the whitelist
-  approvedReason: varchar("approvedReason", { length: 256 }).notNull(), // Reason for approval or denial
-  approvedStatus: int("approvedStatus").notNull(), // Status of the whitelist => 0 = Pending, 1 = Approved, 2 = Denied
-})
+export const whitelist = mysqlTable(
+  "whitelist",
+  {
+    id: serial("id").primaryKey(),
+    discordId: varchar("discordId", { length: 256 }).notNull(),
+    discordName: varchar("discordName", { length: 256 }).notNull(),
+    steamId: varchar("steamId", { length: 256 }).notNull(),
+    fiveMId: varchar("fiveMId", { length: 256 }).notNull(),
+    reason: varchar("reason", { length: 256 }).notNull(), // Reason for wanting to be whitelisted
+    message: varchar("message", { length: 256 }).notNull(), // Message from the user
+    date: varchar("date", { length: 256 }).notNull(), // Date of submission
+    ip: varchar("ip", { length: 256 }).notNull(), // IP of the user who submitted the whitelist
+    approvedBy: varchar("approvedBy", { length: 256 }).notNull(), // User ID of the user who approved or denied the whitelist
+    approvedDate: varchar("approvedDate", { length: 256 }).notNull(), // Date of approval or denial
+    approvedIp: varchar("approvedIp", { length: 256 }).notNull(), // IP of the user who approved or denied the whitelist
+    approvedReason: varchar("approvedReason", { length: 256 }).notNull(), // Reason for approval or denial
+    approvedStatus: int("approvedStatus").notNull(), // Status of the whitelist => 0 = Pending, 1 = Approved, 2 = Denied
+  },
+  (whitelist) => ({
+    compoundKey: primaryKey(whitelist.id),
+  })
+)
 
 // Schema for CRUD - used to validate API requests
 export const insertWhitelistSchema = createInsertSchema(whitelist)
