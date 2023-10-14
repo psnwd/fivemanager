@@ -32,7 +32,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <section className="container flex flex-col gap-4 pb-12 pt-4 text-center lg:items-center lg:gap-8 lg:py-20">
+        <section className="container flex flex-col gap-4 pt-4 text-center lg:items-center lg:gap-8 lg:pt-20 lg:pb-5">
           <div className="flex flex-1 flex-col items-center gap-4 text-center lg:gap-8">
             <div className="space-y-4">
               <h1 className="text-4xl font-bold lg:text-6xl">
@@ -71,20 +71,20 @@ export default function Home() {
           </div>
           <div className="flex h-40 w-full items-center justify-around gap-3 rounded border px-10">
             <div className="flex flex-col">
-              <div>Players</div>
-              <div className="animate-[counter_3s_ease-out_forwards] text-6xl [counter-set:_num_var(--num)] before:content-[counter(num)]">
+              <div className="text-sm md:text-base">Players</div>
+              <div className="animate-[counter_3s_ease-out_forwards] text-4xl [counter-set:_num_var(--num)] before:content-[counter(num)] md:text-6xl">
                 <span className="sr-only">50</span>
               </div>
             </div>
             <div className="flex flex-col">
-              <div>Characters</div>
-              <div className="animate-[counter_3s_ease-out_forwards] text-6xl [counter-set:_num_var(--num)] before:content-[counter(num)]">
+              <div className="text-sm md:text-base">Characters</div>
+              <div className="animate-[counter_3s_ease-out_forwards] text-4xl [counter-set:_num_var(--num)] before:content-[counter(num)] md:text-6xl">
                 <span className="sr-only">50</span>
               </div>
             </div>
             <div className="flex flex-col">
-              <div>Rating</div>
-              <div className="animate-[counter_3s_ease-out_forwards] text-6xl [counter-set:_num_var(--num)] before:content-[counter(num)]">
+              <div className="text-sm md:text-base">Rating</div>
+              <div className="animate-[counter_3s_ease-out_forwards] text-4xl [counter-set:_num_var(--num)] before:content-[counter(num)] md:text-6xl">
                 <span className="sr-only">4.5</span>
               </div>
             </div>
@@ -93,7 +93,7 @@ export default function Home() {
             <div className="my-5 text-2xl font-bold uppercase">
               Events & Activities
             </div>
-            <div className="flex gap-3">
+            <div className="flex flex-col gap-3 md:flex-row">
               {siteConfig.events.map((event) => (
                 <EventCard
                   key={event.id}
@@ -106,7 +106,7 @@ export default function Home() {
           </div>
           <div>
             <div className="my-5 text-2xl font-bold uppercase">Reviews</div>
-            <div className="flex gap-3">
+            <div className="flex flex-col gap-3 md:flex-row">
               {siteConfig.feedbacks.map((feedback) => (
                 <FeedbackCard
                   key={feedback.id}
