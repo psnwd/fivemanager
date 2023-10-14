@@ -15,22 +15,6 @@ export const metadata: Metadata = {
 export default function AuthenticationPage() {
   return (
     <>
-      {/* <div className="md:hidden">
-        <Image
-          src="/images/background/bg_01.jpg"
-          width={1280}
-          height={843}
-          alt="Authentication"
-          className="block dark:hidden"
-        />
-        <Image
-          src="/images/background/bg_01.jpg"
-          width={1280}
-          height={843}
-          alt="Authentication"
-          className="hidden dark:block"
-        />
-      </div> */}
       <div className="container relative hidden h-[100vh] flex-col items-center justify-center overflow-hidden md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
         <Link
           href="/examples/authentication"
@@ -44,9 +28,7 @@ export default function AuthenticationPage() {
         <div className="relative hidden h-full flex-col bg-muted p-10 text-white dark:border-r lg:flex">
           <div className="absolute inset-0 bg-zinc-900">
             <Image
-              src={`/images/background/bg_${
-                Math.floor(Math.random() * 4) + 1
-              }.jpg`}
+              src={`/images/auth/bg_${Math.floor(Math.random() * 4) + 1}.jpg`}
               width={1280}
               height={843}
               alt="Authentication"
