@@ -18,7 +18,7 @@ function EventCard({ title, content, image }: EventCardProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-md">{title}</CardTitle>
+        <CardTitle className="text-lg">{title}</CardTitle>
       </CardHeader>
       <CardContent>
         <Image src={image} width={500} height={500} alt="Event image" />

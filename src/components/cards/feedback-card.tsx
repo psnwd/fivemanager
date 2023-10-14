@@ -26,14 +26,14 @@ function FeedbackCard({
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-md">{title}</CardTitle>
+        <CardTitle className="text-base">{title}</CardTitle>
       </CardHeader>
       <CardContent>
         <p className=" text-sm">{content}</p>
       </CardContent>
       <CardFooter className="flex gap-1 text-sm">
         <Avatar className="h-6 w-6 md:h-9 md:w-9">
-          <AvatarImage src="/avatars/01.png" alt="Avatar" />
+          <AvatarImage src={authorImage} alt="Avatar" />
           <AvatarFallback className="text-xs">BC</AvatarFallback>
         </Avatar>
         <p>

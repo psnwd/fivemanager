@@ -1,9 +1,7 @@
 "use client"
 
-import type { Metadata } from "next"
 import { signOut } from "next-auth/react"
 
-import { env } from "@/lib/env.mjs"
 import { Button } from "@/components/ui/button"
 import {
   PageHeader,
@@ -11,12 +9,6 @@ import {
   PageHeaderHeading,
 } from "@/components/page-header"
 import { Shell } from "@/components/shells/shell"
-
-export const metadata: Metadata = {
-  metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),
-  title: "Sign out",
-  description: "Sign out of your account",
-}
 
 export default function SignOutPage() {
   return (

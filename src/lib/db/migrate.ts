@@ -5,11 +5,15 @@ import { migrate } from "drizzle-orm/planetscale-serverless/migrator"
 import { env } from "@/lib/env.mjs"
 
 const runMigrate = async () => {
-  if (!env.DATABASE_URL) {
-    throw new Error("DATABASE_URL is not defined")
+  if (!env.DATABASE_HOST || !env.DATABASE_USERNAME || !env.DATABASE_PASSWORD) {
+    throw new Error("Database configurations are not defined")
   }
 
-  const connection = connect({ url: env.DATABASE_URL })
+  const connection = connect({
+    host: env.DATABASE_HOST,
+    username: env.DATABASE_USERNAME,
+    password: env.DATABASE_PASSWORD,
+  })
 
   const db = drizzle(connection)
 
