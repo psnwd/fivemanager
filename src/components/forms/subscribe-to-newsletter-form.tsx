@@ -86,7 +86,7 @@ export function SubscribeToNewsletterForm() {
               <FormLabel className="sr-only">Email</FormLabel>
               <FormControl>
                 <Input
-                  placeholder="skate@gmail.com"
+                  placeholder="blackcat@gmail.com"
                   className="pr-12"
                   {...field}
                 />
