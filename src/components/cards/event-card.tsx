@@ -20,7 +20,7 @@ function EventCard({ title, content, image }: EventCardProps) {
       <CardHeader>
         <CardTitle className="text-lg">{title}</CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className="flex flex-col items-center gap-2">
         <Image src={image} width={500} height={500} alt="Event image" />
         <p className=" text-sm">{content}</p>
       </CardContent>
