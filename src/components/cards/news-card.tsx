@@ -8,13 +8,13 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 
-interface EventCardProps {
+interface NewsCardProps {
   title: string
-  content: string
+  details: string
   image: string
 }
 
-function EventCard({ title, content, image }: EventCardProps) {
+function NewsCard({ title, details, image }: NewsCardProps) {
   return (
     <Card className="basis-1/3">
       <CardHeader>
@@ -29,7 +29,7 @@ function EventCard({ title, content, image }: EventCardProps) {
           alt={title}
           className="aspect-[16/9] w-full"
         />
-        <p className=" text-sm">{content}</p>
+        <p className=" text-sm">{details}</p>
       </CardContent>
       <CardFooter className="flex gap-1 text-sm">
         <p></p>
@@ -38,4 +38,4 @@ function EventCard({ title, content, image }: EventCardProps) {
   )
 }
 
-export default EventCard
+export default NewsCard

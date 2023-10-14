@@ -24,9 +24,9 @@ function FeedbackCard({
   authorDetail,
 }: FeedbackCardProps) {
   return (
-    <Card>
+    <Card className="basis-1/3">
       <CardHeader>
-        <CardTitle className="text-base">{title}</CardTitle>
+        <CardTitle className="line-clamp-1 text-base">{title}</CardTitle>
       </CardHeader>
       <CardContent>
         <p className=" text-sm">{content}</p>
