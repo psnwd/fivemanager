@@ -44,7 +44,7 @@ export function SiteFooter() {
           <div className="flex-1 text-left text-sm leading-loose text-muted-foreground">
             Built by{" "}
             <Link
-              href="https://twitter.com/"
+              href="https://github.com/psnwd"
               target="_blank"
               rel="noreferrer"
               className="font-semibold transition-colors hover:text-foreground"
