@@ -68,8 +68,8 @@ export function ProfileForm() {
                 <Input placeholder="blackcat" {...field} />
               </FormControl>
               <FormDescription>
-                This is your public in-game name. It's how other players will
-                see you.
+                This is your public in-game name. It&apos;s how other players
+                will see you.
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -89,7 +89,8 @@ export function ProfileForm() {
                 />
               </FormControl>
               <FormDescription>
-                This is your public bio. It's how other players will see you.
+                This is your public bio. It&apos;s how other players will see
+                you.
               </FormDescription>
               <FormMessage />
             </FormItem>
