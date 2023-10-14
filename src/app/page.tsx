@@ -6,7 +6,6 @@ import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import EventCard from "@/components/cards/event-card"
 import FeedbackCard from "@/components/cards/feedback-card"
-import NewsCard from "@/components/cards/news-card"
 import { SiteFooter } from "@/components/layouts/site-footer"
 import { ThemeToggle } from "@/components/layouts/theme-toggle"
 import { UserNav } from "@/components/layouts/user-nav"
@@ -33,7 +32,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <section className="container flex flex-col gap-4 pt-4 text-center lg:items-center lg:gap-8 lg:pb-5 lg:pt-20">
+        <section className="container flex flex-col gap-4 pt-4 text-center lg:items-center lg:gap-8 lg:pt-20 lg:pb-5">
           <div className="flex flex-1 flex-col items-center gap-4 text-center lg:gap-8">
             <div className="space-y-4">
               <h1 className="text-4xl font-bold lg:text-6xl">
@@ -106,19 +105,6 @@ export default function Home() {
             </div>
           </div>
           <div>
-            <div className="my-5 text-2xl font-bold uppercase">Latest News</div>
-            <div className="flex flex-col gap-3 md:flex-row">
-              {siteConfig.news.map((news) => (
-                <NewsCard
-                  key={news.id}
-                  title={news.title}
-                  details={news.details}
-                  image={news.images[0]}
-                />
-              ))}
-            </div>
-          </div>
-          <div>
             <div className="my-5 text-2xl font-bold uppercase">Reviews</div>
             <div className="flex flex-col gap-3 md:flex-row">
               {siteConfig.feedbacks.map((feedback) => (
@@ -136,16 +122,22 @@ export default function Home() {
           <div>
             <div className="my-5 text-2xl font-bold uppercase">Contents</div>
             <div className="flex h-96 flex-row flex-wrap justify-center gap-2 md:h-[25rem]">
-              {siteConfig.contents.map((content) => (
-                <iframe
-                  key={content.id}
-                  width="500px"
-                  height="auto"
-                  src={`${content.embed}?rel=0&amp;controls=0`}
-                  allow="accelerometer; encrypted-media; gyroscope;"
-                  className="aspect-video basis-1/2 md:basis-auto"
-                />
-              ))}
+              <iframe
+                width="500px"
+                height="auto"
+                src="https://www.youtube.com/embed/8aahBio9Xqs?si=q641c_wZajAtsy7r?rel=0&amp;controls=0"
+                allow="accelerometer; encrypted-media; gyroscope;"
+                className="basis-1/2 md:basis-auto"
+              ></iframe>
+
+              <iframe
+                width="500px"
+                height="auto"
+                src="https://www.youtube.com/embed/tiUdSBqMOtA?si=Pgel7P21VbGgvlaE?rel=0&amp;controls=0"
+                title="YouTube video player"
+                allow="accelerometer; encrypted-media; gyroscope;"
+                className="basis-1/2 md:basis-auto"
+              />
             </div>
           </div>
           <SiteFooter />
