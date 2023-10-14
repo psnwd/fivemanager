@@ -16,19 +16,12 @@ interface EventCardProps {
 
 function EventCard({ title, content, image }: EventCardProps) {
   return (
-    <Card className="basis-1/3">
+    <Card>
       <CardHeader>
-        <CardTitle className="line-clamp-1 text-lg">{title}</CardTitle>
+        <CardTitle className="text-lg">{title}</CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col items-center gap-2">
-        <Image
-          priority
-          src={image}
-          width={500}
-          height={500}
-          alt={title}
-          className="aspect-[16/9] w-full"
-        />
+        <Image src={image} width={500} height={500} alt="Event image" />
         <p className=" text-sm">{content}</p>
       </CardContent>
       <CardFooter className="flex gap-1 text-sm">
