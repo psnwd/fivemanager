@@ -46,7 +46,7 @@ export const siteConfig = {
       content:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula odio non turpis bibendum, eget vulputate justo egestas. Fusce id nunc ut urna ultricies elementum. Vivamus nec dui in ante congue scelerisque. Suspendisse potenti.",
       author: "BlackCAT",
-      authorImage: "/images/avatars/01.png",
+      authorImage: "/images/avatars/avatar_1.jpeg",
       authorDetail: "The person who made this",
     },
     {
@@ -55,7 +55,7 @@ export const siteConfig = {
       content:
         "Nulla facilisi. Sed eget sapien auctor, tempor arcu eu, tincidunt est. Suspendisse potenti. In hac habitasse platea dictumst. Praesent interdum odio eget quam bibendum ultrices. Fusce fermentum turpis eu orci tincidunt, ac ultrices eros scelerisque.",
       author: "Nothing",
-      authorImage: "/images/avatars/01.png",
+      authorImage: "/images/avatars/avatar_1.jpeg",
       authorDetail: "Technology Enthusiast",
     },
     {
@@ -64,7 +64,7 @@ export const siteConfig = {
       content:
         "Cras eget quam eget lectus facilisis sollicitudin. Sed sit amet dolor vel metus dapibus blandit in vel quam. Integer ac ex vel massa tincidunt vestibulum. Sed at lorem at elit vestibulum interdum vel ac odio. Suspendisse vel venenatis est.",
       author: "FoodieExpert",
-      authorImage: "/images/avatars/01.png",
+      authorImage: "/images/avatars/avatar_1.jpeg",
       authorDetail: "Food Critic",
     },
   ],
@@ -95,21 +95,30 @@ export const siteConfig = {
     {
       id: 1,
       title: "Gang War Erupts in Los Santos",
-      images: ["/images/home/news/gang_war_image1.webp", "/images/home/news/gang_war_image2.jpg"],
+      images: [
+        "/images/home/news/gang_war_image1.webp",
+        "/images/home/news/gang_war_image2.jpg",
+      ],
       details:
         "A violent gang war has erupted on the streets of Los Santos, with rival criminal organizations vying for control of the city's underground. Gunfights, car chases, and explosions have become a common sight. Civilians are advised to stay indoors and exercise caution.",
     },
     {
       id: 2,
       title: "New Nightclub 'The Neon Oasis' Opens its Doors",
-      images: ["/images/home/news/nightclub_exterior_image.png", "/images/home/news/nightclub_interior_image.jpg"],
+      images: [
+        "/images/home/news/nightclub_exterior_image.png",
+        "/images/home/news/nightclub_interior_image.jpg",
+      ],
       details:
         "Los Santos is buzzing with excitement as the new nightclub 'The Neon Oasis' opens its doors to partygoers. With state-of-the-art sound and lighting systems, it promises a unique nightlife experience. Visit The Neon Oasis for great music, dancing, and a chance to rub shoulders with the city's elite.",
     },
     {
       id: 3,
       title: "Police Crack Down on Street Racing Syndicate",
-      images: ["/images/home/news/police_raid_image.jpg", "/images/home/news/racing_syndicate_image.webp"],
+      images: [
+        "/images/home/news/police_raid_image.jpg",
+        "/images/home/news/racing_syndicate_image.webp",
+      ],
       details:
         "The Los Santos Police Department is launching a major crackdown on the illegal street racing syndicate that has been plaguing the city. In a series of coordinated raids, several high-performance cars have been seized, and numerous arrests have been made. The streets are becoming safer, but racers are advised to watch their backs.",
     },
