@@ -8,6 +8,8 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 
+import { Button } from "../ui/button"
+
 interface NewsCardProps {
   title: string
   details: string
@@ -29,10 +31,10 @@ function NewsCard({ title, details, image }: NewsCardProps) {
           alt={title}
           className="aspect-[16/9] w-full"
         />
-        <p className=" text-sm">{details}</p>
+        <p className="line-clamp-5 text-sm">{details}</p>
       </CardContent>
-      <CardFooter className="flex gap-1 text-sm">
-        <p></p>
+      <CardFooter className="flex justify-center gap-1 text-sm">
+        <Button variant="outline">Read More</Button>
       </CardFooter>
     </Card>
   )

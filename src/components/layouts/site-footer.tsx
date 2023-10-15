@@ -39,7 +39,7 @@ export function SiteFooter() {
         <section
           id="footer-bottom"
           aria-labelledby="footer-bottom-heading"
-          className="flex flex-col-reverse md:flex-row items-center"
+          className="flex flex-col-reverse items-center md:flex-row"
         >
           <div className="flex-1 text-left text-sm leading-loose text-muted-foreground">
             Built by{" "}
