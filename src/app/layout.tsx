@@ -3,7 +3,8 @@ import "@/styles/globals.css"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 
-import NextAuthProvider from "@/lib/auth/Provider"
+// NOTE: Wait for UI to be ready
+// import NextAuthProvider from "@/lib/auth/Provider"
 import { Toaster } from "@/components/ui/toaster"
 import { ThemeProvider } from "@/components/theme-provider"
 

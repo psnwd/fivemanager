@@ -7,24 +7,24 @@ import { cn } from "@/lib/utils"
 
 const navItems = [
   {
-    label: "Giveaways",
-    href: "/giveaways",
+    label: "Overview",
+    href: "/dashboard",
   },
   {
-    label: "Events",
-    href: "/events",
+    label: "Server",
+    href: "/dashboard/server",
   },
   {
-    label: "News",
-    href: "/news",
+    label: "Players",
+    href: "/dashboard/players",
   },
   {
-    label: "About",
-    href: "/about",
+    label: "Settings",
+    href: "/dashboard/settings",
   },
 ]
 
-export function MainNav({
+export function DashboardNav({
   className,
   ...props
 }: React.HTMLAttributes<HTMLElement>) {
