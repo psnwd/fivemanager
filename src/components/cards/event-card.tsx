@@ -8,6 +8,8 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 
+import { Button } from "../ui/button"
+
 interface EventCardProps {
   title: string
   content: string
@@ -31,8 +33,8 @@ function EventCard({ title, content, image }: EventCardProps) {
         />
         <p className=" text-sm">{content}</p>
       </CardContent>
-      <CardFooter className="flex gap-1 text-sm">
-        <p></p>
+      <CardFooter className="flex justify-center gap-1 text-sm">
+        <Button variant="outline">Read More</Button>
       </CardFooter>
     </Card>
   )
