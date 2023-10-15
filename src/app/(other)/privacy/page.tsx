@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "FiveManager | Support",
+  title: "FiveManager | Privacy Policy",
   description:
     "FiveM server management web application for managing fiveM server and players.",
 }
