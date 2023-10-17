@@ -5,9 +5,7 @@ import { env } from "@/lib/env.mjs"
 
 // create the connection
 export const connection = connect({
-  host: env.DATABASE_HOST,
-  username: env.DATABASE_USERNAME,
-  password: env.DATABASE_PASSWORD,
+  url: env.DATABASE_URL,
 })
 
 export const db = drizzle(connection)
