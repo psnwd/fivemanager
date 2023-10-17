@@ -4,7 +4,7 @@ import { env } from "@/lib/env.mjs"
 
 export default {
   schema: "./src/lib/db/schema",
-  out: "./src/lib/db/migrations",
+  out: "./drizzle",
   driver: "mysql2",
   dbCredentials: {
     host: env.DATABASE_HOST,
