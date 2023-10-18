@@ -77,6 +77,18 @@ CREATE TABLE `giveaway` (
 	CONSTRAINT `giveaway_id` PRIMARY KEY(`id`)
 );
 --> statement-breakpoint
+CREATE TABLE `newsletter` (
+	`id` serial AUTO_INCREMENT NOT NULL,
+	`userId` varchar(191),
+	`email` varchar(191) NOT NULL,
+	`token` varchar(191) NOT NULL,
+	`newsletter` boolean NOT NULL DEFAULT false,
+	`marketing` boolean NOT NULL DEFAULT false,
+	`transactional` boolean NOT NULL DEFAULT false,
+	`createdAt` timestamp DEFAULT (now()),
+	CONSTRAINT `newsletter_id` PRIMARY KEY(`id`)
+);
+--> statement-breakpoint
 CREATE TABLE `players` (
 	`id` serial AUTO_INCREMENT NOT NULL,
 	`name` varchar(256) NOT NULL,
