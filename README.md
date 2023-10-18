@@ -1,6 +1,6 @@
 # [FiveManager](https://ccc.sublaze.com/)
 
-[![FiveManager](./public/images/screenshot/landing-page-screenshot.png)](https://ccc.sublaze.com/)
+[![FiveManager](./public/images/screenshot/landing-page-screenshot.jpeg)](https://ccc.sublaze.com/)
 
 Introducing an open-source FiveM server management web application, powered by the latest Next.js 13. Experience cutting-edge technology and a user-friendly interface that simplifies server management. With real-time updates, scalability, and a strong focus on security, this platform is designed for gaming communities seeking a robust, future-proofed solution. Join the open-source community and take control of your FiveM servers like never before.
 
