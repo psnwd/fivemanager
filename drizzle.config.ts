@@ -1,12 +1,12 @@
-import type { Config } from "drizzle-kit"
-
-import { env } from "@/lib/env.mjs"
+import { env } from "@/env.mjs"
+import { type Config } from "drizzle-kit"
 
 export default {
-  schema: "./src/lib/db/schema",
+  schema: "./src/db/schema",
   out: "./drizzle",
   driver: "mysql2",
   dbCredentials: {
     connectionString: env.DATABASE_URL ?? "",
   },
+  tablesFilter: ["fivemanager_*"],
 } satisfies Config
