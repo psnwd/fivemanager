@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "1bff4590-6150-4880-ae1e-bc5be3a16b9a",
+  "id": "22d06d4a-cee5-4a7a-870d-a3e3ed41d49a",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "account": {
@@ -852,28 +852,28 @@
           "name": "approvedBy",
           "type": "varchar(256)",
           "primaryKey": false,
-          "notNull": true,
+          "notNull": false,
           "autoincrement": false
         },
         "approvedDate": {
           "name": "approvedDate",
           "type": "varchar(256)",
           "primaryKey": false,
-          "notNull": true,
+          "notNull": false,
           "autoincrement": false
         },
         "approvedIp": {
           "name": "approvedIp",
           "type": "varchar(256)",
           "primaryKey": false,
-          "notNull": true,
+          "notNull": false,
           "autoincrement": false
         },
         "approvedReason": {
           "name": "approvedReason",
           "type": "varchar(256)",
           "primaryKey": false,
-          "notNull": true,
+          "notNull": false,
           "autoincrement": false
         },
         "approvedStatus": {
