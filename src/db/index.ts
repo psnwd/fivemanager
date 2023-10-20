@@ -1,5 +1,5 @@
 import { env } from "@/env.mjs"
-import { Client } from "@planetscale/database"
+import { connect } from "@planetscale/database"
 import { drizzle } from "drizzle-orm/planetscale-serverless"
 
 import * as auth from "./schema/auth"
@@ -24,9 +24,10 @@ const schema = {
   whitelist,
 }
 
-export const db = drizzle(
-  new Client({
-    url: env.DATABASE_URL,
-  }).connection(),
-  { schema }
-)
+const connection = connect({
+  url: env.DATABASE_URL,
+})
+
+export const db = drizzle(connection, { schema })
+
+const result = await db.query

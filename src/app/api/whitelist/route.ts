@@ -5,8 +5,7 @@ import { whitelist } from "drizzle/schema"
 
 export const runtime = "edge"
 
-export async function GET(request: Request) {
-  // get all whitelists
+export async function GET() {
   const result = await db
     .select()
     .from(whitelist)
@@ -23,7 +22,7 @@ export async function POST(request: Request) {
     discordId: validatedBody.discordId,
     discordName: validatedBody.discordName,
     steamId: validatedBody.steamId,
-    fiveMId: validatedBody.fiveMId,
+    fiveMid: validatedBody.fiveMId,
     reason: validatedBody.reason,
     message: validatedBody.message,
     date: validatedBody.date,
@@ -32,6 +31,78 @@ export async function POST(request: Request) {
   })
 
   return new Response("Whitelist created successfully", {
+    status: 200,
+  })
+}
+
+// update whitelist data
+export async function PUT(request: Request) {
+  const body = await request.json()
+  const validatedBody = insertWhitelistSchema.parse(body)
+
+  if (validatedBody.id !== undefined) {
+    await db
+      .update(whitelist)
+      .set({
+        discordId: validatedBody.discordId,
+        discordName: validatedBody.discordName,
+        steamId: validatedBody.steamId,
+        fiveMid: validatedBody.fiveMId,
+        reason: validatedBody.reason,
+        message: validatedBody.message,
+        date: validatedBody.date,
+        ip: validatedBody.ip,
+        approvedStatus: 0,
+      })
+      .where(eq(whitelist.id, validatedBody.id))
+
+    return new Response("Whitelist updated successfully", {
+      status: 200,
+    })
+  } else {
+    return new Response("Invalid or missing 'id' in the request body", {
+      status: 400,
+    })
+  }
+}
+
+// update whitelist set approvedStatus = 1 where id = 1
+export async function PATCH(request: Request) {
+  const body = await request.json()
+  const validatedBody = insertWhitelistSchema.parse(body)
+
+  if (validatedBody.id !== undefined) {
+    await db
+      .update(whitelist)
+      .set({
+        approvedStatus: 1,
+      })
+      .where(eq(whitelist.id, validatedBody.id))
+  } else {
+    return new Response("Invalid or missing 'id' in the request body", {
+      status: 400,
+    })
+  }
+
+  return new Response("Whitelist updated successfully", {
+    status: 200,
+  })
+}
+
+// delete whitelist where id = 1
+export async function DELETE(request: Request) {
+  const body = await request.json()
+  const validatedBody = insertWhitelistSchema.parse(body)
+
+  if (validatedBody.id !== undefined) {
+    await db.delete(whitelist).where(eq(whitelist.id, validatedBody.id))
+  } else {
+    return new Response("Invalid or missing 'id' in the request body", {
+      status: 400,
+    })
+  }
+
+  return new Response("Whitelist deleted successfully", {
     status: 200,
   })
 }

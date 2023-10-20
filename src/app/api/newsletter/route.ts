@@ -13,11 +13,12 @@ export async function POST(req: Request) {
   const input = subscribeToNewsletterSchema.parse(await req.json())
 
   try {
-    const newsletterPreference = await db.query.newsletter.findFirst({
-      where: eq(newsletter.email, input.email),
-    })
+    const newsletterPreference = await db
+      .select()
+      .from(newsletter)
+      .where(eq(newsletter.email, input.email))
 
-    if (newsletterPreference?.newsletter) {
+    if (newsletterPreference[0]?.newsletter) {
       return new Response("You are already subscribed to the newsletter.", {
         status: 409,
       })
