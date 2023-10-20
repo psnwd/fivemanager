@@ -27,6 +27,7 @@ function page() {
           non-characteristic words etc.
         </div>
         <Image
+          priority
           src="/images/home/about_1.png"
           width={800}
           height={800}
