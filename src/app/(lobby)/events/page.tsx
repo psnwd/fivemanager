@@ -61,6 +61,7 @@ function page() {
         {events.map((event) => (
           <EventCard
             key={event.id}
+            id={event.id}
             title={event.title}
             content={event.details}
             image={event.image}
