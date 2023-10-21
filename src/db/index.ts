@@ -28,6 +28,16 @@ const connection = connect({
   url: env.DATABASE_URL,
 })
 
-export const db = drizzle(connection, { schema })
-
-const result = await db.query
+export const db = drizzle(connection, {
+  schema: {
+    ...auth,
+    ...events,
+    ...feedbacks,
+    ...giveaway,
+    ...newsletter,
+    ...players,
+    ...servers,
+    ...supports,
+    ...whitelist,
+  },
+})
