@@ -8,25 +8,26 @@ import { events } from "drizzle/schema"
 
 export const metadata: Metadata = {
   metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),
-  title: "Store",
-  description: "Store description",
+  title: "Event title",
+  description: "Event description",
 }
 
 interface EventPageProps {
   params: {
     eventId: string
   }
-  searchParams: {
-    [key: string]: string | string[] | undefined
-  }
 }
 
-async function page({ params, searchParams }: EventPageProps) {
+async function page({ params }: EventPageProps) {
   const eventId = Number(params.eventId)
 
   const event = await db.query.events.findFirst({
     where: eq(events.id, eventId),
   })
+
+  if (!event) {
+    return notFound()
+  }
 
   return (
     <>
