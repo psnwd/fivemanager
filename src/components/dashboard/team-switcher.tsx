@@ -48,21 +48,16 @@ const groups = [
     label: "Server List",
     teams: [
       {
-        label: "Giga Chad",
-        value: "fivem server",
-      },
-    ],
-  },
-  {
-    label: "Teams",
-    teams: [
-      {
-        label: "CAT Inc.",
-        value: "cat-inc",
+        label: "FiveM Server 1",
+        value: "fivem server 1",
       },
       {
-        label: "PSSY CAT Inc.",
-        value: "pssycat-inc",
+        label: "FiveM Server 2",
+        value: "fivem server 2",
+      },
+      {
+        label: "FiveM Server 3",
+        value: "fivem server 3",
       },
     ],
   },
