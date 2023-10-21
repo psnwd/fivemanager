@@ -16,12 +16,11 @@ export async function updateEmailPreferencesAction(
 ) {
   const input = updateEmailPreferencesSchema.parse(rawInput)
 
-  const newsletterPreference = await db
-    .select()
-    .from(newsletter)
-    .where(eq(newsletter.token, input.token))
+  const newsletterPreference = await db.query.newsletter.findFirst({
+    where: eq(newsletter.token, input.token),
+  })
 
-  if (!newsletterPreference[0]) {
+  if (!newsletterPreference) {
     throw new Error("Email not found.")
   }
 
@@ -31,10 +30,10 @@ export async function updateEmailPreferencesAction(
     firstName: "BlackCAT",
   }
 
-  if (input.newsletter && !newsletterPreference[0]?.newsletter) {
+  if (input.newsletter && !newsletterPreference?.newsletter) {
     await resend.emails.send({
       from: env.EMAIL_FROM_ADDRESS,
-      to: newsletterPreference[0].email,
+      to: newsletterPreference.email,
       subject: "Welcome to our newsletter",
       react: NewsletterWelcomeEmail({
         firstName: user?.firstName ?? undefined,

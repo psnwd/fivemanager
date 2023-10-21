@@ -74,6 +74,7 @@ export default function Home() {
             {siteConfig.events.map((event) => (
               <EventCard
                 key={event.id}
+                id={event.id}
                 title={event.title}
                 content={event.details}
                 image={event.image}
