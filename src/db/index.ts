@@ -12,18 +12,6 @@ import * as servers from "./schema/servers"
 import * as supports from "./schema/supports"
 import * as whitelist from "./schema/whitelist"
 
-const schema = {
-  auth,
-  events,
-  feedbacks,
-  giveaway,
-  newsletter,
-  players,
-  servers,
-  supports,
-  whitelist,
-}
-
 const connection = connect({
   url: env.DATABASE_URL,
 })

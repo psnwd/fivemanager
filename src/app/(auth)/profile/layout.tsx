@@ -30,9 +30,9 @@ export default function DashboardLayout({
             </Link>
             <MainNav />
             <div className="ml-auto hidden items-center space-x-4 md:flex">
-              <Button variant={"outline"}>
-                <Link href="/dashboard">Dashboard</Link>
-              </Button>
+              <Link href="/dashboard">
+                <Button variant={"outline"}>Dashboard</Button>
+              </Link>
               <ThemeToggle />
               <UserNav />
             </div>
