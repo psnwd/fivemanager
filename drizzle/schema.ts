@@ -42,7 +42,7 @@ export const events = mysqlTable(
   {
     id: serial("id").notNull(),
     title: varchar("title", { length: 256 }).notNull(),
-    images: text("images[]").notNull(),
+    images: varchar("images", { length: 256 }).notNull(),
     description: varchar("description", { length: 256 }).notNull(),
     status: int("status").notNull(),
     lastEditBy: varchar("lastEditBy", { length: 256 }).notNull(),
@@ -95,6 +95,26 @@ export const giveaway = mysqlTable(
   (table) => {
     return {
       giveawayProviderProviderAccountId: primaryKey(table.id),
+    }
+  }
+)
+
+export const news = mysqlTable(
+  "news",
+  {
+    id: serial("id").notNull(),
+    title: varchar("title", { length: 256 }).notNull(),
+    images: varchar("images", { length: 256 }).notNull(),
+    description: varchar("description", { length: 256 }).notNull(),
+    status: int("status").notNull(),
+    lastEditBy: varchar("lastEditBy", { length: 256 }).notNull(),
+    lastEditDate: varchar("lastEditDate", { length: 256 }).notNull(),
+    createdBy: varchar("createdBy", { length: 256 }).notNull(),
+    createdDate: varchar("createdDate", { length: 256 }).notNull(),
+  },
+  (table) => {
+    return {
+      newsProviderProviderAccountId: primaryKey(table.id),
     }
   }
 )
