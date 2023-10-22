@@ -1,90 +1,92 @@
 {
-  "id": "00000000-0000-0000-0000-000000000000",
-  "prevId": "",
   "version": "5",
   "dialect": "mysql",
+  "id": "059527d2-d0f2-47cc-98a5-77b46b902ccc",
+  "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "account": {
       "name": "account",
       "columns": {
         "userId": {
-          "autoincrement": false,
           "name": "userId",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "type": {
-          "autoincrement": false,
           "name": "type",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "provider": {
-          "autoincrement": false,
           "name": "provider",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "providerAccountId": {
-          "autoincrement": false,
           "name": "providerAccountId",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "refresh_token": {
-          "autoincrement": false,
           "name": "refresh_token",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "autoincrement": false
         },
         "access_token": {
-          "autoincrement": false,
           "name": "access_token",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "autoincrement": false
         },
         "expires_at": {
-          "autoincrement": false,
           "name": "expires_at",
           "type": "int",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "autoincrement": false
         },
         "token_type": {
-          "autoincrement": false,
           "name": "token_type",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "autoincrement": false
         },
         "scope": {
-          "autoincrement": false,
           "name": "scope",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "autoincrement": false
         },
         "id_token": {
-          "autoincrement": false,
           "name": "id_token",
           "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "autoincrement": false
         },
         "session_state": {
-          "autoincrement": false,
           "name": "session_state",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "autoincrement": false
         }
       },
+      "indexes": {},
+      "foreignKeys": {},
       "compositePrimaryKeys": {
         "account_provider_providerAccountId": {
           "name": "account_provider_providerAccountId",
@@ -94,816 +96,883 @@
           ]
         }
       },
-      "indexes": {},
-      "foreignKeys": {},
-      "uniqueConstraints": {}
-    },
-    "events": {
-      "name": "events",
-      "columns": {
-        "id": {
-          "autoincrement": true,
-          "name": "id",
-          "type": "serial",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "title": {
-          "autoincrement": false,
-          "name": "title",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "images[]": {
-          "autoincrement": false,
-          "name": "images[]",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "description": {
-          "autoincrement": false,
-          "name": "description",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "status": {
-          "autoincrement": false,
-          "name": "status",
-          "type": "int",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "lastEditBy": {
-          "autoincrement": false,
-          "name": "lastEditBy",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "lastEditDate": {
-          "autoincrement": false,
-          "name": "lastEditDate",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "createdBy": {
-          "autoincrement": false,
-          "name": "createdBy",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "createdDate": {
-          "autoincrement": false,
-          "name": "createdDate",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        }
-      },
-      "compositePrimaryKeys": {
-        "events_provider_providerAccountId": {
-          "name": "events_provider_providerAccountId",
-          "columns": [
-            "provider",
-            "providerAccountId"
-          ]
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {},
-      "uniqueConstraints": {}
-    },
-    "feedbacks": {
-      "name": "feedbacks",
-      "columns": {
-        "id": {
-          "autoincrement": true,
-          "name": "id",
-          "type": "serial",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "title": {
-          "autoincrement": false,
-          "name": "title",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "authorJob": {
-          "autoincrement": false,
-          "name": "authorJob",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "avatar": {
-          "autoincrement": false,
-          "name": "avatar",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "content": {
-          "autoincrement": false,
-          "name": "content",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "status": {
-          "autoincrement": false,
-          "name": "status",
-          "type": "int",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "lastEditBy": {
-          "autoincrement": false,
-          "name": "lastEditBy",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "lastEditDate": {
-          "autoincrement": false,
-          "name": "lastEditDate",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "createdBy": {
-          "autoincrement": false,
-          "name": "createdBy",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "createdDate": {
-          "autoincrement": false,
-          "name": "createdDate",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        }
-      },
-      "compositePrimaryKeys": {
-        "feedbacks_provider_providerAccountId": {
-          "name": "feedbacks_provider_providerAccountId",
-          "columns": [
-            "provider",
-            "providerAccountId"
-          ]
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {},
-      "uniqueConstraints": {}
-    },
-    "giveaway": {
-      "name": "giveaway",
-      "columns": {
-        "id": {
-          "autoincrement": true,
-          "name": "id",
-          "type": "serial",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "name": {
-          "autoincrement": false,
-          "name": "name",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "type": {
-          "autoincrement": false,
-          "name": "type",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "description": {
-          "autoincrement": false,
-          "name": "description",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "status": {
-          "autoincrement": false,
-          "name": "status",
-          "type": "int",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "items": {
-          "autoincrement": false,
-          "name": "items",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "lastEditBy": {
-          "autoincrement": false,
-          "name": "lastEditBy",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "lastEditDate": {
-          "autoincrement": false,
-          "name": "lastEditDate",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "createdBy": {
-          "autoincrement": false,
-          "name": "createdBy",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "createdDate": {
-          "autoincrement": false,
-          "name": "createdDate",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        }
-      },
-      "compositePrimaryKeys": {
-        "giveaway_provider_providerAccountId": {
-          "name": "giveaway_provider_providerAccountId",
-          "columns": [
-            "provider",
-            "providerAccountId"
-          ]
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {},
-      "uniqueConstraints": {}
-    },
-    "newsletter": {
-      "name": "newsletter",
-      "columns": {
-        "id": {
-          "autoincrement": true,
-          "name": "id",
-          "type": "serial",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "userId": {
-          "autoincrement": false,
-          "name": "userId",
-          "type": "varchar(191)",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "email": {
-          "autoincrement": false,
-          "name": "email",
-          "type": "varchar(191)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "token": {
-          "autoincrement": false,
-          "name": "token",
-          "type": "varchar(191)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "newsletter": {
-          "default": 0,
-          "autoincrement": false,
-          "name": "newsletter",
-          "type": "tinyint",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "marketing": {
-          "default": 0,
-          "autoincrement": false,
-          "name": "marketing",
-          "type": "tinyint",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "transactional": {
-          "default": 0,
-          "autoincrement": false,
-          "name": "transactional",
-          "type": "tinyint",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "createdAt": {
-          "default": "now()",
-          "autoincrement": false,
-          "name": "createdAt",
-          "type": "timestamp",
-          "primaryKey": false,
-          "notNull": false
-        }
-      },
-      "compositePrimaryKeys": {
-        "newsletter_provider_providerAccountId": {
-          "name": "newsletter_provider_providerAccountId",
-          "columns": [
-            "provider",
-            "providerAccountId"
-          ]
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {},
-      "uniqueConstraints": {}
-    },
-    "players": {
-      "name": "players",
-      "columns": {
-        "id": {
-          "autoincrement": true,
-          "name": "id",
-          "type": "serial",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "name": {
-          "autoincrement": false,
-          "name": "name",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "discordId": {
-          "autoincrement": false,
-          "name": "discordId",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "email": {
-          "autoincrement": false,
-          "name": "email",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "cfxId": {
-          "autoincrement": false,
-          "name": "cfxId",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "lastLoginIp": {
-          "autoincrement": false,
-          "name": "lastLoginIp",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "lastLoginDate": {
-          "autoincrement": false,
-          "name": "lastLoginDate",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        }
-      },
-      "compositePrimaryKeys": {
-        "players_provider_providerAccountId": {
-          "name": "players_provider_providerAccountId",
-          "columns": [
-            "provider",
-            "providerAccountId"
-          ]
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {},
-      "uniqueConstraints": {}
-    },
-    "servers": {
-      "name": "servers",
-      "columns": {
-        "id": {
-          "autoincrement": true,
-          "name": "id",
-          "type": "serial",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "name": {
-          "autoincrement": false,
-          "name": "name",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "ip": {
-          "autoincrement": false,
-          "name": "ip",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "port": {
-          "autoincrement": false,
-          "name": "port",
-          "type": "int",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "status": {
-          "autoincrement": false,
-          "name": "status",
-          "type": "int",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "lastEditBy": {
-          "autoincrement": false,
-          "name": "lastEditBy",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "lastEditDate": {
-          "autoincrement": false,
-          "name": "lastEditDate",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "createdBy": {
-          "autoincrement": false,
-          "name": "createdBy",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "createdDate": {
-          "autoincrement": false,
-          "name": "createdDate",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        }
-      },
-      "compositePrimaryKeys": {
-        "servers_provider_providerAccountId": {
-          "name": "servers_provider_providerAccountId",
-          "columns": [
-            "provider",
-            "providerAccountId"
-          ]
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {},
       "uniqueConstraints": {}
     },
     "session": {
       "name": "session",
       "columns": {
         "sessionToken": {
-          "autoincrement": false,
           "name": "sessionToken",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "userId": {
-          "autoincrement": false,
           "name": "userId",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "expires": {
-          "autoincrement": false,
           "name": "expires",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true
-        }
-      },
-      "compositePrimaryKeys": {
-        "session_provider_providerAccountId": {
-          "name": "session_provider_providerAccountId",
-          "columns": [
-            "provider",
-            "providerAccountId"
-          ]
+          "notNull": true,
+          "autoincrement": false
         }
       },
       "indexes": {},
       "foreignKeys": {},
-      "uniqueConstraints": {}
-    },
-    "supports": {
-      "name": "supports",
-      "columns": {
-        "id": {
-          "autoincrement": true,
-          "name": "id",
-          "type": "serial",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "userId": {
-          "autoincrement": false,
-          "name": "userId",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "message": {
-          "autoincrement": false,
-          "name": "message",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "date": {
-          "autoincrement": false,
-          "name": "date",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "ip": {
-          "autoincrement": false,
-          "name": "ip",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "supportedBy": {
-          "autoincrement": false,
-          "name": "supportedBy",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "supportedDate": {
-          "autoincrement": false,
-          "name": "supportedDate",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "supportedIp": {
-          "autoincrement": false,
-          "name": "supportedIp",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "supportedReason": {
-          "autoincrement": false,
-          "name": "supportedReason",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "supportedStatus": {
-          "autoincrement": false,
-          "name": "supportedStatus",
-          "type": "int",
-          "primaryKey": false,
-          "notNull": true
-        }
-      },
       "compositePrimaryKeys": {
-        "supports_provider_providerAccountId": {
-          "name": "supports_provider_providerAccountId",
+        "session_sessionToken": {
+          "name": "session_sessionToken",
           "columns": [
-            "provider",
-            "providerAccountId"
+            "sessionToken"
           ]
         }
       },
-      "indexes": {},
-      "foreignKeys": {},
       "uniqueConstraints": {}
     },
     "user": {
       "name": "user",
       "columns": {
         "id": {
-          "autoincrement": false,
           "name": "id",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "name": {
-          "autoincrement": false,
           "name": "name",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "autoincrement": false
         },
         "email": {
-          "autoincrement": false,
           "name": "email",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "emailVerified": {
-          "default": "now()",
-          "autoincrement": false,
           "name": "emailVerified",
           "type": "timestamp(3)",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "autoincrement": false,
+          "default": "(now())"
         },
         "image": {
-          "autoincrement": false,
           "name": "image",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": false
-        }
-      },
-      "compositePrimaryKeys": {
-        "user_provider_providerAccountId": {
-          "name": "user_provider_providerAccountId",
-          "columns": [
-            "provider",
-            "providerAccountId"
-          ]
+          "notNull": false,
+          "autoincrement": false
         }
       },
       "indexes": {},
       "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "user_id": {
+          "name": "user_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
       "uniqueConstraints": {}
     },
     "verificationToken": {
       "name": "verificationToken",
       "columns": {
         "identifier": {
-          "autoincrement": false,
           "name": "identifier",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "token": {
-          "autoincrement": false,
           "name": "token",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "expires": {
-          "autoincrement": false,
           "name": "expires",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true
-        }
-      },
-      "compositePrimaryKeys": {
-        "verificationToken_provider_providerAccountId": {
-          "name": "verificationToken_provider_providerAccountId",
-          "columns": [
-            "provider",
-            "providerAccountId"
-          ]
+          "notNull": true,
+          "autoincrement": false
         }
       },
       "indexes": {},
       "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "verificationToken_identifier_token": {
+          "name": "verificationToken_identifier_token",
+          "columns": [
+            "identifier",
+            "token"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "events": {
+      "name": "events",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "title": {
+          "name": "title",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "images": {
+          "name": "images",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "description": {
+          "name": "description",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "status": {
+          "name": "status",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "lastEditBy": {
+          "name": "lastEditBy",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "lastEditDate": {
+          "name": "lastEditDate",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "createdBy": {
+          "name": "createdBy",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "createdDate": {
+          "name": "createdDate",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "events_id": {
+          "name": "events_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "feedbacks": {
+      "name": "feedbacks",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "title": {
+          "name": "title",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "authorJob": {
+          "name": "authorJob",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "avatar": {
+          "name": "avatar",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "content": {
+          "name": "content",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "status": {
+          "name": "status",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "lastEditBy": {
+          "name": "lastEditBy",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "lastEditDate": {
+          "name": "lastEditDate",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "createdBy": {
+          "name": "createdBy",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "createdDate": {
+          "name": "createdDate",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "feedbacks_id": {
+          "name": "feedbacks_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "giveaway": {
+      "name": "giveaway",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "type": {
+          "name": "type",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "description": {
+          "name": "description",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "status": {
+          "name": "status",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "items": {
+          "name": "items",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "lastEditBy": {
+          "name": "lastEditBy",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "lastEditDate": {
+          "name": "lastEditDate",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "createdBy": {
+          "name": "createdBy",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "createdDate": {
+          "name": "createdDate",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "giveaway_id": {
+          "name": "giveaway_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "news": {
+      "name": "news",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "title": {
+          "name": "title",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "images": {
+          "name": "images",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "description": {
+          "name": "description",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "status": {
+          "name": "status",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "lastEditBy": {
+          "name": "lastEditBy",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "lastEditDate": {
+          "name": "lastEditDate",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "createdBy": {
+          "name": "createdBy",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "createdDate": {
+          "name": "createdDate",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "news_id": {
+          "name": "news_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "newsletter": {
+      "name": "newsletter",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "userId": {
+          "name": "userId",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "email": {
+          "name": "email",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "token": {
+          "name": "token",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "newsletter": {
+          "name": "newsletter",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": false
+        },
+        "marketing": {
+          "name": "marketing",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": false
+        },
+        "transactional": {
+          "name": "transactional",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": false
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": "(now())"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "newsletter_id": {
+          "name": "newsletter_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "players": {
+      "name": "players",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "discordId": {
+          "name": "discordId",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "email": {
+          "name": "email",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "cfxId": {
+          "name": "cfxId",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "lastLoginIp": {
+          "name": "lastLoginIp",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "lastLoginDate": {
+          "name": "lastLoginDate",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "players_id": {
+          "name": "players_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "servers": {
+      "name": "servers",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "ip": {
+          "name": "ip",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "port": {
+          "name": "port",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "status": {
+          "name": "status",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "lastEditBy": {
+          "name": "lastEditBy",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "lastEditDate": {
+          "name": "lastEditDate",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "createdBy": {
+          "name": "createdBy",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "createdDate": {
+          "name": "createdDate",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "servers_id": {
+          "name": "servers_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "supports": {
+      "name": "supports",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "userId": {
+          "name": "userId",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "message": {
+          "name": "message",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "date": {
+          "name": "date",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "ip": {
+          "name": "ip",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "supportedBy": {
+          "name": "supportedBy",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "supportedDate": {
+          "name": "supportedDate",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "supportedIp": {
+          "name": "supportedIp",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "supportedReason": {
+          "name": "supportedReason",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "supportedStatus": {
+          "name": "supportedStatus",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "supports_id": {
+          "name": "supports_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
       "uniqueConstraints": {}
     },
     "whitelist": {
       "name": "whitelist",
       "columns": {
         "id": {
-          "autoincrement": true,
           "name": "id",
           "type": "serial",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": true
         },
         "discordId": {
-          "autoincrement": false,
           "name": "discordId",
           "type": "varchar(256)",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "discordName": {
-          "autoincrement": false,
           "name": "discordName",
           "type": "varchar(256)",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "steamId": {
-          "autoincrement": false,
           "name": "steamId",
           "type": "varchar(256)",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "fiveMId": {
-          "autoincrement": false,
           "name": "fiveMId",
           "type": "varchar(256)",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "reason": {
-          "autoincrement": false,
           "name": "reason",
           "type": "varchar(256)",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "message": {
-          "autoincrement": false,
           "name": "message",
           "type": "varchar(256)",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "date": {
-          "autoincrement": false,
           "name": "date",
           "type": "varchar(256)",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "ip": {
-          "autoincrement": false,
           "name": "ip",
           "type": "varchar(256)",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "autoincrement": false
         },
         "approvedBy": {
-          "autoincrement": false,
           "name": "approvedBy",
           "type": "varchar(256)",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "autoincrement": false
         },
         "approvedDate": {
-          "autoincrement": false,
           "name": "approvedDate",
           "type": "varchar(256)",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "autoincrement": false
         },
         "approvedIp": {
-          "autoincrement": false,
           "name": "approvedIp",
           "type": "varchar(256)",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "autoincrement": false
         },
         "approvedReason": {
-          "autoincrement": false,
           "name": "approvedReason",
           "type": "varchar(256)",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "autoincrement": false
         },
         "approvedStatus": {
-          "autoincrement": false,
           "name": "approvedStatus",
           "type": "int",
           "primaryKey": false,
-          "notNull": true
-        }
-      },
-      "compositePrimaryKeys": {
-        "whitelist_provider_providerAccountId": {
-          "name": "whitelist_provider_providerAccountId",
-          "columns": [
-            "provider",
-            "providerAccountId"
-          ]
+          "notNull": true,
+          "autoincrement": false
         }
       },
       "indexes": {},
       "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "whitelist_id": {
+          "name": "whitelist_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
       "uniqueConstraints": {}
     }
   },

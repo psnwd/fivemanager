@@ -20,13 +20,13 @@ interface NewsPageProps {
 async function page({ params }: NewsPageProps) {
   const eventId = Number(params.eventId)
 
-  const event = await db.query.events.findFirst({
-    where: eq(news.id, eventId),
-  })
+  // const event = await db.query.events.findFirst({
+  //   where: eq(news.id, eventId),
+  // })
 
-  if (!event) {
-    return notFound()
-  }
+  // if (!event) {
+  //   return notFound()
+  // }
 
   return (
     <>
