@@ -79,6 +79,7 @@ function page() {
         {news.map((news) => (
           <NewsCard
             key={news.id}
+            id={news.id}
             title={news.title}
             details={news.details}
             image={news.images[0]}
