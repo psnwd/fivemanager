@@ -1,0 +1,13 @@
+{
+  "version": "5",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1697896518538,
+      "tag": "0000_smooth_pete_wisdom",
+      "breakpoints": true
+    }
+  ]
+}

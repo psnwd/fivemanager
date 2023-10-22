@@ -74,6 +74,7 @@ export default function Home() {
             {siteConfig.events.map((event) => (
               <EventCard
                 key={event.id}
+                id={event.id}
                 title={event.title}
                 content={event.details}
                 image={event.image}
@@ -87,6 +88,7 @@ export default function Home() {
             {siteConfig.news.map((news) => (
               <NewsCard
                 key={news.id}
+                id={news.id}
                 title={news.title}
                 details={news.details}
                 image={news.images[0]}

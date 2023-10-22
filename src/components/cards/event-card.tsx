@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 
 import {
   Card,
@@ -11,12 +12,13 @@ import {
 import { Button } from "../ui/button"
 
 interface EventCardProps {
+  id: number | string
   title: string
   content: string
   image: string
 }
 
-function EventCard({ title, content, image }: EventCardProps) {
+function EventCard({ id, title, content, image }: EventCardProps) {
   return (
     <Card className="basis-1/3">
       <CardHeader>
@@ -34,7 +36,9 @@ function EventCard({ title, content, image }: EventCardProps) {
         <p className=" text-sm">{content}</p>
       </CardContent>
       <CardFooter className="flex justify-center gap-1 text-sm">
-        <Button variant="outline">Read More</Button>
+        <Link href={`/events/${id}`}>
+          <Button variant="outline">Read More</Button>
+        </Link>
       </CardFooter>
     </Card>
   )

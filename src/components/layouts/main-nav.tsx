@@ -7,12 +7,16 @@ import { cn } from "@/lib/utils"
 
 const navItems = [
   {
-    label: "Giveaways",
-    href: "/giveaways",
+    label: "Home",
+    href: "/",
   },
   {
     label: "Events",
     href: "/events",
+  },
+  {
+    label: "Giveaways",
+    href: "/giveaways",
   },
   {
     label: "News",

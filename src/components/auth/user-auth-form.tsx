@@ -32,7 +32,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
           <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
         ) : (
           <Icons.discord className="mr-2 h-4 w-4" />
-        )}{" "}
+        )}
         Discord
       </Button>
     </div>
