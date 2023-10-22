@@ -1,0 +1,9 @@
+user-agent: *
+allow: /
+disallow: /admin/
+disallow: /privacy/
+disallow: /terms/
+disallow: /search/
+disallow: /api/
+
+sitemap: https://ccc.sublaze.com/sitemap.xml
