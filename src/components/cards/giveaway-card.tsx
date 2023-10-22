@@ -1,4 +1,8 @@
+"use client"
+
+import React from "react"
 import Image from "next/image"
+import Link from "next/link"
 
 import {
   Card,
@@ -9,19 +13,43 @@ import {
 } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 
+import { Icons } from "../icons"
 import { Button } from "../ui/button"
 
 interface GiveawayCardProps {
   title: string
   content: string
   image: string
+  totalKeys: number
+  remainingKey: number
+  endTime: number
 }
 
-function GiveawayCard({ title, content, image }: GiveawayCardProps) {
+function GiveawayCard({
+  title,
+  content,
+  image,
+  totalKeys,
+  remainingKey,
+  endTime,
+}: GiveawayCardProps) {
+  const [isLoading, setIsLoading] = React.useState<boolean>(false)
+
+  function onRedeem(event: React.SyntheticEvent) {
+    event.preventDefault()
+    setIsLoading(true)
+
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 3000)
+  }
+
   return (
     <Card className="basis-1/3">
       <CardHeader>
-        <CardTitle className="line-clamp-1 text-lg">{title}</CardTitle>
+        <CardTitle className="line-clamp-1 text-lg" title={title}>
+          <Link href="/giveaways/1">{title}</Link>
+        </CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col items-center gap-2">
         <Image
@@ -46,12 +74,22 @@ function GiveawayCard({ title, content, image }: GiveawayCardProps) {
         </div>
       </CardContent>
       <CardFooter className="flex justify-center gap-1 text-sm">
-        <Button variant="default" size={"sm"}>
+        <Button
+          variant="default"
+          size={"sm"}
+          disabled={isLoading}
+          onClick={onRedeem}
+        >
+          {isLoading ? (
+            <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+          ) : null}
           Redeem
         </Button>
-        <Button variant="outline" size={"sm"}>
-          Read more
-        </Button>
+        <Link href="/giveaways/1">
+          <Button variant="outline" size={"sm"}>
+            Read more
+          </Button>
+        </Link>
       </CardFooter>
     </Card>
   )

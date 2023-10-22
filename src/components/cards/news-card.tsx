@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 
 import {
   Card,
@@ -11,12 +12,13 @@ import {
 import { Button } from "../ui/button"
 
 interface NewsCardProps {
+  id: string | number
   title: string
   details: string
   image: string
 }
 
-function NewsCard({ title, details, image }: NewsCardProps) {
+function NewsCard({ id, title, details, image }: NewsCardProps) {
   return (
     <Card className="basis-1/3">
       <CardHeader>
@@ -34,7 +36,9 @@ function NewsCard({ title, details, image }: NewsCardProps) {
         <p className="line-clamp-5 text-sm">{details}</p>
       </CardContent>
       <CardFooter className="flex justify-center gap-1 text-sm">
-        <Button variant="outline">Read More</Button>
+        <Link href={`news/${id}`}>
+          <Button variant="outline">Read More</Button>
+        </Link>
       </CardFooter>
     </Card>
   )

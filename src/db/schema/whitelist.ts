@@ -20,10 +20,10 @@ export const whitelist = mysqlTable(
     message: varchar("message", { length: 256 }).notNull(), // Message from the user
     date: varchar("date", { length: 256 }).notNull(), // Date of submission
     ip: varchar("ip", { length: 256 }).notNull(), // IP of the user who submitted the whitelist
-    approvedBy: varchar("approvedBy", { length: 256 }).notNull(), // User ID of the user who approved or denied the whitelist
-    approvedDate: varchar("approvedDate", { length: 256 }).notNull(), // Date of approval or denial
-    approvedIp: varchar("approvedIp", { length: 256 }).notNull(), // IP of the user who approved or denied the whitelist
-    approvedReason: varchar("approvedReason", { length: 256 }).notNull(), // Reason for approval or denial
+    approvedBy: varchar("approvedBy", { length: 256 }), // User ID of the user who approved or denied the whitelist
+    approvedDate: varchar("approvedDate", { length: 256 }), // Date of approval or denial
+    approvedIp: varchar("approvedIp", { length: 256 }), // IP of the user who approved or denied the whitelist
+    approvedReason: varchar("approvedReason", { length: 256 }), // Reason for approval or denial
     approvedStatus: int("approvedStatus").notNull(), // Status of the whitelist => 0 = Pending, 1 = Approved, 2 = Denied
   },
   (whitelist) => ({
