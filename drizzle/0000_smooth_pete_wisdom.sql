@@ -1,6 +1,3 @@
--- Current sql file was generated after introspecting the database
--- If you want to run this migration please uncomment this code before executing migrations
-/*
 CREATE TABLE `account` (
 	`userId` varchar(255) NOT NULL,
 	`type` varchar(255) NOT NULL,
@@ -16,17 +13,40 @@ CREATE TABLE `account` (
 	CONSTRAINT `account_provider_providerAccountId` PRIMARY KEY(`provider`,`providerAccountId`)
 );
 --> statement-breakpoint
+CREATE TABLE `session` (
+	`sessionToken` varchar(255) NOT NULL,
+	`userId` varchar(255) NOT NULL,
+	`expires` timestamp NOT NULL,
+	CONSTRAINT `session_sessionToken` PRIMARY KEY(`sessionToken`)
+);
+--> statement-breakpoint
+CREATE TABLE `user` (
+	`id` varchar(255) NOT NULL,
+	`name` varchar(255),
+	`email` varchar(255) NOT NULL,
+	`emailVerified` timestamp(3) DEFAULT (now()),
+	`image` varchar(255),
+	CONSTRAINT `user_id` PRIMARY KEY(`id`)
+);
+--> statement-breakpoint
+CREATE TABLE `verificationToken` (
+	`identifier` varchar(255) NOT NULL,
+	`token` varchar(255) NOT NULL,
+	`expires` timestamp NOT NULL,
+	CONSTRAINT `verificationToken_identifier_token` PRIMARY KEY(`identifier`,`token`)
+);
+--> statement-breakpoint
 CREATE TABLE `events` (
 	`id` serial AUTO_INCREMENT NOT NULL,
 	`title` varchar(256) NOT NULL,
-	`images[]` text NOT NULL,
+	`images` varchar(256) NOT NULL,
 	`description` varchar(256) NOT NULL,
 	`status` int NOT NULL,
 	`lastEditBy` varchar(256) NOT NULL,
 	`lastEditDate` varchar(256) NOT NULL,
 	`createdBy` varchar(256) NOT NULL,
 	`createdDate` varchar(256) NOT NULL,
-	CONSTRAINT `events_provider_providerAccountId` PRIMARY KEY(`provider`,`providerAccountId`)
+	CONSTRAINT `events_id` PRIMARY KEY(`id`)
 );
 --> statement-breakpoint
 CREATE TABLE `feedbacks` (
@@ -40,7 +60,7 @@ CREATE TABLE `feedbacks` (
 	`lastEditDate` varchar(256) NOT NULL,
 	`createdBy` varchar(256) NOT NULL,
 	`createdDate` varchar(256) NOT NULL,
-	CONSTRAINT `feedbacks_provider_providerAccountId` PRIMARY KEY(`provider`,`providerAccountId`)
+	CONSTRAINT `feedbacks_id` PRIMARY KEY(`id`)
 );
 --> statement-breakpoint
 CREATE TABLE `giveaway` (
@@ -54,7 +74,20 @@ CREATE TABLE `giveaway` (
 	`lastEditDate` varchar(256) NOT NULL,
 	`createdBy` varchar(256) NOT NULL,
 	`createdDate` varchar(256) NOT NULL,
-	CONSTRAINT `giveaway_provider_providerAccountId` PRIMARY KEY(`provider`,`providerAccountId`)
+	CONSTRAINT `giveaway_id` PRIMARY KEY(`id`)
+);
+--> statement-breakpoint
+CREATE TABLE `news` (
+	`id` serial AUTO_INCREMENT NOT NULL,
+	`title` varchar(256) NOT NULL,
+	`images` varchar(256) NOT NULL,
+	`description` varchar(256) NOT NULL,
+	`status` int NOT NULL,
+	`lastEditBy` varchar(256) NOT NULL,
+	`lastEditDate` varchar(256) NOT NULL,
+	`createdBy` varchar(256) NOT NULL,
+	`createdDate` varchar(256) NOT NULL,
+	CONSTRAINT `news_id` PRIMARY KEY(`id`)
 );
 --> statement-breakpoint
 CREATE TABLE `newsletter` (
@@ -62,11 +95,11 @@ CREATE TABLE `newsletter` (
 	`userId` varchar(191),
 	`email` varchar(191) NOT NULL,
 	`token` varchar(191) NOT NULL,
-	`newsletter` tinyint NOT NULL DEFAULT 0,
-	`marketing` tinyint NOT NULL DEFAULT 0,
-	`transactional` tinyint NOT NULL DEFAULT 0,
-	`createdAt` timestamp DEFAULT now(),
-	CONSTRAINT `newsletter_provider_providerAccountId` PRIMARY KEY(`provider`,`providerAccountId`)
+	`newsletter` boolean NOT NULL DEFAULT false,
+	`marketing` boolean NOT NULL DEFAULT false,
+	`transactional` boolean NOT NULL DEFAULT false,
+	`createdAt` timestamp DEFAULT (now()),
+	CONSTRAINT `newsletter_id` PRIMARY KEY(`id`)
 );
 --> statement-breakpoint
 CREATE TABLE `players` (
@@ -77,7 +110,7 @@ CREATE TABLE `players` (
 	`cfxId` varchar(256) NOT NULL,
 	`lastLoginIp` varchar(256) NOT NULL,
 	`lastLoginDate` varchar(256) NOT NULL,
-	CONSTRAINT `players_provider_providerAccountId` PRIMARY KEY(`provider`,`providerAccountId`)
+	CONSTRAINT `players_id` PRIMARY KEY(`id`)
 );
 --> statement-breakpoint
 CREATE TABLE `servers` (
@@ -90,14 +123,7 @@ CREATE TABLE `servers` (
 	`lastEditDate` varchar(256) NOT NULL,
 	`createdBy` varchar(256) NOT NULL,
 	`createdDate` varchar(256) NOT NULL,
-	CONSTRAINT `servers_provider_providerAccountId` PRIMARY KEY(`provider`,`providerAccountId`)
-);
---> statement-breakpoint
-CREATE TABLE `session` (
-	`sessionToken` varchar(255) NOT NULL,
-	`userId` varchar(255) NOT NULL,
-	`expires` timestamp NOT NULL,
-	CONSTRAINT `session_provider_providerAccountId` PRIMARY KEY(`provider`,`providerAccountId`)
+	CONSTRAINT `servers_id` PRIMARY KEY(`id`)
 );
 --> statement-breakpoint
 CREATE TABLE `supports` (
@@ -111,23 +137,7 @@ CREATE TABLE `supports` (
 	`supportedIp` varchar(256) NOT NULL,
 	`supportedReason` varchar(256) NOT NULL,
 	`supportedStatus` int NOT NULL,
-	CONSTRAINT `supports_provider_providerAccountId` PRIMARY KEY(`provider`,`providerAccountId`)
-);
---> statement-breakpoint
-CREATE TABLE `user` (
-	`id` varchar(255) NOT NULL,
-	`name` varchar(255),
-	`email` varchar(255) NOT NULL,
-	`emailVerified` timestamp(3) DEFAULT now(),
-	`image` varchar(255),
-	CONSTRAINT `user_provider_providerAccountId` PRIMARY KEY(`provider`,`providerAccountId`)
-);
---> statement-breakpoint
-CREATE TABLE `verificationToken` (
-	`identifier` varchar(255) NOT NULL,
-	`token` varchar(255) NOT NULL,
-	`expires` timestamp NOT NULL,
-	CONSTRAINT `verificationToken_provider_providerAccountId` PRIMARY KEY(`provider`,`providerAccountId`)
+	CONSTRAINT `supports_id` PRIMARY KEY(`id`)
 );
 --> statement-breakpoint
 CREATE TABLE `whitelist` (
@@ -145,7 +155,5 @@ CREATE TABLE `whitelist` (
 	`approvedIp` varchar(256),
 	`approvedReason` varchar(256),
 	`approvedStatus` int NOT NULL,
-	CONSTRAINT `whitelist_provider_providerAccountId` PRIMARY KEY(`provider`,`providerAccountId`)
+	CONSTRAINT `whitelist_id` PRIMARY KEY(`id`)
 );
-
-*/

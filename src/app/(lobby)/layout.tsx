@@ -18,15 +18,13 @@ export default function DashboardLayout({
         <div className="border-b">
           <div className="flex h-16 items-center px-4">
             <Link href="/">
-              <div className="font-semibold">
-                <Image
-                  src="/images/logo.svg"
-                  width={50}
-                  height={50}
-                  alt="Site logo"
-                  className="mx-5"
-                />
-              </div>
+              <Image
+                src="/images/logo.svg"
+                width={50}
+                height={50}
+                alt="Site logo"
+                className="mx-5"
+              />
             </Link>
             <MainNav />
             <div className="ml-auto hidden items-center space-x-4 md:flex">

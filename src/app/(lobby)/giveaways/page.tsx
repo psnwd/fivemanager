@@ -52,6 +52,9 @@ function page() {
             title={giveaway.title}
             content={giveaway.details}
             image="/images/home/news/gang_war_image2.jpg"
+            totalKeys={100}
+            remainingKey={50}
+            endTime={1633058400000}
           />
         ))}
       </div>
