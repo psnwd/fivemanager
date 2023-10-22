@@ -1,18 +1,16 @@
 import { createEnv } from "@t3-oss/env-nextjs"
 import { z } from "zod"
 
-import "dotenv/config"
+// import "dotenv/config"
 
 export const env = createEnv({
   server: {
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),
-    DATABASE_NAME: z.string().min(1),
-    DATABASE_HOST: z.string().min(1),
-    DATABASE_USERNAME: z.string().min(1),
-    DATABASE_PASSWORD: z.string().min(1),
+    DATABASE_URL: z.string().min(1),
     NEXT_PUBLIC_APP_URL: z.string().min(1),
+    EMAIL_FROM_ADDRESS: z.string().min(1).email(),
     NEXTAUTH_SECRET:
       process.env.NODE_ENV === "production"
         ? z.string().min(1)
@@ -26,6 +24,7 @@ export const env = createEnv({
     ),
     DISCORD_CLIENT_ID: z.string().min(1),
     DISCORD_CLIENT_SECRET: z.string().min(1),
+    RESEND_API_KEY: z.string().min(1),
   },
   client: {
     // NEXT_PUBLIC_PUBLISHABLE_KEY: z.string().min(1),

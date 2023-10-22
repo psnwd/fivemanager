@@ -9,12 +9,12 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod"
 import type { z } from "zod"
 
-export const events = mysqlTable(
-  "events",
+export const news = mysqlTable(
+  "news",
   {
     id: serial("id").primaryKey(),
     title: varchar("title", { length: 256 }).notNull(),
-    images: text("images[]").notNull(),
+    images: varchar("images", { length: 256 }).notNull(),
     description: varchar("description", { length: 256 }).notNull(),
     status: int("status").notNull(),
     lastEditedBy: varchar("lastEditBy", { length: 256 }).notNull(),
@@ -28,11 +28,11 @@ export const events = mysqlTable(
 )
 
 // Schema for CRUD - used to validate API requests
-export const insertEventsSchema = createInsertSchema(events)
-export const selectEventsSchema = createSelectSchema(events)
-export const eventsIdSchema = selectEventsSchema.pick({ id: true })
-export const updateEventsSchema = selectEventsSchema
+export const insertNewsSchema = createInsertSchema(news)
+export const selectNewsSchema = createSelectSchema(news)
+export const newsIdSchema = selectNewsSchema.pick({ id: true })
+export const updateNewsSchema = selectNewsSchema
 
-export type Events = z.infer<typeof selectEventsSchema>
-export type NewEvents = z.infer<typeof insertEventsSchema>
-export type EventsId = z.infer<typeof eventsIdSchema>["id"]
+export type News = z.infer<typeof selectNewsSchema>
+export type NewNews = z.infer<typeof insertNewsSchema>
+export type NewsId = z.infer<typeof newsIdSchema>["id"]
