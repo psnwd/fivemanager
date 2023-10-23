@@ -42,7 +42,7 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
-import { useToast } from "../ui/use-toast"
+import { UseToast } from "../ui/use-toast"
 
 const data: Player[] = [
   {
@@ -148,7 +148,7 @@ export const columns: ColumnDef<Player>[] = [
     accessorKey: "actions_btn",
     header: "Actions",
     cell: () => {
-      const { toast } = useToast()
+      const { toast } = UseToast()
 
       return (
         <div className="space-x-2">
