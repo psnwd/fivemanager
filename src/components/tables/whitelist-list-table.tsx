@@ -24,14 +24,6 @@ import type {
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
-import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
@@ -50,50 +42,52 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
+import { UseToast } from "../ui/use-toast"
+
 const data: Player[] = [
   {
-    id: "m5gr84i9",
+    id: "fesffsees",
     name: "hawi",
-    role: "admin",
     discordId: "258223336535511125",
-    status: "approved",
-  },
-  {
-    id: "3u1reuv4",
-    name: "hecker",
-    role: "player",
-    discordId: "258223344535511888",
-    status: "banned",
-  },
-  {
-    id: "derv1ws0",
-    name: "catt",
-    role: "player",
-    discordId: "258223454535511999",
-    status: "approved",
-  },
-  {
-    id: "5kma53ae",
-    name: "dogg_engine",
-    role: "player",
-    discordId: "258223776535511777",
-    status: "approved",
-  },
-  {
-    id: "bhqecj4p",
-    name: "Imposter",
-    role: "player",
-    discordId: "258223336665511344",
     status: "waiting",
+    timestamp: "2021-10-01 09:00:00",
+  },
+  {
+    id: "hfdtghfdg",
+    name: "hecker",
+    discordId: "258223344535511125",
+    status: "waiting",
+    timestamp: "2021-10-01 10:00:00",
+  },
+  {
+    id: "rtyrtyrty",
+    name: "catt",
+    discordId: "258223454535511125",
+    status: "waiting",
+    timestamp: "2021-10-01 11:00:00",
+  },
+  {
+    id: "mnbmbnmhg",
+    name: "dogg_engine",
+    discordId: "258223776535511125",
+    status: "waiting",
+    timestamp: "2021-10-02 06:00:00",
+  },
+  {
+    id: "tyutyutet",
+    name: "Imposter",
+    discordId: "258223336665511125",
+    status: "waiting",
+    timestamp: "2021-10-02 08:00:00",
   },
 ]
 
 export type Player = {
   id: string
   name: string
-  role: string
   discordId: string
   status: "approved" | "waiting" | "banned"
+  timestamp: string
 }
 
 export const columns: ColumnDef<Player>[] = [
@@ -130,52 +124,61 @@ export const columns: ColumnDef<Player>[] = [
       )
     },
     cell: ({ row }) => (
-      <div className="lowercase">
-        <Dialog>
-          <DialogTrigger>{row.getValue("name")}</DialogTrigger>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>View player details</DialogTitle>
-              <DialogDescription>
-                This action cannot be undone. This will permanently delete your
-                account and remove your data from our servers.
-              </DialogDescription>
-            </DialogHeader>
-          </DialogContent>
-        </Dialog>
-      </div>
+      <div className="text-center lowercase">{row.getValue("name")}</div>
     ),
   },
   {
-    accessorKey: "role",
+    accessorKey: "timestamp",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Name
+          Date Time
           <CaretSortIcon className="ml-2 h-4 w-4" />
         </Button>
       )
     },
-    cell: ({ row }) => {
-      return <div className="font-medium">{row.getValue("role")}</div>
-    },
-  },
-  {
-    accessorKey: "discordId",
-    header: "Discord ID",
-    cell: ({ row }) => {
-      return <div className="font-medium">{row.getValue("discordId")}</div>
-    },
-  },
-  {
-    accessorKey: "status",
-    header: "Status",
     cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("status")}</div>
+      <div className="capitalize">{row.getValue("timestamp")}</div>
     ),
+  },
+  {
+    accessorKey: "actions_btn",
+    header: "Actions",
+    cell: () => {
+      const { toast } = UseToast()
+
+      return (
+        <div className="space-x-2">
+          <Button
+            variant="secondary"
+            size={"sm"}
+            onClick={() => {
+              toast({
+                title: "User Approved",
+                description: "User has been approved and whitelisted.",
+              })
+            }}
+          >
+            Approve
+          </Button>
+          <Button
+            variant="destructive"
+            size={"sm"}
+            onClick={() => {
+              toast({
+                title: "User Rejected",
+                description: "User has been rejected and banned.",
+              })
+            }}
+          >
+            Reject
+          </Button>
+        </div>
+      )
+    },
   },
   {
     id: "actions",
@@ -199,11 +202,12 @@ export const columns: ColumnDef<Player>[] = [
               Copy player ID
             </DropdownMenuItem>
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(server.discordId)}
+              onClick={() => navigator.clipboard.writeText(server.id)}
             >
               Copy discord ID
             </DropdownMenuItem>
             <DropdownMenuSeparator />
+            <DropdownMenuItem>View player details</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       )
@@ -211,7 +215,7 @@ export const columns: ColumnDef<Player>[] = [
   },
 ]
 
-export function PlayerListTable() {
+export function PlayerWaitingListTable() {
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -241,7 +245,7 @@ export function PlayerListTable() {
 
   return (
     <div className="w-full">
-      <div className="flex items-center py-4 space-x-2">
+      <div className="flex items-center py-4">
         <Input
           placeholder="Filter player name..."
           value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}

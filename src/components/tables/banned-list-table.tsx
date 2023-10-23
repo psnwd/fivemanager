@@ -24,14 +24,6 @@ import type {
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
-import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
@@ -52,39 +44,39 @@ import {
 
 const data: Player[] = [
   {
-    id: "m5gr84i9",
+    id: "fesffsees",
     name: "hawi",
     role: "admin",
     discordId: "258223336535511125",
-    status: "approved",
-  },
-  {
-    id: "3u1reuv4",
-    name: "hecker",
-    role: "player",
-    discordId: "258223344535511888",
     status: "banned",
   },
   {
-    id: "derv1ws0",
+    id: "hfdtghfdg",
+    name: "hecker",
+    role: "player",
+    discordId: "258223344535511125",
+    status: "banned",
+  },
+  {
+    id: "rtyrtyrty",
     name: "catt",
     role: "player",
-    discordId: "258223454535511999",
-    status: "approved",
+    discordId: "258223454535511125",
+    status: "banned",
   },
   {
-    id: "5kma53ae",
+    id: "mnbmbnmhg",
     name: "dogg_engine",
     role: "player",
-    discordId: "258223776535511777",
-    status: "approved",
+    discordId: "258223776535511125",
+    status: "banned",
   },
   {
-    id: "bhqecj4p",
+    id: "tyutyutet",
     name: "Imposter",
     role: "player",
-    discordId: "258223336665511344",
-    status: "waiting",
+    discordId: "258223336665511125",
+    status: "banned",
   },
 ]
 
@@ -129,45 +121,23 @@ export const columns: ColumnDef<Player>[] = [
         </Button>
       )
     },
-    cell: ({ row }) => (
-      <div className="lowercase">
-        <Dialog>
-          <DialogTrigger>{row.getValue("name")}</DialogTrigger>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>View player details</DialogTitle>
-              <DialogDescription>
-                This action cannot be undone. This will permanently delete your
-                account and remove your data from our servers.
-              </DialogDescription>
-            </DialogHeader>
-          </DialogContent>
-        </Dialog>
-      </div>
-    ),
+    cell: ({ row }) => <div className="lowercase">{row.getValue("name")}</div>,
   },
   {
     accessorKey: "role",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Name
-          <CaretSortIcon className="ml-2 h-4 w-4" />
-        </Button>
-      )
-    },
+    header: () => <div className="text-center">Role</div>,
     cell: ({ row }) => {
-      return <div className="font-medium">{row.getValue("role")}</div>
+      return (
+        <div className="text-center font-medium">{row.getValue("role")}</div>
+      )
     },
   },
   {
     accessorKey: "discordId",
-    header: "Discord ID",
+    header: () => <div className="text-center">Discord ID</div>,
     cell: ({ row }) => {
-      return <div className="font-medium">{row.getValue("discordId")}</div>
+      const discordId = parseFloat(row.getValue("discordId"))
+      return <div className="text-center font-medium">{discordId}</div>
     },
   },
   {
@@ -198,12 +168,8 @@ export const columns: ColumnDef<Player>[] = [
             >
               Copy player ID
             </DropdownMenuItem>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(server.discordId)}
-            >
-              Copy discord ID
-            </DropdownMenuItem>
             <DropdownMenuSeparator />
+            <DropdownMenuItem>View player details</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       )
@@ -211,7 +177,7 @@ export const columns: ColumnDef<Player>[] = [
   },
 ]
 
-export function PlayerListTable() {
+export function PlayerBannedListTable() {
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -241,7 +207,7 @@ export function PlayerListTable() {
 
   return (
     <div className="w-full">
-      <div className="flex items-center py-4 space-x-2">
+      <div className="flex items-center py-4">
         <Input
           placeholder="Filter player name..."
           value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
@@ -284,7 +250,7 @@ export function PlayerListTable() {
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id} className="text-center">
+                    <TableHead key={header.id}>
                       {header.isPlaceholder
                         ? null
                         : flexRender(
@@ -303,7 +269,6 @@ export function PlayerListTable() {
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
-                  className="text-center"
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
