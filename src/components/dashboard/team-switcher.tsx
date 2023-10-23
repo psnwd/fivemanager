@@ -170,7 +170,7 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
           <div className="space-y-4 py-2 pb-4">
             <div className="space-y-2">
               <Label htmlFor="name">Server name</Label>
-              <Input id="name" placeholder="Acme Inc." />
+              <Input id="name" placeholder="CAT Black server" />
             </div>
             <div className="space-y-2">
               <Label htmlFor="plan">Subscription plan</Label>
