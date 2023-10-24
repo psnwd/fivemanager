@@ -6,6 +6,7 @@ import * as auth from "./schema/auth"
 import * as events from "./schema/events"
 import * as feedbacks from "./schema/feedbacks"
 import * as giveaway from "./schema/giveaway"
+import * as news from "./schema/news"
 import * as newsletter from "./schema/newsletter"
 import * as players from "./schema/players"
 import * as servers from "./schema/servers"
@@ -22,6 +23,7 @@ export const db = drizzle(connection, {
     ...events,
     ...feedbacks,
     ...giveaway,
+    ...news,
     ...newsletter,
     ...players,
     ...servers,

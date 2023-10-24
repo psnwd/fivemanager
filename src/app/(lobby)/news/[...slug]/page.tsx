@@ -12,19 +12,21 @@ export const metadata: Metadata = {
 }
 
 interface NewsPageProps {
-  params: {
-    eventId: string
-  }
+  params: { slug: string[] }
 }
 
 async function page({ params }: NewsPageProps) {
-  const eventId = Number(params.eventId)
+  const newsId = Number(params.slug[1])
 
-  // const event = await db.query.events.findFirst({
+  if (isNaN(newsId)) {
+    return notFound()
+  }
+
+  // TODO: uncomment when db is ready
+  // const news = await db.query.news.findFirst({
   //   where: eq(news.id, eventId),
   // })
-
-  // if (!event) {
+  // if (!news) {
   //   return notFound()
   // }
 

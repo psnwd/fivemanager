@@ -15,7 +15,7 @@ export const news = mysqlTable(
     id: serial("id").primaryKey(),
     title: varchar("title", { length: 256 }).notNull(),
     images: varchar("images", { length: 256 }).notNull(),
-    description: varchar("description", { length: 256 }).notNull(),
+    description: varchar("description", { length: 2000 }).notNull(),
     status: int("status").notNull(),
     lastEditedBy: varchar("lastEditBy", { length: 256 }).notNull(),
     lastEditedAt: varchar("lastEditDate", { length: 256 }).notNull(),
