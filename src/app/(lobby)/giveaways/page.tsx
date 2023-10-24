@@ -49,6 +49,7 @@ function page() {
         {giveaways.map((giveaway) => (
           <GiveawayCard
             key={giveaway.id}
+            id={giveaway.id}
             title={giveaway.title}
             content={giveaway.details}
             image="/images/home/news/gang_war_image2.jpg"
