@@ -21,7 +21,7 @@ export default function Home() {
           </div>
           <div className="flex gap-2">
             <Link
-              href="/signin"
+              href="/login"
               className={`w-[10rem] ${cn(buttonVariants({ size: "lg" }))}`}
             >
               Get started
