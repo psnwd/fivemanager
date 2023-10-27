@@ -50,6 +50,7 @@
     "@t3-oss/env-nextjs": "^0.7.1",
     "@tanstack/react-table": "^8.10.7",
     "@tremor/react": "^3.9.2",
+    "@uploadthing/react": "^5.7.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "cmdk": "^0.2.0",
@@ -74,6 +75,7 @@
     "sonner": "^1.0.3",
     "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.7",
+    "uploadthing": "^5.7.2",
     "zod": "^3.22.4"
   },
   "devDependencies": {

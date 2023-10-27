@@ -1,4 +1,5 @@
 import {
+  index,
   int,
   mysqlTable,
   primaryKey,
@@ -23,6 +24,7 @@ export const servers = mysqlTable(
   },
   (server) => ({
     compoundKey: primaryKey(server.id),
+    ipIdx: index("ip_idx").on(server.ip),
   })
 )
 

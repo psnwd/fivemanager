@@ -1,4 +1,11 @@
-import { mysqlTable, primaryKey, serial, varchar } from "drizzle-orm/mysql-core"
+import { relations } from "drizzle-orm"
+import {
+  index,
+  mysqlTable,
+  primaryKey,
+  serial,
+  varchar,
+} from "drizzle-orm/mysql-core"
 import { createInsertSchema, createSelectSchema } from "drizzle-zod"
 import type { z } from "zod"
 
@@ -15,8 +22,33 @@ export const players = mysqlTable(
   },
   (player) => ({
     compoundKey: primaryKey(player.id),
+    nameIdx: index("name_idx").on(player.name),
   })
 )
+
+export const playersRelations = relations(players, ({ many }) => ({
+  playerName: many(playerName),
+}))
+
+export const playerName = mysqlTable(
+  "playerName",
+  {
+    id: serial("id").primaryKey(),
+    playerId: varchar("playerId", { length: 256 }).notNull(),
+    playerName: varchar("name", { length: 256 }).notNull(),
+    createdAt: varchar("createdAt", { length: 256 }).notNull(),
+  },
+  (playerName) => ({
+    compoundKey: primaryKey(playerName.id),
+  })
+)
+
+export const playerNameRelations = relations(playerName, ({ one }) => ({
+  player: one(players, {
+    fields: [playerName.playerId],
+    references: [players.id],
+  }),
+}))
 
 // Schema for CRUD - used to validate API requests
 export const insertPlayersSchema = createInsertSchema(players)

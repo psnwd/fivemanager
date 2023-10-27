@@ -19,7 +19,7 @@ interface EventPageProps {
 async function page({ params }: EventPageProps) {
   const eventId = Number(params.slug[1])
 
-  if (isNaN(eventId)) {
+  if (Number.isNaN(eventId)) {
     return notFound()
   }
 
