@@ -2,14 +2,12 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import { notFound } from "next/navigation"
 import { db } from "@/db"
-import { env } from "@/env.mjs"
 import { eq } from "drizzle-orm"
 import { giveaway } from "drizzle/schema"
 
 import GiveawayPageCard from "@/components/cards/giveaway-page-card"
 
 export const metadata: Metadata = {
-  metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),
   title: "Giveaway title",
   description: "Giveaway description",
 }
@@ -21,17 +19,17 @@ interface GiveawayPageProps {
 async function page({ params }: GiveawayPageProps) {
   const giveawayId = Number(params.slug[1])
 
-  if (isNaN(giveawayId)) {
+  if (Number.isNaN(giveawayId)) {
     return notFound()
   }
 
-  // TODO: uncomment when db is ready
-  // const giveawayData = await db.query.giveaway.findFirst({
-  //   where: eq(giveaway.id, giveawayId),
-  // })
-  // if (!giveawayData) {
-  //   return notFound()
-  // }
+  const giveawayData = await db.query.giveaway.findFirst({
+    where: eq(giveaway.id, giveawayId),
+  })
+
+  if (!giveawayData) {
+    return notFound()
+  }
 
   return (
     <>
@@ -44,7 +42,13 @@ async function page({ params }: GiveawayPageProps) {
         className="rounded-xl"
       />
 
-      {/* <GiveawayPageCard /> */}
+      <GiveawayPageCard
+        title={giveawayData.name}
+        details={giveawayData.description}
+        endTime={giveawayData.endTime}
+        totalKeys={giveawayData.totalKeys}
+        remainingKey={giveawayData.remainingKeys}
+      />
 
       <div className="text-xl font-bold">Giveaway Details</div>
       <div className="container space-y-4 text-justify">

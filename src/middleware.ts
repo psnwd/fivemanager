@@ -1,24 +1,27 @@
 import { NextResponse, type NextRequest } from "next/server"
-import { getToken } from "next-auth/jwt"
 
-export default async function middleware(req: NextRequest) {
-  const path = req.nextUrl.pathname
+export { default } from "next-auth/middleware"
 
-  if (path === "/") {
-    return NextResponse.next()
-  }
+export const config = { matcher: ["/dashboard", "/user"] }
 
-  const session = await getToken({
-    req,
-    secret: process.env.NEXTAUTH_SECRET,
-  })
+// export default async function middleware(req: NextRequest) {
+//   const path = req.nextUrl.pathname
 
-  // NOTE: Still in test stage
-  // if (!session && path === "/dashboard") {
-  //   return NextResponse.redirect(new URL("/signin", req.url))
-  // } else if (session && path === "/signin") {
-  //   return NextResponse.redirect(new URL("/dashboard", req.url))
-  // }
+//   if (path === "/") {
+//     return NextResponse.next()
+//   }
 
-  return NextResponse.next()
-}
+//   const session = await getToken({
+//     req,
+//     secret: process.env.NEXTAUTH_SECRET,
+//   })
+
+//   // NOTE: Still in test stage
+//   // if (!session && path === "/dashboard") {
+//   //   return NextResponse.redirect(new URL("/signin", req.url))
+//   // } else if (session && path === "/signin") {
+//   //   return NextResponse.redirect(new URL("/dashboard", req.url))
+//   // }
+
+//   return NextResponse.next()
+// }

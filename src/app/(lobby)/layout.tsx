@@ -1,17 +1,21 @@
 import Image from "next/image"
 import Link from "next/link"
+import { getServerSession } from "next-auth"
 
 import { Button } from "@/components/ui/button"
 import { MainNav } from "@/components/layouts/main-nav"
 import { SiteFooter } from "@/components/layouts/site-footer"
 import { ThemeToggle } from "@/components/layouts/theme-toggle"
 import { UserNav } from "@/components/layouts/user-nav"
+import { authOptions } from "@/app/api/auth/[...nextauth]/options"
 
-export default function DashboardLayout({
+export default async function DashboardLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const session = await getServerSession(authOptions)
+
   return (
     <>
       <div className="flex flex-col">
@@ -28,9 +32,11 @@ export default function DashboardLayout({
             </Link>
             <MainNav />
             <div className="ml-auto hidden items-center space-x-4 md:flex">
-              <Link href="/dashboard">
-                <Button variant={"outline"}>Dashboard</Button>
-              </Link>
+              {session ? (
+                <Link href="/dashboard">
+                  <Button variant={"outline"}>Dashboard</Button>
+                </Link>
+              ) : null}
               <ThemeToggle />
               <UserNav />
             </div>

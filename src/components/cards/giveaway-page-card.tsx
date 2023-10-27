@@ -17,7 +17,6 @@ import { Icons } from "../icons"
 interface GiveawayPageCardProps {
   title: string
   details: string
-  image: string
   endTime: number
   totalKeys: number
   remainingKey: number
@@ -31,7 +30,6 @@ function GiveawayPageCard({
   remainingKey,
 }: GiveawayPageCardProps) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
-  const [isLiked, setIsLiked] = React.useState<boolean>(false)
 
   function onRedeem(event: React.SyntheticEvent) {
     event.preventDefault()
@@ -40,11 +38,6 @@ function GiveawayPageCard({
     setTimeout(() => {
       setIsLoading(false)
     }, 3000)
-  }
-
-  function onLiked(event: React.SyntheticEvent) {
-    event.preventDefault()
-    setIsLiked(true)
   }
 
   return (
@@ -73,7 +66,7 @@ function GiveawayPageCard({
             ) : null}
             Redeem
           </Button>
-          <Button variant="outline" size={"sm"} onClick={onLiked}>
+          <Button variant="outline" size={"sm"}>
             <Share className="h-5 w-5" />
           </Button>
         </div>
