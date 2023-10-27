@@ -3,7 +3,6 @@ import {
   mysqlTable,
   primaryKey,
   serial,
-  text,
   varchar,
 } from "drizzle-orm/mysql-core"
 import { createInsertSchema, createSelectSchema } from "drizzle-zod"
@@ -14,7 +13,7 @@ export const events = mysqlTable(
   {
     id: serial("id").primaryKey(),
     title: varchar("title", { length: 256 }).notNull(),
-    images: varchar("images", { length: 256 }).notNull(),
+    image: varchar("image", { length: 256 }).notNull(),
     description: varchar("description", { length: 256 }).notNull(),
     status: int("status").notNull(),
     lastEditedBy: varchar("lastEditBy", { length: 256 }).notNull(),
