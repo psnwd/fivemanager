@@ -36,7 +36,7 @@ function NewsCard({ id, title, details, image }: NewsCardProps) {
         <p className="line-clamp-5 text-sm">{details}</p>
       </CardContent>
       <CardFooter className="flex justify-center gap-1 text-sm">
-        <Link href={`news/${id}`}>
+        <Link href={`news/${title.replaceAll(" ", "-")}/${id}`}>
           <Button variant="outline">Read More</Button>
         </Link>
       </CardFooter>

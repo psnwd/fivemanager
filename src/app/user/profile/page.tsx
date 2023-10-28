@@ -1,19 +1,10 @@
-import Image from "next/image"
-import { Pencil } from "lucide-react"
-
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card"
 
 function page() {
   return (
     <>
       <h1 className="text-2xl font-semibold">Profile</h1>
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap items-center justify-around">
         <Avatar className="my-5 h-28 w-28 md:h-32 md:w-32">
           <AvatarImage src={"/images/avatars/avatar_1.jpeg"} alt="Avatar" />
           <AvatarFallback className="text-xs">BC</AvatarFallback>
@@ -31,7 +22,7 @@ function page() {
             </blockquote>
           </div>
 
-          <div className="my-1 flex w-full justify-around md:flex-row gap-5">
+          <div className="my-1 flex w-full justify-around gap-5 md:flex-row">
             <div>
               <div className="font-bold">Position</div>
               <div>Admin</div>

@@ -3,6 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 
 import { Separator } from "@/components/ui/separator"
+import { MainNav } from "@/components/layouts/main-nav"
 import { SidebarNav } from "@/components/layouts/sidebar-nav"
 import { ThemeToggle } from "@/components/layouts/theme-toggle"
 import { UserNav } from "@/components/layouts/user-nav"
@@ -13,10 +14,6 @@ export const metadata: Metadata = {
 }
 
 const sidebarNavItems = [
-  {
-    title: "Profile",
-    href: "/user",
-  },
   {
     title: "Account",
     href: "/user/account",
@@ -46,6 +43,7 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
                 className="mx-5"
               />
             </Link>
+            <MainNav />
             <div className="ml-auto flex items-center space-x-4">
               <ThemeToggle />
               <UserNav />

@@ -13,9 +13,16 @@ export const giveaway = mysqlTable(
   {
     id: serial("id").primaryKey(),
     name: varchar("name", { length: 256 }).notNull(),
-    type: varchar("type", { length: 256 }).notNull(),
+    image: varchar("image", { length: 256 }).notNull(),
     description: varchar("description", { length: 256 }).notNull(),
     status: int("status").notNull(),
+    type: varchar("type", {
+      length: 256,
+      enum: ["car", "money", "other"],
+    }).notNull(),
+    totalKeys: int("totalKeys").notNull(),
+    remainingKeys: int("remainingKeys").notNull(),
+    endTime: int("endTime").notNull(),
     items: varchar("items", { length: 256 }).notNull(),
     lastEditedBy: varchar("lastEditBy", { length: 256 }).notNull(),
     lastEditedAt: varchar("lastEditDate", { length: 256 }).notNull(),
@@ -24,6 +31,22 @@ export const giveaway = mysqlTable(
   },
   (giveaway) => ({
     compoundKey: primaryKey(giveaway.id),
+  })
+)
+
+export const giveawayItem = mysqlTable(
+  "giveawayItem",
+  {
+    id: serial("id").primaryKey(),
+    giveawayId: int("giveawayId").notNull(),
+    name: varchar("name", { length: 256 }).notNull(),
+    image: varchar("image", { length: 256 }).notNull(),
+    description: varchar("description", { length: 256 }).notNull(),
+    createdBy: varchar("createdBy", { length: 256 }).notNull(),
+    createdAt: varchar("createdDate", { length: 256 }).notNull(),
+  },
+  (giveawayItem) => ({
+    compoundKey: primaryKey(giveawayItem.id),
   })
 )
 
