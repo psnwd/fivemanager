@@ -1,4 +1,5 @@
 import {
+  index,
   int,
   mysqlTable,
   primaryKey,
@@ -28,6 +29,7 @@ export const whitelist = mysqlTable(
   },
   (whitelist) => ({
     compoundKey: primaryKey(whitelist.id),
+    discordIdIdx: index("discordId_idx").on(whitelist.discordId),
   })
 )
 

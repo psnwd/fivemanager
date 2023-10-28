@@ -1,0 +1,1 @@
+ALTER TABLE `news` MODIFY COLUMN `description` varchar(2000) NOT NULL;

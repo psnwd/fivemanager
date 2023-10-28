@@ -3,13 +3,12 @@ import { insertPlayersSchema } from "@/db/schema/players"
 import { eq } from "drizzle-orm"
 import { players } from "drizzle/schema"
 
-export const runtime = "edge"
+// export const runtime = "edge"
 
-// get all players next js 13 route
 export async function GET() {
   try {
     const result = await db.select().from(players).orderBy(players.id)
-    return Response.json({ result })
+    return Response.json(result)
   } catch (error) {
     console.log("GET /api/players error", error)
 
@@ -19,7 +18,6 @@ export async function GET() {
   }
 }
 
-// create a new player next js 13 route
 export async function POST(request: Request) {
   try {
     const body = await request.json()
@@ -45,7 +43,6 @@ export async function POST(request: Request) {
   }
 }
 
-// update player data
 export async function PUT(request: Request) {
   try {
     const body = await request.json()
@@ -81,7 +78,6 @@ export async function PUT(request: Request) {
   }
 }
 
-// delete player data
 export async function DELETE(request: Request) {
   try {
     const body = await request.json()

@@ -1,32 +1,32 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { db } from "@/db"
-import { news } from "@/db/schema/news"
-import { env } from "@/env.mjs"
 import { eq } from "drizzle-orm"
+import { news } from "drizzle/schema"
 
 export const metadata: Metadata = {
-  metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),
   title: "News title",
   description: "News description",
 }
 
 interface NewsPageProps {
-  params: {
-    eventId: string
-  }
+  params: { slug: string[] }
 }
 
 async function page({ params }: NewsPageProps) {
-  const eventId = Number(params.eventId)
+  const newsId = Number(params.slug[1])
 
-  // const event = await db.query.events.findFirst({
-  //   where: eq(news.id, eventId),
-  // })
+  if (Number.isNaN(newsId)) {
+    return notFound()
+  }
 
-  // if (!event) {
-  //   return notFound()
-  // }
+  const newsData = await db.query.news.findFirst({
+    where: eq(news.id, newsId),
+  })
+
+  if (!newsData) {
+    return notFound()
+  }
 
   return (
     <>
