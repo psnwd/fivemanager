@@ -1,5 +1,6 @@
 import {
   boolean,
+  index,
   mysqlTable,
   primaryKey,
   serial,
@@ -23,6 +24,7 @@ export const newsletter = mysqlTable(
   },
   (newsletter) => ({
     compoundKey: primaryKey(newsletter.id),
+    emailIdx: index("email_idx").on(newsletter.email),
   })
 )
 

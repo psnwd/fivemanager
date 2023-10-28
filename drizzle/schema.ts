@@ -1,6 +1,7 @@
 import { sql } from "drizzle-orm"
 import {
   AnyMySqlColumn,
+  index,
   int,
   mysqlSchema,
   mysqlTable,
@@ -42,7 +43,7 @@ export const events = mysqlTable(
   {
     id: serial("id").notNull(),
     title: varchar("title", { length: 256 }).notNull(),
-    images: varchar("images", { length: 256 }).notNull(),
+    image: varchar("image", { length: 256 }).notNull(),
     description: varchar("description", { length: 256 }).notNull(),
     status: int("status").notNull(),
     lastEditBy: varchar("lastEditBy", { length: 256 }).notNull(),
@@ -91,10 +92,32 @@ export const giveaway = mysqlTable(
     lastEditDate: varchar("lastEditDate", { length: 256 }).notNull(),
     createdBy: varchar("createdBy", { length: 256 }).notNull(),
     createdDate: varchar("createdDate", { length: 256 }).notNull(),
+    image: varchar("image", { length: 256 }).notNull(),
+    totalKeys: int("totalKeys").notNull(),
+    remainingKeys: int("remainingKeys").notNull(),
+    endTime: int("endTime").notNull(),
   },
   (table) => {
     return {
       giveawayProviderProviderAccountId: primaryKey(table.id),
+    }
+  }
+)
+
+export const giveawayItem = mysqlTable(
+  "giveawayItem",
+  {
+    id: serial("id").notNull(),
+    giveawayId: int("giveawayId").notNull(),
+    name: varchar("name", { length: 256 }).notNull(),
+    image: varchar("image", { length: 256 }).notNull(),
+    description: varchar("description", { length: 256 }).notNull(),
+    createdBy: varchar("createdBy", { length: 256 }).notNull(),
+    createdDate: varchar("createdDate", { length: 256 }).notNull(),
+  },
+  (table) => {
+    return {
+      giveawayItemProviderProviderAccountId: primaryKey(table.id),
     }
   }
 )
@@ -104,8 +127,8 @@ export const news = mysqlTable(
   {
     id: serial("id").notNull(),
     title: varchar("title", { length: 256 }).notNull(),
-    images: varchar("images", { length: 256 }).notNull(),
-    description: varchar("description", { length: 256 }).notNull(),
+    image: varchar("image", { length: 256 }).notNull(),
+    description: varchar("description", { length: 2000 }).notNull(),
     status: int("status").notNull(),
     lastEditBy: varchar("lastEditBy", { length: 256 }).notNull(),
     lastEditDate: varchar("lastEditDate", { length: 256 }).notNull(),
@@ -133,7 +156,23 @@ export const newsletter = mysqlTable(
   },
   (table) => {
     return {
+      emailIdx: index("email_idx").on(table.email),
       newsletterProviderProviderAccountId: primaryKey(table.id),
+    }
+  }
+)
+
+export const playerName = mysqlTable(
+  "playerName",
+  {
+    id: serial("id").notNull(),
+    playerId: varchar("playerId", { length: 256 }).notNull(),
+    name: varchar("name", { length: 256 }).notNull(),
+    createdAt: varchar("createdAt", { length: 256 }).notNull(),
+  },
+  (table) => {
+    return {
+      playerNameProviderProviderAccountId: primaryKey(table.id),
     }
   }
 )
@@ -151,6 +190,7 @@ export const players = mysqlTable(
   },
   (table) => {
     return {
+      nameIdx: index("name_idx").on(table.name),
       playersProviderProviderAccountId: primaryKey(table.id),
     }
   }
@@ -171,6 +211,7 @@ export const servers = mysqlTable(
   },
   (table) => {
     return {
+      ipIdx: index("ip_idx").on(table.ip),
       serversProviderProviderAccountId: primaryKey(table.id),
     }
   }
@@ -264,6 +305,7 @@ export const whitelist = mysqlTable(
   },
   (table) => {
     return {
+      discordIdIdx: index("discordId_idx").on(table.discordId),
       whitelistProviderProviderAccountId: primaryKey(table.id),
     }
   }

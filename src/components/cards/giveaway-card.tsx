@@ -17,6 +17,7 @@ import { Icons } from "../icons"
 import { Button } from "../ui/button"
 
 interface GiveawayCardProps {
+  id: string | number
   title: string
   content: string
   image: string
@@ -26,6 +27,7 @@ interface GiveawayCardProps {
 }
 
 function GiveawayCard({
+  id,
   title,
   content,
   image,
@@ -85,7 +87,7 @@ function GiveawayCard({
           ) : null}
           Redeem
         </Button>
-        <Link href="/giveaways/1">
+        <Link href={`/giveaways/${title.replaceAll(" ", "-")}/${id}`}>
           <Button variant="outline" size={"sm"}>
             Read more
           </Button>

@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { signIn } from "next-auth/react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -17,7 +18,8 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
 
     setTimeout(() => {
       setIsLoading(false)
-    }, 3000)
+      signIn()
+    }, 1500)
   }
 
   return (

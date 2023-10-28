@@ -36,7 +36,7 @@ function EventCard({ id, title, content, image }: EventCardProps) {
         <p className=" text-sm">{content}</p>
       </CardContent>
       <CardFooter className="flex justify-center gap-1 text-sm">
-        <Link href={`/events/${id}`}>
+        <Link href={`/events/${title.replaceAll(" ", "-")}/${id}`}>
           <Button variant="outline">Read More</Button>
         </Link>
       </CardFooter>
