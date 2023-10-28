@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation"
-import { Session } from "@auth/core/types"
+import type { Session } from "@auth/core/types"
 import { getServerSession } from "next-auth"
 
 import { authOptions } from "@/app/api/auth/[...nextauth]/options"

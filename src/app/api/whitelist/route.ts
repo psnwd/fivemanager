@@ -3,7 +3,7 @@ import { insertWhitelistSchema } from "@/db/schema/whitelist"
 import { eq } from "drizzle-orm"
 import { whitelist } from "drizzle/schema"
 
-export const runtime = "edge"
+// export const runtime = "edge"
 
 export async function GET() {
   const result = await db
@@ -12,7 +12,7 @@ export async function GET() {
     .where(eq(whitelist.approvedStatus, 0))
     .orderBy(whitelist.id)
 
-  return Response.json({ result })
+  return Response.json(result)
 }
 
 export async function POST(request: Request) {
