@@ -46,7 +46,7 @@ export async function POST(req: Request) {
         react: NewsletterWelcomeEmail({
           firstName: user?.firstName ?? undefined,
           fromEmail: env.EMAIL_FROM_ADDRESS,
-          token: newsletter.token.toString(),
+          token: "", // TODO: fix token
           serverName: "BlackCAT",
         }),
       })

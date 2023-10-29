@@ -3,8 +3,6 @@ import { insertPlayersSchema } from "@/db/schema/players"
 import { eq } from "drizzle-orm"
 import { players } from "drizzle/schema"
 
-// export const runtime = "edge"
-
 export async function GET() {
   try {
     const result = await db.select().from(players).orderBy(players.id)
