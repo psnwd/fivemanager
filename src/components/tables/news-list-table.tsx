@@ -42,23 +42,27 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
-const data: Server[] = [
+const data: News[] = [
   {
     id: "m5gr84i9",
-    name: "hawi server",
-    amount: 316,
-    status: "running",
+    title: "Tech Giant Unveils Cutting-Edge Smartphone",
+    lastEditedBy: "BlackCAT",
+    lastEditedAt: "2023-05-01",
+    createdBy: "BlackCAT 2",
+    createdAt: "2023-05-04",
   },
 ]
 
-export type Server = {
+export type News = {
   id: string
-  name: string
-  amount: number
-  status: "running" | "error" | "offline"
+  title: string
+  lastEditedBy: string
+  lastEditedAt: string
+  createdBy: string
+  createdAt: string
 }
 
-export const columns: ColumnDef<Server>[] = [
+export const columns: ColumnDef<News>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -79,47 +83,73 @@ export const columns: ColumnDef<Server>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "name",
+    accessorKey: "title",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Name
+          Title
           <CaretSortIcon className="ml-2 h-4 w-4" />
         </Button>
       )
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("name")}</div>,
+    cell: ({ row }) => <div className="lowercase line-clamp-1">{row.getValue("title")}</div>,
   },
   {
-    accessorKey: "status",
-    header: "Status",
+    accessorKey: "createdBy",
+    header: "Created By",
     cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("status")}</div>
+      <div className="capitalize">{row.getValue("createdBy")}</div>
     ),
   },
   {
-    accessorKey: "amount",
-    header: () => <div className="text-right">Amount</div>,
-    cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("amount"))
-
-      // Format the amount as a dollar amount
-      const formatted = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-      }).format(amount)
-
-      return <div className="text-right font-medium">{formatted}</div>
+    accessorKey: "lastEditedBy",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Created At
+          <CaretSortIcon className="ml-2 h-4 w-4" />
+        </Button>
+      )
     },
+    cell: ({ row }) => (
+      <div className="lowercase">{row.getValue("lastEditedBy")}</div>
+    ),
+  },
+  {
+    accessorKey: "EditedBy",
+    header: "Edited By",
+    cell: ({ row }) => (
+      <div className="capitalize">{row.getValue("lastEditedBy")}</div>
+    ),
+  },
+  {
+    accessorKey: "lastEditedAt",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Edited At
+          <CaretSortIcon className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+    cell: ({ row }) => (
+      <div className="lowercase">{row.getValue("lastEditedAt")}</div>
+    ),
   },
   {
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
-      const server = row.original
+      const news = row.original
 
       return (
         <DropdownMenu>
@@ -132,13 +162,13 @@ export const columns: ColumnDef<Server>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(server.id)}
+              onClick={() => navigator.clipboard.writeText(news.id)}
             >
-              Copy server ID
+              Copy news ID
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View server</DropdownMenuItem>
-            <DropdownMenuItem>View server details</DropdownMenuItem>
+            <DropdownMenuItem>View news</DropdownMenuItem>
+            <DropdownMenuItem>View news details</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       )
@@ -146,7 +176,7 @@ export const columns: ColumnDef<Server>[] = [
   },
 ]
 
-export function ServerListTable() {
+export function NewsListTable() {
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -219,7 +249,7 @@ export function ServerListTable() {
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id}>
+                    <TableHead key={header.id} className="text-center">
                       {header.isPlaceholder
                         ? null
                         : flexRender(
@@ -238,6 +268,7 @@ export function ServerListTable() {
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
+                  className="text-center"
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>

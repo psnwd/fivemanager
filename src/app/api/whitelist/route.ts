@@ -3,8 +3,6 @@ import { insertWhitelistSchema } from "@/db/schema/whitelist"
 import { eq } from "drizzle-orm"
 import { whitelist } from "drizzle/schema"
 
-// export const runtime = "edge"
-
 export async function GET() {
   const result = await db
     .select()
