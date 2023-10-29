@@ -1,5 +1,8 @@
 import Image from "next/image"
 import Link from "next/link"
+import { db } from "@/db"
+import { asc, eq } from "drizzle-orm"
+import { events, feedbacks, news } from "drizzle/schema"
 
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
@@ -8,7 +11,28 @@ import EventCard from "@/components/cards/event-card"
 import FeedbackCard from "@/components/cards/feedback-card"
 import NewsCard from "@/components/cards/news-card"
 
-export default function Home() {
+export default async function Home() {
+  const latestEvents = await db
+    .select()
+    .from(events)
+    .where(eq(events.status, 1))
+    .limit(3)
+    .orderBy(asc(events.id))
+
+  const latestNews = await db
+    .select()
+    .from(news)
+    .where(eq(news.status, 1))
+    .limit(3)
+    .orderBy(asc(news.id))
+
+  const latestFeedbacks = await db
+    .select()
+    .from(feedbacks)
+    .where(eq(feedbacks.status, 1))
+    .limit(3)
+    .orderBy(asc(feedbacks.id))
+
   return (
     <>
       <section className="container flex flex-col gap-4 pt-4 text-center lg:items-center lg:gap-8 lg:pb-5 lg:pt-20">
@@ -70,12 +94,12 @@ export default function Home() {
             Events & Activities
           </div>
           <div className="flex flex-col gap-3 md:flex-row">
-            {siteConfig.events.map((event) => (
+            {latestEvents?.map((event) => (
               <EventCard
                 key={event.id}
                 id={event.id}
                 title={event.title}
-                content={event.details}
+                content={event.description}
                 image={event.image}
               />
             ))}
@@ -84,13 +108,13 @@ export default function Home() {
         <div>
           <div className="my-5 text-2xl font-bold uppercase">Latest News</div>
           <div className="flex flex-col gap-3 md:flex-row">
-            {siteConfig.news.map((news) => (
+            {latestNews?.map((news) => (
               <NewsCard
                 key={news.id}
                 id={news.id}
                 title={news.title}
-                details={news.details}
-                image={news.images[0]}
+                details={news.description}
+                image={news.image}
               />
             ))}
           </div>
@@ -98,14 +122,14 @@ export default function Home() {
         <div>
           <div className="my-5 text-2xl font-bold uppercase">Reviews</div>
           <div className="flex flex-col gap-3 md:flex-row">
-            {siteConfig.feedbacks.map((feedback) => (
+            {latestFeedbacks?.map((feedback) => (
               <FeedbackCard
                 key={feedback.id}
                 title={feedback.title}
                 content={feedback.content}
-                author={feedback.author}
-                authorImage={feedback.authorImage}
-                authorDetail={feedback.authorDetail}
+                authorName={feedback.authorName}
+                authorAvatar={feedback.authorAvatar}
+                authorJob={feedback.authorJob}
               />
             ))}
           </div>

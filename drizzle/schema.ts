@@ -64,13 +64,14 @@ export const feedbacks = mysqlTable(
     id: serial("id").notNull(),
     title: varchar("title", { length: 256 }).notNull(),
     authorJob: varchar("authorJob", { length: 256 }).notNull(),
-    avatar: varchar("avatar", { length: 256 }).notNull(),
+    authorName: varchar("authorName", { length: 256 }).notNull(),
     content: varchar("content", { length: 256 }).notNull(),
     status: int("status").notNull(),
     lastEditBy: varchar("lastEditBy", { length: 256 }).notNull(),
     lastEditDate: varchar("lastEditDate", { length: 256 }).notNull(),
     createdBy: varchar("createdBy", { length: 256 }).notNull(),
     createdDate: varchar("createdDate", { length: 256 }).notNull(),
+    authorAvatar: varchar("authorAvatar", { length: 256 }).notNull(),
   },
   (table) => {
     return {
