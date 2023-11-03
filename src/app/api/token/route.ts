@@ -1,9 +1,8 @@
 import { headers } from "next/headers"
-import { type NextRequest } from "next/server"
 
 import { generateBearerToken } from "@/lib/utils"
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const headersList = headers()
     const appId = headersList.get("appid")

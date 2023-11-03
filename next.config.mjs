@@ -4,9 +4,6 @@ await import("./src/env.mjs")
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
-  experimental: {
-    serverActions: true,
-  },
   async redirects() {
     return [
       {

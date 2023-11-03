@@ -15,9 +15,15 @@ export default function SettingsAccountPage() {
       <AccountForm />
       <div>Connected Accounts</div>
       <Separator />
-      <div className="mx-4 flex gap-1">
-        <Icons.discord className="h-5 w-5" />
-        <span className=" text-sm">Discord</span>
+      <div className="mx-4 flex gap-4">
+        <div className="flex gap-2">
+          <Icons.Discord className="h-5 w-5" />
+          <span className=" text-sm">Discord</span>
+        </div>
+        <div className="flex gap-2">
+          <Icons.MetaMask className="h-5 w-5" />
+          <span className=" text-sm">Metamask</span>
+        </div>
       </div>
       <div>
         <h3 className="text-lg font-medium">Security</h3>
@@ -28,7 +34,7 @@ export default function SettingsAccountPage() {
       <Separator />
       <div>Active Devices</div>
       <div className="flex gap-4 px-3">
-        <Icons.windows className="h-8 w-8 text-muted-foreground" />
+        <Icons.Windows className="h-8 w-8 text-muted-foreground" />
         <div className="">
           <div className="pb-1 font-semibold">
             Windows{" "}

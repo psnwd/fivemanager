@@ -40,7 +40,7 @@ export default function SignOutPage() {
       </PageHeader>
       <Button onClick={onSubmit}>
         {isLoading ? (
-          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+          <Icons.Spinner className="mr-2 h-4 w-4 animate-spin" />
         ) : null}
         Log Out
       </Button>
