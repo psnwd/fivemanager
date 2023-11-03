@@ -95,7 +95,9 @@ export const columns: ColumnDef<News>[] = [
         </Button>
       )
     },
-    cell: ({ row }) => <div className="lowercase line-clamp-1">{row.getValue("title")}</div>,
+    cell: ({ row }) => (
+      <div className="line-clamp-1 lowercase">{row.getValue("title")}</div>
+    ),
   },
   {
     accessorKey: "createdBy",

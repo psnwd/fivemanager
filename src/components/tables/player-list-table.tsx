@@ -241,7 +241,7 @@ export function PlayerListTable() {
 
   return (
     <div className="w-full">
-      <div className="flex items-center py-4 space-x-2">
+      <div className="flex items-center space-x-2 py-4">
         <Input
           placeholder="Filter player name..."
           value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}

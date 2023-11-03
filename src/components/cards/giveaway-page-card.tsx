@@ -15,11 +15,11 @@ import {
 import { Icons } from "../icons"
 
 interface GiveawayPageCardProps {
-  title: string
-  details: string
-  endTime: number
-  totalKeys: number
-  remainingKey: number
+  readonly title: string
+  readonly details: string
+  readonly endTime: number
+  readonly totalKeys: number
+  readonly remainingKey: number
 }
 
 function GiveawayPageCard({
@@ -62,7 +62,7 @@ function GiveawayPageCard({
             onClick={onRedeem}
           >
             {isLoading ? (
-              <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+              <Icons.Spinner className="mr-2 h-4 w-4 animate-spin" />
             ) : null}
             Redeem
           </Button>
