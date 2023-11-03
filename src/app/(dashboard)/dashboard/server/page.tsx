@@ -13,20 +13,18 @@ export const metadata: Metadata = {
 
 function page() {
   return (
-    <>
-      <div className="flex-1 space-y-4 p-8 pt-6">
-        <Tabs defaultValue="news" className="space-y-4">
-          <TabsList>
-            <TabsTrigger value="news">News</TabsTrigger>
-            <TabsTrigger value="events">Events</TabsTrigger>
-            <TabsTrigger value="giveaways">Giveaways</TabsTrigger>
-          </TabsList>
-          <News />
-          <Events />
-          <Giveaway />
-        </Tabs>
-      </div>
-    </>
+    <div className="flex-1 space-y-4 p-8 pt-6">
+      <Tabs defaultValue="news" className="space-y-4">
+        <TabsList>
+          <TabsTrigger value="news">News</TabsTrigger>
+          <TabsTrigger value="events">Events</TabsTrigger>
+          <TabsTrigger value="giveaways">Giveaways</TabsTrigger>
+        </TabsList>
+        <News />
+        <Events />
+        <Giveaway />
+      </Tabs>
+    </div>
   )
 }
 
