@@ -3,30 +3,8 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
+import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
-
-const navItems = [
-  {
-    label: "Home",
-    href: "/",
-  },
-  {
-    label: "Events",
-    href: "/events",
-  },
-  {
-    label: "Giveaways",
-    href: "/giveaways",
-  },
-  {
-    label: "News",
-    href: "/news",
-  },
-  {
-    label: "About",
-    href: "/about",
-  },
-]
 
 export function MainNav({
   className,
@@ -36,10 +14,13 @@ export function MainNav({
 
   return (
     <nav
-      className={cn("flex items-center space-x-4 lg:space-x-6", className)}
+      className={cn(
+        "hidden items-center space-x-4 md:flex lg:space-x-6",
+        className
+      )}
       {...props}
     >
-      {navItems.map((item) => (
+      {siteConfig.navItems.map((item) => (
         <Link
           key={item.label}
           href={item.href}

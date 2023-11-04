@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 
 interface SidebarNavProps extends React.HTMLAttributes<HTMLElement> {
-  items: {
+  readonly items: {
     href: string
     title: string
   }[]
