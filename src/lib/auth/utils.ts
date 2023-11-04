@@ -13,3 +13,14 @@ export const checkAuth = async () => {
   const { session } = await getUserAuth()
   if (!session) redirect("/api/auth/signin")
 }
+
+export const checkAuthStatus = async () => {
+  const { session } = await getUserAuth()
+  if (session) redirect("/")
+}
+
+export const getAuthStatus = async () => {
+  const { session } = await getUserAuth()
+  if (session?.user) return true
+  return false
+}

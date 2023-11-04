@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react"
+import React, { useEffect, useState } from "react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -13,18 +13,74 @@ import {
 import { Icons } from "@/components/icons"
 
 function page() {
-  const [isLoading, setIsLoading] = React.useState<boolean>(false)
-  const [isConnected, setIsConnected] = React.useState<boolean>(false)
+  const { ethereum } =
+    typeof window !== "undefined" ? (window as any) : ({} as any)
 
-  function onConnectMetamask(event: React.SyntheticEvent) {
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [isConnected, setIsConnected] = useState<boolean>(false)
+  const [account, setAccount] = useState("")
+  const [error, setError] = useState("")
+
+  function checkEthereumExists() {
+    if (!ethereum) {
+      setError("Please Install MetaMask.")
+      return false
+    }
+    return true
+  }
+
+  async function getConnectedAccounts() {
+    try {
+      setError("")
+      const accounts = await ethereum.request({
+        method: "eth_accounts",
+      })
+      console.log(accounts)
+      setAccount(accounts[0])
+    } catch (err: any) {
+      setError(err.message)
+    }
+  }
+
+  async function onConnectWallet(event: React.SyntheticEvent) {
     event.preventDefault()
     setIsLoading(true)
+    setError("")
 
-    setTimeout(() => {
+    if (checkEthereumExists()) {
+      try {
+        const accounts = await ethereum.request({
+          method: "eth_requestAccounts",
+        })
+        console.log(accounts)
+
+        setAccount(accounts[0])
+        setIsConnected(true)
+      } catch (err: any) {
+        setError(err.message)
+        setIsConnected(false)
+      }
+
       setIsLoading(false)
-      setIsConnected(true)
-    }, 1500)
+    }
   }
+
+  useEffect(() => {
+    if (account) {
+      setIsConnected(true)
+    }
+  })
+
+  useEffect(() => {
+    if (checkEthereumExists()) {
+      ethereum.on("accountsChanged", getConnectedAccounts)
+      getConnectedAccounts()
+    }
+    return () => {
+      ethereum.removeListener("accountsChanged", getConnectedAccounts)
+    }
+  }, [])
+
   return (
     <div>
       <Card
@@ -41,11 +97,11 @@ function page() {
         <CardContent className="flex min-h-[176px] flex-col items-center justify-center space-y-4 text-center">
           <CardTitle className="text-2xl">BlackCAT</CardTitle>
           <CardDescription className="line-clamp-4">
-            {isConnected ? "0xc9090584d8E...8697B3g3cC82Fc48" : "Not Connected"}
+            {isConnected ? account : "Not Connected"}
           </CardDescription>
           <Button
             variant="default"
-            onClick={onConnectMetamask}
+            onClick={onConnectWallet}
             disabled={isConnected}
             className="select-none"
           >
