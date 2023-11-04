@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 
+import { getUserAuth } from "@/lib/auth/utils"
 import { Separator } from "@/components/ui/separator"
 import { MainNav } from "@/components/layouts/main-nav"
 import { SidebarNav } from "@/components/layouts/sidebar-nav"
@@ -32,7 +33,11 @@ interface SettingsLayoutProps {
   readonly children: React.ReactNode
 }
 
-export default function SettingsLayout({ children }: SettingsLayoutProps) {
+export default async function SettingsLayout({
+  children,
+}: SettingsLayoutProps) {
+  const { session } = await getUserAuth()
+
   return (
     <div className="flex flex-col">
       <div className="border-b">
@@ -49,7 +54,7 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
           <MainNav />
           <div className="ml-auto flex items-center space-x-4">
             <ThemeToggle />
-            <UserNav />
+            <UserNav session={session} />
           </div>
         </div>
       </div>

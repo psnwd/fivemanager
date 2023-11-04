@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/card"
 import { Icons } from "@/components/icons"
 
-function page() {
+function Page() {
   const { ethereum } =
     typeof window !== "undefined" ? (window as any) : ({} as any)
 
@@ -120,4 +120,4 @@ function page() {
   )
 }
 
-export default page
+export default Page
