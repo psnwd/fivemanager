@@ -7,7 +7,7 @@
     "url": "https://github.com/psnwd"
   },
   "scripts": {
-    "dev": "next dev --turbo",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -78,6 +78,7 @@
     "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.7",
     "uploadthing": "^5.7.4",
+    "web3": "^4.2.2",
     "zod": "^3.22.4"
   },
   "devDependencies": {

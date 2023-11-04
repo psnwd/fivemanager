@@ -4,6 +4,15 @@ await import("./src/env.mjs")
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  images: {
+    formats: ["image/avif", "image/webp"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**.discordapp.com",
+      },
+    ],
+  },
   async redirects() {
     return [
       {
