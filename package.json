@@ -25,7 +25,7 @@
     "shadcn:add": "pnpm dlx shadcn-ui@latest add"
   },
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=18.0.0"
   },
   "dependencies": {
     "@auth/core": "^0.16.1",
