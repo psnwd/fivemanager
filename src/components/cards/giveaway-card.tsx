@@ -71,7 +71,7 @@ function GiveawayCard({
           <Progress value={50} className="relative h-4 w-[60%]" />
           <span className="absolute text-[10px] font-semibold text-green-600">
             57% KEYS LEFT
-          </span>
+          </span>{" "}
           100%
         </div>
       </CardContent>
