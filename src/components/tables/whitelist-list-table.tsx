@@ -48,6 +48,7 @@ const data: Player[] = [
   {
     id: "fesffsees",
     name: "hawi",
+    steam_hex: "steam:sample_1",
     discordId: "258223336535511125",
     status: "waiting",
     timestamp: "2021-10-01 09:00:00",
@@ -55,6 +56,7 @@ const data: Player[] = [
   {
     id: "hfdtghfdg",
     name: "hecker",
+    steam_hex: "steam:sample_2",
     discordId: "258223344535511125",
     status: "waiting",
     timestamp: "2021-10-01 10:00:00",
@@ -62,6 +64,7 @@ const data: Player[] = [
   {
     id: "rtyrtyrty",
     name: "catt",
+    steam_hex: "steam:sample_3",
     discordId: "258223454535511125",
     status: "waiting",
     timestamp: "2021-10-01 11:00:00",
@@ -69,6 +72,7 @@ const data: Player[] = [
   {
     id: "mnbmbnmhg",
     name: "dogg_engine",
+    steam_hex: "steam:sample_4",
     discordId: "258223776535511125",
     status: "waiting",
     timestamp: "2021-10-02 06:00:00",
@@ -76,6 +80,7 @@ const data: Player[] = [
   {
     id: "tyutyutet",
     name: "Imposter",
+    steam_hex: "steam:sample_5",
     discordId: "258223336665511125",
     status: "waiting",
     timestamp: "2021-10-02 08:00:00",
@@ -85,6 +90,7 @@ const data: Player[] = [
 export type Player = {
   id: string
   name: string
+  steam_hex: string
   discordId: string
   status: "approved" | "waiting" | "banned"
   timestamp: string
@@ -128,6 +134,13 @@ export const columns: ColumnDef<Player>[] = [
     ),
   },
   {
+    accessorKey: "steam_hex",
+    header: "Steam Hex",
+    cell: ({ row }) => (
+      <div className="capitalize">{row.getValue("steam_hex")}</div>
+    ),
+  },
+  {
     accessorKey: "timestamp",
     header: ({ column }) => {
       return (
@@ -154,7 +167,8 @@ export const columns: ColumnDef<Player>[] = [
         <div className="space-x-2">
           <Button
             variant="secondary"
-            size={"sm"}
+            size="sm"
+            className="text-xs"
             onClick={() => {
               toast({
                 title: "User Approved",
@@ -166,7 +180,8 @@ export const columns: ColumnDef<Player>[] = [
           </Button>
           <Button
             variant="destructive"
-            size={"sm"}
+            size="sm"
+            className="text-xs"
             onClick={() => {
               toast({
                 title: "User Rejected",

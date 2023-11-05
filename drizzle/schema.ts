@@ -27,6 +27,7 @@ export const account = mysqlTable(
     scope: varchar("scope", { length: 255 }),
     idToken: text("id_token"),
     sessionState: varchar("session_state", { length: 255 }),
+    metamaskAccount: varchar("metamask_account", { length: 255 }),
   },
   (table) => {
     return {
@@ -224,10 +225,17 @@ export const session = mysqlTable(
     sessionToken: varchar("sessionToken", { length: 255 }).notNull(),
     userId: varchar("userId", { length: 255 }).notNull(),
     expires: timestamp("expires", { mode: "string" }).notNull(),
+    device: varchar("device", { length: 255 }),
+    browser: varchar("browser", { length: 255 }),
+    os: varchar("os", { length: 255 }),
+    location: varchar("location", { length: 255 }),
   },
   (table) => {
     return {
-      sessionProviderProviderAccountId: primaryKey(table.userId),
+      sessionProviderProviderAccountId: primaryKey(
+        table.userId,
+        table.sessionToken
+      ),
     }
   }
 )
@@ -264,6 +272,8 @@ export const user = mysqlTable(
       mode: "string",
     }).defaultNow(),
     image: varchar("image", { length: 255 }),
+    role: varchar("role", { length: 255 }).default("user").notNull(),
+    dob: timestamp("dob", { mode: "string" }),
   },
   (table) => {
     return {

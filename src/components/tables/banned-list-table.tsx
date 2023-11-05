@@ -125,7 +125,17 @@ export const columns: ColumnDef<Player>[] = [
   },
   {
     accessorKey: "role",
-    header: () => <div className="text-center">Role</div>,
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Role
+          <CaretSortIcon className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
     cell: ({ row }) => {
       return (
         <div className="text-center font-medium">{row.getValue("role")}</div>
@@ -250,7 +260,7 @@ export function PlayerBannedListTable() {
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id}>
+                    <TableHead key={header.id} className="text-center">
                       {header.isPlaceholder
                         ? null
                         : flexRender(
@@ -269,6 +279,7 @@ export function PlayerBannedListTable() {
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
+                  className="text-center"
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>

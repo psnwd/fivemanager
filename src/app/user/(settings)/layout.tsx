@@ -1,13 +1,10 @@
 import type { Metadata } from "next"
-import Image from "next/image"
-import Link from "next/link"
 
 import { getUserAuth } from "@/lib/auth/utils"
 import { Separator } from "@/components/ui/separator"
 import { MainNav } from "@/components/layouts/main-nav"
+import { MobileNav } from "@/components/layouts/mobile-nav"
 import { SidebarNav } from "@/components/layouts/sidebar-nav"
-import { ThemeToggle } from "@/components/layouts/theme-toggle"
-import { UserNav } from "@/components/layouts/user-nav"
 
 export const metadata: Metadata = {
   title: "FiveManager | User",
@@ -42,20 +39,8 @@ export default async function SettingsLayout({
     <div className="flex flex-col">
       <div className="border-b">
         <div className="flex h-16 items-center px-4">
-          <Link href="/">
-            <Image
-              src="/images/logo.svg"
-              width={50}
-              height={50}
-              alt="Site logo"
-              className="mx-5"
-            />
-          </Link>
-          <MainNav />
-          <div className="ml-auto flex items-center space-x-4">
-            <ThemeToggle />
-            <UserNav session={session} />
-          </div>
+          <MainNav session={session} />
+          <MobileNav session={session} />
         </div>
       </div>
       <div className="space-y-6 p-10 pb-16">

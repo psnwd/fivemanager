@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Image from "next/image"
 import { db } from "@/db"
 import { asc } from "drizzle-orm"
 import { giveaway } from "drizzle/schema"
@@ -20,7 +21,7 @@ async function page() {
   return (
     <>
       <div className="text-2xl font-bold uppercase">GIVEAWAY</div>
-      <div className="grid grid-flow-col grid-cols-1 grid-rows-3 gap-3 md:grid-cols-3 md:grid-rows-1">
+      <div className="grid-rows-auto grid w-full grid-flow-col grid-cols-1 gap-3 md:grid-cols-3 md:grid-rows-1">
         {giveawayData.length ? (
           giveawayData.map((giveaway: any) => (
             <GiveawayCard
@@ -35,7 +36,14 @@ async function page() {
             />
           ))
         ) : (
-          <div className="col-span-3">
+          <div className="col-span-3 mx-auto">
+            <Image
+              src={"/images/giveaway/giveaway_1.png"}
+              alt=""
+              className="h-100 w-96"
+              width={1920}
+              height={1080}
+            />
             No giveaway to be found here, fam! 🚫🎁
           </div>
         )}

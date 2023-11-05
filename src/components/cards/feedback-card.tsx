@@ -9,11 +9,11 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 
 interface FeedbackCardProps {
-  title: string
-  content: string
-  authorName: string
-  authorAvatar: string
-  authorJob: string
+  readonly title: string
+  readonly content: string
+  readonly authorName: string
+  readonly authorAvatar: string
+  readonly authorJob: string
 }
 
 function FeedbackCard({

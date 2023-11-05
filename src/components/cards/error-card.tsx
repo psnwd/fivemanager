@@ -35,7 +35,6 @@ export function ErrorCard({
 }: ErrorCardProps) {
   return (
     <Card
-      // as="section"
       role="alert"
       aria-live="assertive"
       aria-atomic="true"

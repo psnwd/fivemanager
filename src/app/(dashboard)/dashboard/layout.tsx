@@ -1,21 +1,19 @@
-import Image from "next/image"
-import Link from "next/link"
-
-import TeamSwitcher from "@/components/dashboard/team-switcher"
+import { getUserAuth } from "@/lib/auth/utils"
 import { DashboardNav } from "@/components/layouts/dashboard-nav"
-import SiteHeader from "@/components/layouts/site-header"
-import { ThemeToggle } from "@/components/layouts/theme-toggle"
-import { UserNav } from "@/components/layouts/user-nav"
+import { SiteFooter } from "@/components/layouts/site-footer"
 
-export default function DashboardLayout({
+export default async function DashboardLayout({
   children,
 }: {
   readonly children: React.ReactNode
 }) {
+  const { session } = await getUserAuth()
+
   return (
-    <div className="flex flex-col">
-      <SiteHeader />
+    <>
+      <DashboardNav session={session} />
       {children}
-    </div>
+      <SiteFooter />
+    </>
   )
 }

@@ -16,7 +16,12 @@ export const users = mysqlTable("user", {
     mode: "date",
     fsp: 3,
   }).defaultNow(),
+  nickname: varchar("nickname", { length: 255 }),
+  steam_guid: varchar("steam_guid", { length: 255 }),
+  role: varchar("role", { length: 255 }).notNull().default("user"),
   image: varchar("image", { length: 255 }),
+  dob: timestamp("dob", { mode: "date" }),
+  language: varchar("language", { length: 255 }),
 })
 
 export const accounts = mysqlTable(
@@ -35,6 +40,7 @@ export const accounts = mysqlTable(
     scope: varchar("scope", { length: 255 }),
     id_token: text("id_token"),
     session_state: varchar("session_state", { length: 255 }),
+    metamask_account: varchar("metamask_account", { length: 255 }),
   },
   (account) => ({
     compoundKey: primaryKey(account.provider, account.providerAccountId),
@@ -44,6 +50,10 @@ export const accounts = mysqlTable(
 export const sessions = mysqlTable("session", {
   sessionToken: varchar("sessionToken", { length: 255 }).notNull().primaryKey(),
   userId: varchar("userId", { length: 255 }).notNull(),
+  device: varchar("device", { length: 255 }),
+  browser: varchar("browser", { length: 255 }),
+  os: varchar("os", { length: 255 }),
+  location: varchar("location", { length: 255 }),
   expires: timestamp("expires", { mode: "date" }).notNull(),
 })
 
