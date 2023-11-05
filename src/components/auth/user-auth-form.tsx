@@ -18,7 +18,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
 
     setTimeout(() => {
       setIsLoading(false)
-      signIn()
+      signIn("discord")
     }, 1500)
   }
 

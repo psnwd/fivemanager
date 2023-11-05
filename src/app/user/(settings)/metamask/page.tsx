@@ -72,12 +72,14 @@ function Page() {
   })
 
   useEffect(() => {
+    if (ethereum) return console.log("Walltet not found.")
+
     if (checkEthereumExists()) {
-      ethereum.on("accountsChanged", getConnectedAccounts)
+      ethereum?.on("accountsChanged", getConnectedAccounts)
       getConnectedAccounts()
     }
     return () => {
-      ethereum.removeListener("accountsChanged", getConnectedAccounts)
+      ethereum?.removeListener("accountsChanged", getConnectedAccounts)
     }
   }, [])
 

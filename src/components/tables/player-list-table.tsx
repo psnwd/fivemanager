@@ -154,7 +154,7 @@ export const columns: ColumnDef<Player>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Name
+          Role
           <CaretSortIcon className="ml-2 h-4 w-4" />
         </Button>
       )
@@ -241,7 +241,7 @@ export function PlayerListTable() {
 
   return (
     <div className="w-full">
-      <div className="flex items-center space-x-2 py-4">
+      <div className="flex items-center py-4">
         <Input
           placeholder="Filter player name..."
           value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
