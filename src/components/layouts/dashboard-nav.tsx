@@ -57,19 +57,23 @@ export function DashboardNav({
             </Link>
           </div>
 
-          {navItems.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              className={cn({
-                "text-muted-foreground": pathname !== item.href,
-                "text-sm font-medium transition-colors hover:text-primary":
-                  true,
-              })}
-            >
-              {item.label}
-            </Link>
-          ))}
+          <div
+            className={cn("hidden items-center space-x-4 md:flex", className)}
+          >
+            {navItems.map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                className={cn({
+                  "text-muted-foreground": pathname !== item.href,
+                  "text-sm font-medium transition-colors hover:text-primary":
+                    true,
+                })}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
         </nav>
 
         <UserNav session={session} />
