@@ -1,3 +1,4 @@
+import { Suspense } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { db } from "@/db"
@@ -94,13 +95,14 @@ export default async function Home() {
         </div>
         <div className="flex flex-col gap-3 md:flex-row">
           {latestEvents?.map((event) => (
-            <EventCard
-              key={event.id}
-              id={event.id}
-              title={event.title}
-              content={event.description}
-              image={event.image}
-            />
+            <Suspense key={event.id} fallback={<span></span>}>
+              <EventCard
+                id={event.id}
+                title={event.title}
+                content={event.description}
+                image={event.image}
+              />
+            </Suspense>
           ))}
         </div>
       </div>

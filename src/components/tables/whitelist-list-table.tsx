@@ -185,7 +185,7 @@ export const columns: ColumnDef<Player>[] = [
             onClick={() => {
               toast({
                 title: "User Rejected",
-                description: "User has been rejected and banned.",
+                description: "User has been rejected from whitelist.",
               })
             }}
           >
