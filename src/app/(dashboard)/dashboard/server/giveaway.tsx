@@ -1,12 +1,18 @@
-import { TabsContent } from "@/components/ui/tabs"
+import React from "react"
 
-function Giveaway() {
+import { TabsContent } from "@/components/ui/tabs"
+import AddGiveaway from "@/components/forms/add-giveaway"
+import { GiveawayListTable } from "@/components/tables/giveaway-list-table"
+import { getGiveaways } from "@/app/_actions/server"
+
+async function Giveaway() {
+  const data = await getGiveaways()
+
   return (
-    <>
-      <TabsContent value="giveaways" className="space-y-4">
-        <div>giveaway</div>
-      </TabsContent>
-    </>
+    <TabsContent value="giveaways">
+      <AddGiveaway />
+      <GiveawayListTable data={data} />
+    </TabsContent>
   )
 }
 

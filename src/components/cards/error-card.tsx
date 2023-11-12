@@ -15,12 +15,12 @@ import {
 import { ClientButton } from "@/components/client-button"
 
 interface ErrorCardProps extends React.ComponentPropsWithoutRef<typeof Card> {
-  icon?: React.ComponentType<{ className?: string }>
-  title: string
-  description: string
-  retryLink?: string
-  retryLinkText?: string
-  reset?: () => void
+  readonly icon?: React.ComponentType<{ className?: string }>
+  readonly title: string
+  readonly description: string
+  readonly retryLink?: string
+  readonly retryLinkText?: string
+  readonly reset?: () => void
 }
 
 export function ErrorCard({
@@ -35,7 +35,6 @@ export function ErrorCard({
 }: ErrorCardProps) {
   return (
     <Card
-      // as="section"
       role="alert"
       aria-live="assertive"
       aria-atomic="true"

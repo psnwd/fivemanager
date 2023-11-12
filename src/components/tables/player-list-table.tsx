@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { IPlayerList } from "@/types"
 import {
   CaretSortIcon,
   ChevronDownIcon,
@@ -50,7 +51,7 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
-const data: Player[] = [
+const data: IPlayerList[] = [
   {
     id: "m5gr84i9",
     name: "hawi",
@@ -88,15 +89,7 @@ const data: Player[] = [
   },
 ]
 
-export type Player = {
-  id: string
-  name: string
-  role: string
-  discordId: string
-  status: "approved" | "waiting" | "banned"
-}
-
-export const columns: ColumnDef<Player>[] = [
+export const columns: ColumnDef<IPlayerList>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -154,7 +147,7 @@ export const columns: ColumnDef<Player>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Name
+          Role
           <CaretSortIcon className="ml-2 h-4 w-4" />
         </Button>
       )
@@ -241,7 +234,7 @@ export function PlayerListTable() {
 
   return (
     <div className="w-full">
-      <div className="flex items-center py-4 space-x-2">
+      <div className="flex items-center gap-2 py-4">
         <Input
           placeholder="Filter player name..."
           value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}

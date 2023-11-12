@@ -3,7 +3,7 @@ import { AvatarIcon, ImageIcon } from "@radix-ui/react-icons"
 type IconProps = React.HTMLAttributes<SVGElement>
 
 export const Icons = {
-  logo: (props: IconProps) => (
+  Logo: (props: IconProps) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -20,7 +20,7 @@ export const Icons = {
       <path d="M3 9a2 1 0 0 0 2 1h14a2 1 0 0 0 2 -1" />
     </svg>
   ),
-  nextjs: (props: IconProps) => (
+  Nextjs: (props: IconProps) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
       <path
         fill="currentColor"
@@ -28,7 +28,7 @@ export const Icons = {
       />
     </svg>
   ),
-  gitHub: (props: IconProps) => (
+  GitHub: (props: IconProps) => (
     <svg viewBox="0 0 438.549 438.549" {...props}>
       <path
         fill="currentColor"
@@ -36,20 +36,20 @@ export const Icons = {
       ></path>
     </svg>
   ),
-  google: ({ ...props }: IconProps) => (
-    <svg role="img" viewBox="0 0 24 24" {...props}>
+  Google: ({ ...props }: IconProps) => (
+    <svg viewBox="0 0 24 24" {...props}>
       <path
         fill="currentColor"
         d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"
       />
     </svg>
   ),
-  twitter: (props: IconProps) => (
+  Twitter: (props: IconProps) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
       <path d="M21.543 7.104c.015.211.015.423.015.636 0 6.507-4.954 14.01-14.01 14.01v-.003A13.94 13.94 0 0 1 0 19.539a9.88 9.88 0 0 0 7.287-2.041 4.93 4.93 0 0 1-4.6-3.42 4.916 4.916 0 0 0 2.223-.084A4.926 4.926 0 0 1 .96 9.167v-.062a4.887 4.887 0 0 0 2.235.616A4.928 4.928 0 0 1 1.67 3.148a13.98 13.98 0 0 0 10.15 5.144 4.929 4.929 0 0 1 8.39-4.49 9.868 9.868 0 0 0 3.128-1.196 4.941 4.941 0 0 1-2.165 2.724A9.828 9.828 0 0 0 24 4.555a10.019 10.019 0 0 1-2.457 2.549z" />
     </svg>
   ),
-  facebook: ({ ...props }: IconProps) => (
+  Facebook: ({ ...props }: IconProps) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" {...props}>
       <path
         fill="currentColor"
@@ -57,7 +57,7 @@ export const Icons = {
       />
     </svg>
   ),
-  discord: ({ ...props }: IconProps) => (
+  Discord: ({ ...props }: IconProps) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" {...props}>
       <path
         fill="currentColor"
@@ -65,7 +65,7 @@ export const Icons = {
       />
     </svg>
   ),
-  spinner: (props: IconProps) => (
+  Spinner: (props: IconProps) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -79,7 +79,7 @@ export const Icons = {
       <path d="M21 12a9 9 0 1 1-6.219-8.56" />
     </svg>
   ),
-  cart: (props: IconProps) => (
+  Cart: (props: IconProps) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -95,7 +95,7 @@ export const Icons = {
       <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
     </svg>
   ),
-  product: (props: IconProps) => (
+  Product: (props: IconProps) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -111,7 +111,7 @@ export const Icons = {
       <path d="M16 10a4 4 0 0 1-8 0" />
     </svg>
   ),
-  store: (props: IconProps) => (
+  Store: (props: IconProps) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -129,7 +129,7 @@ export const Icons = {
       <path d="M22 7v3a2 2 0 0 1-2 2v0a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12v0a2 2 0 0 1-2-2V7" />
     </svg>
   ),
-  credit: (props: IconProps) => (
+  Credit: (props: IconProps) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -144,7 +144,7 @@ export const Icons = {
       <line x1="2" x2="22" y1="10" y2="10" />
     </svg>
   ),
-  dollarSign: (props: IconProps) => (
+  DollarSign: (props: IconProps) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -159,7 +159,7 @@ export const Icons = {
       <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
     </svg>
   ),
-  bot: (props: IconProps) => (
+  Bot: (props: IconProps) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -178,7 +178,7 @@ export const Icons = {
       <path d="M9 13v2" />
     </svg>
   ),
-  shirt: (props: IconProps) => (
+  Shirt: (props: IconProps) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -192,7 +192,7 @@ export const Icons = {
       <path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z" />
     </svg>
   ),
-  footprints: (props: IconProps) => (
+  Footprints: (props: IconProps) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -209,7 +209,7 @@ export const Icons = {
       <path d="M4 13h4" />
     </svg>
   ),
-  heart: (props: IconProps) => (
+  Heart: (props: IconProps) => (
     <svg
       width="15"
       height="15"
@@ -221,12 +221,12 @@ export const Icons = {
       <path
         d="M4.89346 2.35248C3.49195 2.35248 2.35248 3.49359 2.35248 4.90532C2.35248 6.38164 3.20954 7.9168 4.37255 9.33522C5.39396 10.581 6.59464 11.6702 7.50002 12.4778C8.4054 11.6702 9.60608 10.581 10.6275 9.33522C11.7905 7.9168 12.6476 6.38164 12.6476 4.90532C12.6476 3.49359 11.5081 2.35248 10.1066 2.35248C9.27059 2.35248 8.81894 2.64323 8.5397 2.95843C8.27877 3.25295 8.14623 3.58566 8.02501 3.88993C8.00391 3.9429 7.98315 3.99501 7.96211 4.04591C7.88482 4.23294 7.7024 4.35494 7.50002 4.35494C7.29765 4.35494 7.11523 4.23295 7.03793 4.04592C7.01689 3.99501 6.99612 3.94289 6.97502 3.8899C6.8538 3.58564 6.72126 3.25294 6.46034 2.95843C6.18109 2.64323 5.72945 2.35248 4.89346 2.35248ZM1.35248 4.90532C1.35248 2.94498 2.936 1.35248 4.89346 1.35248C6.0084 1.35248 6.73504 1.76049 7.20884 2.2953C7.32062 2.42147 7.41686 2.55382 7.50002 2.68545C7.58318 2.55382 7.67941 2.42147 7.79119 2.2953C8.265 1.76049 8.99164 1.35248 10.1066 1.35248C12.064 1.35248 13.6476 2.94498 13.6476 4.90532C13.6476 6.74041 12.6013 8.50508 11.4008 9.96927C10.2636 11.3562 8.92194 12.5508 8.00601 13.3664C7.94645 13.4194 7.88869 13.4709 7.83291 13.5206C7.64324 13.6899 7.3568 13.6899 7.16713 13.5206C7.11135 13.4709 7.05359 13.4194 6.99403 13.3664C6.0781 12.5508 4.73641 11.3562 3.59926 9.96927C2.39872 8.50508 1.35248 6.74041 1.35248 4.90532Z"
         fill="currentColor"
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
       ></path>
     </svg>
   ),
-  heartFilled: (props: IconProps) => (
+  HeartFilled: (props: IconProps) => (
     <svg
       width="15"
       height="15"
@@ -238,12 +238,12 @@ export const Icons = {
       <path
         d="M1.35248 4.90532C1.35248 2.94498 2.936 1.35248 4.89346 1.35248C6.25769 1.35248 6.86058 1.92336 7.50002 2.93545C8.13946 1.92336 8.74235 1.35248 10.1066 1.35248C12.064 1.35248 13.6476 2.94498 13.6476 4.90532C13.6476 6.74041 12.6013 8.50508 11.4008 9.96927C10.2636 11.3562 8.92194 12.5508 8.00601 13.3664C7.94645 13.4194 7.88869 13.4709 7.83291 13.5206C7.64324 13.6899 7.3568 13.6899 7.16713 13.5206C7.11135 13.4709 7.05359 13.4194 6.99403 13.3664C6.0781 12.5508 4.73641 11.3562 3.59926 9.96927C2.39872 8.50508 1.35248 6.74041 1.35248 4.90532Z"
         fill="currentColor"
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
       ></path>
     </svg>
   ),
-  windows: (props: IconProps) => (
+  Windows: (props: IconProps) => (
     <svg
       width="15"
       height="15"
@@ -255,9 +255,148 @@ export const Icons = {
       <path
         d="M1 3.25C1 3.11193 1.11193 3 1.25 3H13.75C13.8881 3 14 3.11193 14 3.25V10.75C14 10.8881 13.8881 11 13.75 11H1.25C1.11193 11 1 10.8881 1 10.75V3.25ZM1.25 2C0.559643 2 0 2.55964 0 3.25V10.75C0 11.4404 0.559644 12 1.25 12H5.07341L4.82991 13.2986C4.76645 13.6371 5.02612 13.95 5.37049 13.95H9.62951C9.97389 13.95 10.2336 13.6371 10.1701 13.2986L9.92659 12H13.75C14.4404 12 15 11.4404 15 10.75V3.25C15 2.55964 14.4404 2 13.75 2H1.25ZM9.01091 12H5.98909L5.79222 13.05H9.20778L9.01091 12Z"
         fill="currentColor"
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
       ></path>
+    </svg>
+  ),
+  MetaMask: (props: IconProps) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="212"
+      height="189"
+      viewBox="0 0 212 189"
+      id="metamask"
+      {...props}
+    >
+      <g fill="none" fillRule="evenodd">
+        <polygon
+          fill="#CDBDB2"
+          points="60.75 173.25 88.313 180.563 88.313 171 90.563 168.75 106.313 168.75 106.313 180 106.313 187.875 89.438 187.875 68.625 178.875"
+        ></polygon>
+        <polygon
+          fill="#CDBDB2"
+          points="105.75 173.25 132.75 180.563 132.75 171 135 168.75 150.75 168.75 150.75 180 150.75 187.875 133.875 187.875 113.063 178.875"
+          transform="matrix(-1 0 0 1 256.5 0)"
+        ></polygon>
+        <polygon
+          fill="#393939"
+          points="90.563 152.438 88.313 171 91.125 168.75 120.375 168.75 123.75 171 121.5 152.438 117 149.625 94.5 150.188"
+        ></polygon>
+        <polygon
+          fill="#F89C35"
+          points="75.375 27 88.875 58.5 95.063 150.188 117 150.188 123.75 58.5 136.125 27"
+        ></polygon>
+        <polygon
+          fill="#F89D35"
+          points="16.313 96.188 .563 141.75 39.938 139.5 65.25 139.5 65.25 119.813 64.125 79.313 58.5 83.813"
+        ></polygon>
+        <polygon
+          fill="#D87C30"
+          points="46.125 101.25 92.25 102.375 87.188 126 65.25 120.375"
+        ></polygon>
+        <polygon
+          fill="#EA8D3A"
+          points="46.125 101.813 65.25 119.813 65.25 137.813"
+        ></polygon>
+        <polygon
+          fill="#F89D35"
+          points="65.25 120.375 87.75 126 95.063 150.188 90 153 65.25 138.375"
+        ></polygon>
+        <polygon
+          fill="#EB8F35"
+          points="65.25 138.375 60.75 173.25 90.563 152.438"
+        ></polygon>
+        <polygon
+          fill="#EA8E3A"
+          points="92.25 102.375 95.063 150.188 86.625 125.719"
+        ></polygon>
+        <polygon
+          fill="#D87C30"
+          points="39.375 138.938 65.25 138.375 60.75 173.25"
+        ></polygon>
+        <polygon
+          fill="#EB8F35"
+          points="12.938 188.438 60.75 173.25 39.375 138.938 .563 141.75"
+        ></polygon>
+        <polygon
+          fill="#E8821E"
+          points="88.875 58.5 64.688 78.75 46.125 101.25 92.25 102.938"
+        ></polygon>
+        <polygon
+          fill="#DFCEC3"
+          points="60.75 173.25 90.563 152.438 88.313 170.438 88.313 180.563 68.063 176.625"
+        ></polygon>
+        <polygon
+          fill="#DFCEC3"
+          points="121.5 173.25 150.75 152.438 148.5 170.438 148.5 180.563 128.25 176.625"
+          transform="matrix(-1 0 0 1 272.25 0)"
+        ></polygon>
+        <polygon
+          fill="#393939"
+          points="70.313 112.5 64.125 125.438 86.063 119.813"
+          transform="matrix(-1 0 0 1 150.188 0)"
+        ></polygon>
+        <polygon
+          fill="#E88F35"
+          points="12.375 .563 88.875 58.5 75.938 27"
+        ></polygon>
+        <path
+          fill="#8E5A30"
+          d="M12.3750002,0.562500008 L2.25000003,31.5000005 L7.87500012,65.250001 L3.93750006,67.500001 L9.56250014,72.5625 L5.06250008,76.5000011 L11.25,82.1250012 L7.31250011,85.5000013 L16.3125002,96.7500014 L58.5000009,83.8125012 C79.1250012,67.3125004 89.2500013,58.8750003 88.8750013,58.5000009 C88.5000013,58.1250009 63.0000009,38.8125006 12.3750002,0.562500008 Z"
+        ></path>
+        <g transform="matrix(-1 0 0 1 211.5 0)">
+          <polygon
+            fill="#F89D35"
+            points="16.313 96.188 .563 141.75 39.938 139.5 65.25 139.5 65.25 119.813 64.125 79.313 58.5 83.813"
+          ></polygon>
+          <polygon
+            fill="#D87C30"
+            points="46.125 101.25 92.25 102.375 87.188 126 65.25 120.375"
+          ></polygon>
+          <polygon
+            fill="#EA8D3A"
+            points="46.125 101.813 65.25 119.813 65.25 137.813"
+          ></polygon>
+          <polygon
+            fill="#F89D35"
+            points="65.25 120.375 87.75 126 95.063 150.188 90 153 65.25 138.375"
+          ></polygon>
+          <polygon
+            fill="#EB8F35"
+            points="65.25 138.375 60.75 173.25 90 153"
+          ></polygon>
+          <polygon
+            fill="#EA8E3A"
+            points="92.25 102.375 95.063 150.188 86.625 125.719"
+          ></polygon>
+          <polygon
+            fill="#D87C30"
+            points="39.375 138.938 65.25 138.375 60.75 173.25"
+          ></polygon>
+          <polygon
+            fill="#EB8F35"
+            points="12.938 188.438 60.75 173.25 39.375 138.938 .563 141.75"
+          ></polygon>
+          <polygon
+            fill="#E8821E"
+            points="88.875 58.5 64.688 78.75 46.125 101.25 92.25 102.938"
+          ></polygon>
+          <polygon
+            fill="#393939"
+            points="70.313 112.5 64.125 125.438 86.063 119.813"
+            transform="matrix(-1 0 0 1 150.188 0)"
+          ></polygon>
+          <polygon
+            fill="#E88F35"
+            points="12.375 .563 88.875 58.5 75.938 27"
+          ></polygon>
+          <path
+            fill="#8E5A30"
+            d="M12.3750002,0.562500008 L2.25000003,31.5000005 L7.87500012,65.250001 L3.93750006,67.500001 L9.56250014,72.5625 L5.06250008,76.5000011 L11.25,82.1250012 L7.31250011,85.5000013 L16.3125002,96.7500014 L58.5000009,83.8125012 C79.1250012,67.3125004 89.2500013,58.8750003 88.8750013,58.5000009 C88.5000013,58.1250009 63.0000009,38.8125006 12.3750002,0.562500008 Z"
+          ></path>
+        </g>
+      </g>
     </svg>
   ),
   avatar: AvatarIcon,
