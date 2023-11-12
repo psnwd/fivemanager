@@ -220,14 +220,14 @@ export function AccountForm() {
             control={form.control}
             name="language"
             render={({ field }) => (
-              <FormItem className="flex flex-col">
+              <FormItem className="flex flex-col mt-4">
                 <FormLabel>Language</FormLabel>
                 <Popover>
                   <PopoverTrigger asChild>
                     <FormControl>
                       <Button
                         variant="outline"
-                        role="combobox"
+                        role="language_selector"
                         className={cn(
                           "w-[200px] justify-between",
                           !field.value && "text-muted-foreground"

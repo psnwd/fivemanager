@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { INews } from "@/types"
 import {
   CaretSortIcon,
   ChevronDownIcon,
@@ -42,27 +43,7 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
-const data: News[] = [
-  {
-    id: "m5gr84i9",
-    title: "Tech Giant Unveils Cutting-Edge Smartphone",
-    lastEditedBy: "BlackCAT",
-    lastEditedAt: "2023-05-01",
-    createdBy: "BlackCAT 2",
-    createdAt: "2023-05-04",
-  },
-]
-
-export type News = {
-  id: string
-  title: string
-  lastEditedBy: string
-  lastEditedAt: string
-  createdBy: string
-  createdAt: string
-}
-
-export const columns: ColumnDef<News>[] = [
+export const columns: ColumnDef<INews>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -164,7 +145,7 @@ export const columns: ColumnDef<News>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(news.id)}
+              onClick={() => navigator.clipboard.writeText(news.id.toString())}
             >
               Copy news ID
             </DropdownMenuItem>
@@ -178,7 +159,7 @@ export const columns: ColumnDef<News>[] = [
   },
 ]
 
-export function NewsListTable() {
+export function NewsListTable({ data }: { readonly data: INews[] }) {
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -210,10 +191,10 @@ export function NewsListTable() {
     <div className="w-full">
       <div className="flex items-center py-4">
         <Input
-          placeholder="Filter server name..."
-          value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
+          placeholder="Filter news title..."
+          value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
-            table.getColumn("name")?.setFilterValue(event.target.value)
+            table.getColumn("title")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />

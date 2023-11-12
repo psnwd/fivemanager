@@ -20,6 +20,7 @@ function page() {
           <TabsTrigger value="events">Events</TabsTrigger>
           <TabsTrigger value="giveaways">Giveaways</TabsTrigger>
         </TabsList>
+
         <News />
         <Events />
         <Giveaway />
