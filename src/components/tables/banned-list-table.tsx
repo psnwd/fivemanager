@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { IBanPlayer } from "@/types"
 import {
   CaretSortIcon,
   ChevronDownIcon,
@@ -42,7 +43,7 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
-const data: Player[] = [
+const data: IBanPlayer[] = [
   {
     id: "fesffsees",
     name: "hawi",
@@ -80,15 +81,7 @@ const data: Player[] = [
   },
 ]
 
-export type Player = {
-  id: string
-  name: string
-  role: string
-  discordId: string
-  status: "approved" | "waiting" | "banned"
-}
-
-export const columns: ColumnDef<Player>[] = [
+export const columns: ColumnDef<IBanPlayer>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -217,7 +210,7 @@ export function PlayerBannedListTable() {
 
   return (
     <div className="w-full">
-      <div className="flex items-center py-4">
+      <div className="flex items-center gap-2 py-4">
         <Input
           placeholder="Filter player name..."
           value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
