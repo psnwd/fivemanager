@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { IServerList } from "@/types"
 import {
   CaretSortIcon,
   ChevronDownIcon,
@@ -42,7 +43,7 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
-const data: Server[] = [
+const data: IServerList[] = [
   {
     id: "m5gr84i9",
     name: "hawi server",
@@ -75,14 +76,7 @@ const data: Server[] = [
   },
 ]
 
-export type Server = {
-  id: string
-  name: string
-  amount: number
-  status: "running" | "error" | "offline"
-}
-
-export const columns: ColumnDef<Server>[] = [
+export const columns: ColumnDef<IServerList>[] = [
   {
     id: "select",
     header: ({ table }) => (

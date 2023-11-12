@@ -1,7 +1,6 @@
 "use client"
 
 import React from "react"
-import { env } from "@/env.mjs"
 import { signOut } from "next-auth/react"
 
 import { Button } from "@/components/ui/button"
@@ -22,7 +21,7 @@ export default function SignOutPage() {
 
     setTimeout(() => {
       setIsLoading(false)
-      signOut({ callbackUrl: env.NEXT_PUBLIC_APP_URL })
+      signOut({ callbackUrl: "/" })
     }, 1500)
   }
 
@@ -40,7 +39,7 @@ export default function SignOutPage() {
       </PageHeader>
       <Button onClick={onSubmit}>
         {isLoading ? (
-          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+          <Icons.Spinner className="mr-2 h-4 w-4 animate-spin" />
         ) : null}
         Log Out
       </Button>

@@ -133,4 +133,26 @@ export const siteConfig = {
       embed: "https://www.youtube.com/embed/tiUdSBqMOtA?si=Pgel7P21VbGgvlaE",
     },
   ],
+  navItems: [
+    {
+      label: "Home",
+      href: "/",
+    },
+    {
+      label: "Events",
+      href: "/events",
+    },
+    {
+      label: "Giveaways",
+      href: "/giveaways",
+    },
+    {
+      label: "News",
+      href: "/news",
+    },
+    {
+      label: "About",
+      href: "/about",
+    },
+  ],
 }

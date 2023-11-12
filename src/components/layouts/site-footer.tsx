@@ -50,7 +50,6 @@ export function SiteFooter() {
               className="font-semibold transition-colors hover:text-foreground"
             >
               BlackCAT
-              <span className="sr-only">Twitter</span>
             </Link>
           </div>
           <div className="flex items-center space-x-1">
@@ -65,7 +64,7 @@ export function SiteFooter() {
                 })
               )}
             >
-              <Icons.gitHub className="h-4 w-4" aria-hidden="true" />
+              <Icons.GitHub className="h-4 w-4" aria-hidden="true" />
               <span className="sr-only">GitHub</span>
             </Link>
             <Link
@@ -79,7 +78,7 @@ export function SiteFooter() {
                 })
               )}
             >
-              <Icons.facebook className="h-4 w-4" aria-hidden="true" />
+              <Icons.Facebook className="h-4 w-4" aria-hidden="true" />
               <span className="sr-only">Facebook</span>
             </Link>
             <Link
@@ -93,7 +92,7 @@ export function SiteFooter() {
                 })
               )}
             >
-              <Icons.discord className="h-4 w-4" aria-hidden="true" />
+              <Icons.Discord className="h-4 w-4" aria-hidden="true" />
               <span className="sr-only">Discord</span>
             </Link>
           </div>
