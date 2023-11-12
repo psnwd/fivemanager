@@ -22,6 +22,41 @@
       "when": 1698407508276,
       "tag": "0002_panoramic_exodus",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1698570445536,
+      "tag": "0003_sparkling_rawhide_kid",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1698570624175,
+      "tag": "0004_orange_wendell_rand",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1698570683341,
+      "tag": "0005_white_warhawk",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1699185410351,
+      "tag": "0006_handy_ezekiel",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1699188308024,
+      "tag": "0007_opposite_tyger_tiger",
+      "breakpoints": true
     }
   ]
 }

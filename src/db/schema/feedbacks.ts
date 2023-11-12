@@ -12,9 +12,10 @@ export const feedbacks = mysqlTable(
   "feedbacks",
   {
     id: serial("id").primaryKey(),
-    author: varchar("title", { length: 256 }).notNull(),
+    title: varchar("title", { length: 256 }).notNull(),
+    authorName: varchar("authorName", { length: 256 }).notNull(),
+    authorAvatar: varchar("authorAvatar", { length: 256 }).notNull(),
     authorJob: varchar("authorJob", { length: 256 }).notNull(),
-    avatar: varchar("avatar", { length: 256 }).notNull(),
     content: varchar("content", { length: 256 }).notNull(),
     status: int("status").notNull(),
     lastEditedBy: varchar("lastEditBy", { length: 256 }).notNull(),

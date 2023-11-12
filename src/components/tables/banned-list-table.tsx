@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { IBanPlayer } from "@/types"
 import {
   CaretSortIcon,
   ChevronDownIcon,
@@ -42,7 +43,7 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
-const data: Player[] = [
+const data: IBanPlayer[] = [
   {
     id: "fesffsees",
     name: "hawi",
@@ -80,15 +81,7 @@ const data: Player[] = [
   },
 ]
 
-export type Player = {
-  id: string
-  name: string
-  role: string
-  discordId: string
-  status: "approved" | "waiting" | "banned"
-}
-
-export const columns: ColumnDef<Player>[] = [
+export const columns: ColumnDef<IBanPlayer>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -125,7 +118,17 @@ export const columns: ColumnDef<Player>[] = [
   },
   {
     accessorKey: "role",
-    header: () => <div className="text-center">Role</div>,
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Role
+          <CaretSortIcon className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
     cell: ({ row }) => {
       return (
         <div className="text-center font-medium">{row.getValue("role")}</div>
@@ -207,7 +210,7 @@ export function PlayerBannedListTable() {
 
   return (
     <div className="w-full">
-      <div className="flex items-center py-4">
+      <div className="flex items-center gap-2 py-4">
         <Input
           placeholder="Filter player name..."
           value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
@@ -250,7 +253,7 @@ export function PlayerBannedListTable() {
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id}>
+                    <TableHead key={header.id} className="text-center">
                       {header.isPlaceholder
                         ? null
                         : flexRender(
@@ -269,6 +272,7 @@ export function PlayerBannedListTable() {
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
+                  className="text-center"
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>

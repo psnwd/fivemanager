@@ -22,12 +22,12 @@ Introducing an open-source FiveM server management web application, powered by t
 
 - [ ] Authentication with **AuthJS**
 - [ ] Newsletter subscription with **React Email** and **Resend**
-- [ ] ORM using **Drizzle ORM**
-- [ ] Database on **PlanetScale**
+- [x] ORM using **Drizzle ORM**
+- [x] Database on **PlanetScale**
 - [ ] Validation with **Zod**
 - [ ] User subscriptions
 - [ ] Blog using **MDX** and **Contentlayer**
-- [ ] Checkout with **Stripe Checkout**
+- [ ] Checkout with **Crypto Checkout**
 - [ ] Admin dashboard with servers, whitelist, stores, subscriptions
 
 ## Running Locally

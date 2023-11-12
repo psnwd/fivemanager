@@ -15,10 +15,10 @@ import {
 } from "@react-email/components"
 
 interface NewsletterWelcomeEmailProps {
-  firstName?: string
-  fromEmail: string
-  token: string
-  serverName: string
+  readonly firstName?: string
+  readonly fromEmail: string
+  readonly token: string
+  readonly serverName: string
 }
 
 const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? ""

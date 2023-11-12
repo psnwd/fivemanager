@@ -17,13 +17,13 @@ import { Icons } from "../icons"
 import { Button } from "../ui/button"
 
 interface GiveawayCardProps {
-  id: string | number
-  title: string
-  content: string
-  image: string
-  totalKeys: number
-  remainingKey: number
-  endTime: number
+  readonly id: string | number
+  readonly title: string
+  readonly content: string
+  readonly image: string
+  readonly totalKeys: number
+  readonly remainingKey: number
+  readonly endTime: number
 }
 
 function GiveawayCard({
@@ -71,7 +71,7 @@ function GiveawayCard({
           <Progress value={50} className="relative h-4 w-[60%]" />
           <span className="absolute text-[10px] font-semibold text-green-600">
             57% KEYS LEFT
-          </span>
+          </span>{" "}
           100%
         </div>
       </CardContent>
@@ -83,7 +83,7 @@ function GiveawayCard({
           onClick={onRedeem}
         >
           {isLoading ? (
-            <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+            <Icons.Spinner className="mr-2 h-4 w-4 animate-spin" />
           ) : null}
           Redeem
         </Button>

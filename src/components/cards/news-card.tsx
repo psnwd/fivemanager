@@ -12,10 +12,10 @@ import {
 import { Button } from "../ui/button"
 
 interface NewsCardProps {
-  id: string | number
-  title: string
-  details: string
-  image: string
+  readonly id: string | number
+  readonly title: string
+  readonly details: string
+  readonly image: string
 }
 
 function NewsCard({ id, title, details, image }: NewsCardProps) {

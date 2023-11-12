@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Image from "next/image"
 import { db } from "@/db"
 import { asc } from "drizzle-orm"
 import { giveaway } from "drizzle/schema"
@@ -12,28 +13,40 @@ export const metadata: Metadata = {
 }
 
 async function page() {
-  const giveawayData: any = await db.query.giveaway.findMany({
+  const giveawayData: any[] = await db.query.giveaway.findMany({
     orderBy: [asc(giveaway.id)],
     limit: 6,
   })
-  console.log(giveawayData)
 
   return (
     <>
       <div className="text-2xl font-bold uppercase">GIVEAWAY</div>
-      <div className="grid grid-flow-col grid-cols-1 grid-rows-3 gap-3 md:grid-cols-3 md:grid-rows-1">
-        {giveawayData.map((giveaway: any) => (
-          <GiveawayCard
-            key={giveaway.id}
-            id={giveaway.id}
-            title={giveaway.title}
-            content={giveaway.details}
-            image="/images/home/news/gang_war_image2.jpg"
-            totalKeys={100}
-            remainingKey={50}
-            endTime={1633058400000}
-          />
-        ))}
+      <div className="grid-rows-auto grid w-full grid-flow-col grid-cols-1 gap-3 md:grid-cols-3 md:grid-rows-1">
+        {giveawayData.length ? (
+          giveawayData.map((giveaway: any) => (
+            <GiveawayCard
+              key={giveaway.id}
+              id={giveaway.id}
+              title={giveaway.title}
+              content={giveaway.details}
+              image="/images/home/news/gang_war_image2.jpg"
+              totalKeys={100}
+              remainingKey={50}
+              endTime={1633058400000}
+            />
+          ))
+        ) : (
+          <div className="col-span-3 mx-auto">
+            <Image
+              src={"/images/giveaway/giveaway_1.png"}
+              alt=""
+              className="h-100 w-96"
+              width={1920}
+              height={1080}
+            />
+            No giveaway to be found here, fam! 🚫🎁
+          </div>
+        )}
       </div>
       <div>
         <div className="my-3 text-2xl font-bold uppercase">

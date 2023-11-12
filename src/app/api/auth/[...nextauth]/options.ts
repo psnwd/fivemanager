@@ -9,6 +9,7 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     session: ({ session, user }) => {
       session.user.id = user.id
+      // session.user.role = user.role
       return session
     },
   },
@@ -18,5 +19,4 @@ export const authOptions: NextAuthOptions = {
       clientSecret: env.DISCORD_CLIENT_SECRET,
     }),
   ],
-  
 }

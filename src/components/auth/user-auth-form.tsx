@@ -18,7 +18,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
 
     setTimeout(() => {
       setIsLoading(false)
-      signIn()
+      signIn("discord")
     }, 1500)
   }
 
@@ -31,9 +31,9 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
         onClick={onSubmit}
       >
         {isLoading ? (
-          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+          <Icons.Spinner className="mr-2 h-4 w-4 animate-spin" />
         ) : (
-          <Icons.discord className="mr-2 h-4 w-4" />
+          <Icons.Discord className="mr-2 h-4 w-4" />
         )}
         Discord
       </Button>
