@@ -90,14 +90,14 @@ export const giveaway = mysqlTable(
     description: varchar("description", { length: 256 }).notNull(),
     status: int("status").notNull(),
     items: varchar("items", { length: 256 }).notNull(),
-    lastEditBy: varchar("lastEditBy", { length: 256 }).notNull(),
-    lastEditDate: varchar("lastEditDate", { length: 256 }).notNull(),
-    createdBy: varchar("createdBy", { length: 256 }).notNull(),
-    createdDate: varchar("createdDate", { length: 256 }).notNull(),
     image: varchar("image", { length: 256 }).notNull(),
     totalKeys: int("totalKeys").notNull(),
     remainingKeys: int("remainingKeys").notNull(),
     endTime: int("endTime").notNull(),
+    lastEditBy: varchar("lastEditBy", { length: 256 }).notNull(),
+    lastEditDate: varchar("lastEditDate", { length: 256 }).notNull(),
+    createdBy: varchar("createdBy", { length: 256 }).notNull(),
+    createdDate: varchar("createdDate", { length: 256 }).notNull(),
   },
   (table) => {
     return {

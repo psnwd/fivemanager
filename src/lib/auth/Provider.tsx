@@ -3,7 +3,7 @@
 import { SessionProvider } from "next-auth/react"
 
 type Props = {
-  children?: React.ReactNode
+  readonly children?: React.ReactNode
 }
 
 export default function NextAuthProvider({ children }: Props) {

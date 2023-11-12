@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { IWhitelistPlayer } from "@/types"
+import { IGiveaway } from "@/types"
 import {
   CaretSortIcon,
   ChevronDownIcon,
@@ -43,52 +43,7 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
-import { UseToast } from "../ui/use-toast"
-
-const data: IWhitelistPlayer[] = [
-  {
-    id: "fesffsees",
-    name: "hawi",
-    steam_hex: "steam:sample_1",
-    discordId: "258223336535511125",
-    status: "waiting",
-    timestamp: "2021-10-01 09:00:00",
-  },
-  {
-    id: "hfdtghfdg",
-    name: "hecker",
-    steam_hex: "steam:sample_2",
-    discordId: "258223344535511125",
-    status: "waiting",
-    timestamp: "2021-10-01 10:00:00",
-  },
-  {
-    id: "rtyrtyrty",
-    name: "catt",
-    steam_hex: "steam:sample_3",
-    discordId: "258223454535511125",
-    status: "waiting",
-    timestamp: "2021-10-01 11:00:00",
-  },
-  {
-    id: "mnbmbnmhg",
-    name: "dogg_engine",
-    steam_hex: "steam:sample_4",
-    discordId: "258223776535511125",
-    status: "waiting",
-    timestamp: "2021-10-02 06:00:00",
-  },
-  {
-    id: "tyutyutet",
-    name: "Imposter",
-    steam_hex: "steam:sample_5",
-    discordId: "258223336665511125",
-    status: "waiting",
-    timestamp: "2021-10-02 08:00:00",
-  },
-]
-
-export const columns: ColumnDef<IWhitelistPlayer>[] = [
+export const columns: ColumnDef<IGiveaway>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -109,89 +64,66 @@ export const columns: ColumnDef<IWhitelistPlayer>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "name",
+    accessorKey: "title",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Name
+          Title
           <CaretSortIcon className="ml-2 h-4 w-4" />
         </Button>
       )
     },
     cell: ({ row }) => (
-      <div className="text-center lowercase">{row.getValue("name")}</div>
+      <div className="line-clamp-1 lowercase">{row.getValue("title")}</div>
     ),
   },
   {
-    accessorKey: "steam_hex",
-    header: "Steam Hex",
-    cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("steam_hex")}</div>
-    ),
+    accessorKey: "type",
+    header: "Type",
+    cell: ({ row }) => <div className="capitalize">{row.getValue("type")}</div>,
   },
   {
-    accessorKey: "timestamp",
+    accessorKey: "start_date",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Date Time
+          Start Date
           <CaretSortIcon className="ml-2 h-4 w-4" />
         </Button>
       )
     },
     cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("timestamp")}</div>
+      <div className="lowercase">{row.getValue("start_date")}</div>
     ),
   },
   {
-    accessorKey: "actions_btn",
-    header: "Actions",
-    cell: () => {
-      const { toast } = UseToast()
-
+    accessorKey: "end_date",
+    header: ({ column }) => {
       return (
-        <div className="flex flex-wrap justify-center gap-2">
-          <Button
-            variant="secondary"
-            size="sm"
-            className="text-xs"
-            onClick={() => {
-              toast({
-                title: "User Approved",
-                description: "User has been approved and whitelisted.",
-              })
-            }}
-          >
-            Approve
-          </Button>
-          <Button
-            variant="destructive"
-            size="sm"
-            className="text-xs"
-            onClick={() => {
-              toast({
-                title: "User Rejected",
-                description: "User has been rejected from whitelist.",
-              })
-            }}
-          >
-            Reject
-          </Button>
-        </div>
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          End Date
+          <CaretSortIcon className="ml-2 h-4 w-4" />
+        </Button>
       )
     },
+    cell: ({ row }) => (
+      <div className="lowercase">{row.getValue("end_date")}</div>
+    ),
   },
   {
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
-      const server = row.original
+      const news = row.original
 
       return (
         <DropdownMenu>
@@ -204,17 +136,13 @@ export const columns: ColumnDef<IWhitelistPlayer>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(server.id)}
+              onClick={() => navigator.clipboard.writeText(news.id.toString())}
             >
-              Copy player ID
-            </DropdownMenuItem>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(server.id)}
-            >
-              Copy discord ID
+              Copy news ID
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View player details</DropdownMenuItem>
+            <DropdownMenuItem>View news</DropdownMenuItem>
+            <DropdownMenuItem>View news details</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       )
@@ -222,7 +150,7 @@ export const columns: ColumnDef<IWhitelistPlayer>[] = [
   },
 ]
 
-export function PlayerWaitingListTable() {
+export function GiveawayListTable({ data }: { readonly data: IGiveaway[] }) {
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -252,12 +180,12 @@ export function PlayerWaitingListTable() {
 
   return (
     <div className="w-full">
-      <div className="flex items-center gap-2 py-4">
+      <div className="flex items-center py-4">
         <Input
-          placeholder="Filter player name..."
-          value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
+          placeholder="Filter news title..."
+          value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
-            table.getColumn("name")?.setFilterValue(event.target.value)
+            table.getColumn("title")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />
