@@ -19,6 +19,10 @@ export default async function Home() {
     .where(eq(events.status, 1))
     .limit(3)
     .orderBy(asc(events.id))
+    .catch((error) => {
+      console.log("failed to load events")
+      return []
+    })
 
   const latestNews = await db
     .select()
@@ -26,6 +30,10 @@ export default async function Home() {
     .where(eq(news.status, 1))
     .limit(3)
     .orderBy(asc(news.id))
+    .catch((error) => {
+      console.log("failed to load news")
+      return []
+    })
 
   const latestFeedbacks = await db
     .select()
@@ -33,6 +41,10 @@ export default async function Home() {
     .where(eq(feedbacks.status, 1))
     .limit(3)
     .orderBy(asc(feedbacks.id))
+    .catch((error) => {
+      console.log("failed to load feedbacks")
+      return []
+    })
 
   return (
     <section className="container flex flex-col gap-4 pt-4 text-center lg:items-center lg:gap-8 lg:pb-5 lg:pt-20">
@@ -63,6 +75,7 @@ export default async function Home() {
       </div>
       <div className="flex flex-1 justify-center lg:justify-end">
         <Image
+          priority
           src="/images/home/home_1.png"
           width={500}
           height={500}
@@ -110,13 +123,14 @@ export default async function Home() {
         <div className="my-5 text-2xl font-bold uppercase">Latest News</div>
         <div className="flex flex-col gap-3 md:flex-row">
           {latestNews?.map((news) => (
-            <NewsCard
-              key={news.id}
-              id={news.id}
-              title={news.title}
-              details={news.description}
-              image={news.image}
-            />
+            <Suspense key={news.id} fallback={<span></span>}>
+              <NewsCard
+                id={news.id}
+                title={news.title}
+                details={news.description}
+                image={news.image}
+              />
+            </Suspense>
           ))}
         </div>
       </div>
@@ -125,14 +139,15 @@ export default async function Home() {
         <div className="flex flex-col gap-3 md:flex-row">
           {latestFeedbacks.length ? (
             latestFeedbacks?.map((feedback) => (
-              <FeedbackCard
-                key={feedback.id}
-                title={feedback.title}
-                content={feedback.content}
-                authorName={feedback.authorName}
-                authorAvatar={feedback.authorAvatar}
-                authorJob={feedback.authorJob}
-              />
+              <Suspense key={feedback.id} fallback={<span></span>}>
+                <FeedbackCard
+                  title={feedback.title}
+                  content={feedback.content}
+                  authorName={feedback.authorName}
+                  authorAvatar={feedback.authorAvatar}
+                  authorJob={feedback.authorJob}
+                />
+              </Suspense>
             ))
           ) : (
             <div className="basis-[100%]">Unposible, no reviews? 🤔</div>
@@ -145,6 +160,7 @@ export default async function Home() {
           {siteConfig.contents.map((content) => (
             <iframe
               key={content.id}
+              title="youtube fivem content"
               width="500px"
               height="auto"
               src={`${content.embed}?rel=0&amp;controls=0`}

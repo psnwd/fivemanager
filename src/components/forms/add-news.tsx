@@ -1,9 +1,11 @@
 "use client"
 
+import React from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 
+import { UploadButton } from "@/lib/uploadthing"
 import { Button } from "@/components/ui/button"
 import { DatePicker } from "@/components/ui/date-picker"
 import {
@@ -129,7 +131,20 @@ function AddNews() {
                     <FormItem>
                       <FormLabel>Picture</FormLabel>
                       <FormControl>
-                        <Input type="file" {...field} />
+                        {/* <Input type="file" {...field} /> */}
+
+                        <UploadButton
+                          endpoint="serverImage"
+                          onClientUploadComplete={(res) => {
+                            // Do something with the response
+                            console.log("Files: ", res)
+                            alert("Upload Completed")
+                          }}
+                          onUploadError={(error: Error) => {
+                            // Do something with the error.
+                            alert(`ERROR! ${error.message}`)
+                          }}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>

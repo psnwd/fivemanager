@@ -29,7 +29,7 @@ function FeedbackCard({
         <CardTitle className="line-clamp-1 text-base">{title}</CardTitle>
       </CardHeader>
       <CardContent>
-        <p className=" text-sm">{content}</p>
+        <p className="text-sm">{content}</p>
       </CardContent>
       <CardFooter className="flex gap-1 text-sm">
         <Avatar className="h-6 w-6 md:h-9 md:w-9">

@@ -22,7 +22,6 @@ export async function MainNav({
   ...props
 }: MainNavProps & React.HTMLProps<HTMLElement>) {
   const pathname = usePathname()
-  console.log(session)
   return (
     <nav
       className={cn(
