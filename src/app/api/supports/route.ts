@@ -1,5 +1,5 @@
-import { db } from "@/db"
-import { supports } from "@/db/schema/supports"
+import { db } from "@/lib/database"
+import { supports } from "@/lib/database/schema/supports"
 
 export async function GET() {
   try {

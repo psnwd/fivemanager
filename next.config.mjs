@@ -2,6 +2,7 @@ await import("./src/env.mjs")
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  productionBrowserSourceMaps: false,
   reactStrictMode: false,
   poweredByHeader: false,
   images: {

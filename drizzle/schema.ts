@@ -1,188 +1,184 @@
-import { sql } from "drizzle-orm"
 import {
-  AnyMySqlColumn,
   index,
-  int,
-  mysqlSchema,
-  mysqlTable,
+  pgTable,
   primaryKey,
   serial,
   text,
   timestamp,
-  tinyint,
   varchar,
-} from "drizzle-orm/mysql-core"
+  integer,
+  pgPolicy,
+  // pgRole, // TODO: Add role permissions
+  uuid,
+} from "drizzle-orm/pg-core"
+import { sql } from 'drizzle-orm';
 
-export const account = mysqlTable(
+export const account = pgTable(
   "account",
   {
-    userId: varchar("userId", { length: 255 }).notNull(),
+    user_id: uuid().notNull(),
     type: varchar("type", { length: 255 }).notNull(),
     provider: varchar("provider", { length: 255 }).notNull(),
     providerAccountId: varchar("providerAccountId", { length: 255 }).notNull(),
     refreshToken: varchar("refresh_token", { length: 255 }),
     accessToken: varchar("access_token", { length: 255 }),
-    expiresAt: int("expires_at"),
+    expiresAt: integer("expires_at"),
     tokenType: varchar("token_type", { length: 255 }),
     scope: varchar("scope", { length: 255 }),
     idToken: text("id_token"),
     sessionState: varchar("session_state", { length: 255 }),
     metamaskAccount: varchar("metamask_account", { length: 255 }),
-  },
-  (table) => {
-    return {
-      accountProviderProviderAccountId: primaryKey(
-        table.provider,
-        table.providerAccountId
-      ),
-    }
-  }
+    createdAt: timestamp('created_at', { withTimezone: true, mode: 'string' }),
+    deletedAt: timestamp('deleted_at', { withTimezone: true, mode: 'string' }),
+  }, (t) => [
+  primaryKey({ columns: [
+    t.user_id, t.provider, t.providerAccountId
+  ]}),
+  index("providerAccountId_idx").on(t.providerAccountId),
+  index("provider_idx").on(t.provider),
+  index("user_id_idx").on(t.user_id),
+	pgPolicy('policy', {
+		as: 'permissive',
+    // to: admin,
+		for: 'delete',
+		using: sql``,
+		withCheck: sql``,
+	})],
 )
 
-export const events = mysqlTable(
+export const events = pgTable(
   "events",
   {
-    id: serial("id").notNull(),
+    id: serial("id").primaryKey().notNull(),
     title: varchar("title", { length: 256 }).notNull(),
     image: varchar("image", { length: 256 }).notNull(),
     description: varchar("description", { length: 256 }).notNull(),
-    status: int("status").notNull(),
+    status: integer("status").notNull(),
     lastEditBy: varchar("lastEditBy", { length: 256 }).notNull(),
     lastEditDate: varchar("lastEditDate", { length: 256 }).notNull(),
     createdBy: varchar("createdBy", { length: 256 }).notNull(),
     createdDate: varchar("createdDate", { length: 256 }).notNull(),
   },
-  (table) => {
-    return {
-      eventsProviderProviderAccountId: primaryKey(table.id),
-    }
-  }
+  (t) => [
+    index("title_idx").on(t.title),
+    index("status_idx").on(t.status),
+  ]
 )
 
-export const feedbacks = mysqlTable(
+export const feedbacks = pgTable(
   "feedbacks",
   {
-    id: serial("id").notNull(),
+    id: serial("id").primaryKey().notNull(),
     title: varchar("title", { length: 256 }).notNull(),
     authorJob: varchar("authorJob", { length: 256 }).notNull(),
     authorName: varchar("authorName", { length: 256 }).notNull(),
     content: varchar("content", { length: 256 }).notNull(),
-    status: int("status").notNull(),
+    status: integer("status").notNull(),
     lastEditBy: varchar("lastEditBy", { length: 256 }).notNull(),
     lastEditDate: varchar("lastEditDate", { length: 256 }).notNull(),
     createdBy: varchar("createdBy", { length: 256 }).notNull(),
     createdDate: varchar("createdDate", { length: 256 }).notNull(),
     authorAvatar: varchar("authorAvatar", { length: 256 }).notNull(),
   },
-  (table) => {
-    return {
-      feedbacksProviderProviderAccountId: primaryKey(table.id),
-    }
-  }
+  (t) => [
+    index("title_idx").on(t.title),
+    index("status_idx").on(t.status),
+  ]
 )
 
-export const giveaway = mysqlTable(
+export const giveaway = pgTable(
   "giveaway",
   {
-    id: serial("id").notNull(),
+    id: serial("id").primaryKey().notNull(),
     name: varchar("name", { length: 256 }).notNull(),
     type: varchar("type", { length: 256 }).notNull(),
     description: varchar("description", { length: 256 }).notNull(),
-    status: int("status").notNull(),
+    status: integer("status").notNull(),
     items: varchar("items", { length: 256 }).notNull(),
     image: varchar("image", { length: 256 }).notNull(),
-    totalKeys: int("totalKeys").notNull(),
-    remainingKeys: int("remainingKeys").notNull(),
-    endTime: int("endTime").notNull(),
+    totalKeys: integer("totalKeys").notNull(),
+    remainingKeys: integer("remainingKeys").notNull(),
+    endTime: integer("endTime").notNull(),
     lastEditBy: varchar("lastEditBy", { length: 256 }).notNull(),
     lastEditDate: varchar("lastEditDate", { length: 256 }).notNull(),
     createdBy: varchar("createdBy", { length: 256 }).notNull(),
     createdDate: varchar("createdDate", { length: 256 }).notNull(),
   },
-  (table) => {
-    return {
-      giveawayProviderProviderAccountId: primaryKey(table.id),
-    }
-  }
+  (t) => [
+    index("name_idx").on(t.name),
+    index("type_idx").on(t.type),
+    index("status_idx").on(t.status),
+    index("endTime_idx").on(t.endTime),
+  ]
 )
 
-export const giveawayItem = mysqlTable(
+export const giveawayItem = pgTable(
   "giveawayItem",
   {
-    id: serial("id").notNull(),
-    giveawayId: int("giveawayId").notNull(),
+    giveawayId: integer("id").primaryKey().notNull(),
     name: varchar("name", { length: 256 }).notNull(),
     image: varchar("image", { length: 256 }).notNull(),
     description: varchar("description", { length: 256 }).notNull(),
     createdBy: varchar("createdBy", { length: 256 }).notNull(),
     createdDate: varchar("createdDate", { length: 256 }).notNull(),
   },
-  (table) => {
-    return {
-      giveawayItemProviderProviderAccountId: primaryKey(table.id),
-    }
-  }
 )
 
-export const news = mysqlTable(
+export const news = pgTable(
   "news",
   {
-    id: serial("id").notNull(),
+    id: serial("id").primaryKey().notNull(),
     title: varchar("title", { length: 256 }).notNull(),
     image: varchar("image", { length: 256 }).notNull(),
     description: varchar("description", { length: 2000 }).notNull(),
-    status: int("status").notNull(),
+    status: integer("status").notNull(),
     lastEditBy: varchar("lastEditBy", { length: 256 }).notNull(),
     lastEditDate: varchar("lastEditDate", { length: 256 }).notNull(),
     createdBy: varchar("createdBy", { length: 256 }).notNull(),
     createdDate: varchar("createdDate", { length: 256 }).notNull(),
   },
-  (table) => {
-    return {
-      newsProviderProviderAccountId: primaryKey(table.id),
-    }
-  }
+  (t) => [
+    index("title_idx").on(t.title),
+    index("status_idx").on(t.status),
+  ]
 )
 
-export const newsletter = mysqlTable(
+export const newsletter = pgTable(
   "newsletter",
   {
-    id: serial("id").notNull(),
+    id: serial("id").primaryKey().notNull(),
     userId: varchar("userId", { length: 191 }),
     email: varchar("email", { length: 191 }).notNull(),
     token: varchar("token", { length: 191 }).notNull(),
-    newsletter: tinyint("newsletter").default(0).notNull(),
-    marketing: tinyint("marketing").default(0).notNull(),
-    transactional: tinyint("transactional").default(0).notNull(),
+    newsletter: integer("newsletter").default(0).notNull(),
+    marketing: integer("marketing").default(0).notNull(),
+    transactional: integer("transactional").default(0).notNull(),
     createdAt: timestamp("createdAt", { mode: "string" }).defaultNow(),
   },
-  (table) => {
-    return {
-      emailIdx: index("email_idx").on(table.email),
-      newsletterProviderProviderAccountId: primaryKey(table.id),
-    }
-  }
+  (t) => [
+    index("email_idx").on(t.email),
+    index("userId_idx").on(t.userId),
+  ]
 )
 
-export const playerName = mysqlTable(
+export const playerName = pgTable(
   "playerName",
   {
-    id: serial("id").notNull(),
+    id: serial("id").primaryKey().notNull(),
     playerId: varchar("playerId", { length: 256 }).notNull(),
     name: varchar("name", { length: 256 }).notNull(),
     createdAt: varchar("createdAt", { length: 256 }).notNull(),
   },
-  (table) => {
-    return {
-      playerNameProviderProviderAccountId: primaryKey(table.id),
-    }
-  }
+  (t) => [
+    index("playerId_idx").on(t.playerId),
+    index("name_idx").on(t.name),
+  ]
 )
 
-export const players = mysqlTable(
+export const players = pgTable(
   "players",
   {
-    id: serial("id").notNull(),
+    id: serial("id").primaryKey().notNull(),
     name: varchar("name", { length: 256 }).notNull(),
     discordId: varchar("discordId", { length: 256 }).notNull(),
     email: varchar("email", { length: 256 }).notNull(),
@@ -190,36 +186,30 @@ export const players = mysqlTable(
     lastLoginIp: varchar("lastLoginIp", { length: 256 }).notNull(),
     lastLoginDate: varchar("lastLoginDate", { length: 256 }).notNull(),
   },
-  (table) => {
-    return {
-      nameIdx: index("name_idx").on(table.name),
-      playersProviderProviderAccountId: primaryKey(table.id),
-    }
-  }
+  (t) => [
+    index("name_idx").on(t.name)
+  ]
 )
 
-export const servers = mysqlTable(
+export const servers = pgTable(
   "servers",
   {
-    id: serial("id").notNull(),
+    id: serial("id").primaryKey().notNull(),
     name: varchar("name", { length: 256 }).notNull(),
     ip: varchar("ip", { length: 256 }).notNull(),
-    port: int("port").notNull(),
-    status: int("status").notNull(),
+    port: integer("port").notNull(),
+    status: integer("status").notNull(),
     lastEditBy: varchar("lastEditBy", { length: 256 }).notNull(),
     lastEditDate: varchar("lastEditDate", { length: 256 }).notNull(),
     createdBy: varchar("createdBy", { length: 256 }).notNull(),
     createdDate: varchar("createdDate", { length: 256 }).notNull(),
   },
-  (table) => {
-    return {
-      ipIdx: index("ip_idx").on(table.ip),
-      serversProviderProviderAccountId: primaryKey(table.id),
-    }
-  }
+  (t) => [
+    index("ip_idx").on(t.ip),
+  ]
 )
 
-export const session = mysqlTable(
+export const session = pgTable(
   "session",
   {
     sessionToken: varchar("sessionToken", { length: 255 }).notNull(),
@@ -229,21 +219,16 @@ export const session = mysqlTable(
     browser: varchar("browser", { length: 255 }),
     os: varchar("os", { length: 255 }),
     location: varchar("location", { length: 255 }),
-  },
-  (table) => {
-    return {
-      sessionProviderProviderAccountId: primaryKey(
-        table.userId,
-        table.sessionToken
-      ),
-    }
-  }
-)
+  }, (t) => [
+  primaryKey({ columns: [
+    t.userId, t.sessionToken
+  ]}),
+]);
 
-export const supports = mysqlTable(
+export const supports = pgTable(
   "supports",
   {
-    id: serial("id").notNull(),
+    id: serial("id").primaryKey().notNull(),
     userId: varchar("userId", { length: 256 }).notNull(),
     message: varchar("message", { length: 256 }).notNull(),
     date: varchar("date", { length: 256 }).notNull(),
@@ -252,54 +237,47 @@ export const supports = mysqlTable(
     supportedDate: varchar("supportedDate", { length: 256 }).notNull(),
     supportedIp: varchar("supportedIp", { length: 256 }).notNull(),
     supportedReason: varchar("supportedReason", { length: 256 }).notNull(),
-    supportedStatus: int("supportedStatus").notNull(),
+    supportedStatus: integer("supportedStatus").notNull(),
   },
-  (table) => {
-    return {
-      supportsProviderProviderAccountId: primaryKey(table.id),
-    }
-  }
 )
 
-export const user = mysqlTable(
+export const user = pgTable(
   "user",
   {
-    id: varchar("id", { length: 255 }).notNull(),
+    id: uuid().primaryKey().notNull(),
     name: varchar("name", { length: 255 }),
     email: varchar("email", { length: 255 }).notNull(),
     emailVerified: timestamp("emailVerified", {
-      fsp: 3,
       mode: "string",
     }).defaultNow(),
     image: varchar("image", { length: 255 }),
     role: varchar("role", { length: 255 }).default("user").notNull(),
     dob: timestamp("dob", { mode: "string" }),
-  },
-  (table) => {
-    return {
-      userProviderProviderAccountId: primaryKey(table.id),
-    }
-  }
+  }, (t) => [
+  index("email_idx").on(t.email),
+  index("role_idx").on(t.role),
+	pgPolicy('policy', {
+		as: 'permissive',
+    // to: admin,
+		for: 'delete',
+		using: sql``,
+		withCheck: sql``,
+	})],
 )
 
-export const verificationToken = mysqlTable(
+export const verificationToken = pgTable(
   "verificationToken",
   {
-    identifier: varchar("identifier", { length: 255 }).notNull(),
+    identifier: varchar("identifier", { length: 255 }).primaryKey().notNull(),
     token: varchar("token", { length: 255 }).notNull(),
     expires: timestamp("expires", { mode: "string" }).notNull(),
   },
-  (table) => {
-    return {
-      verificationTokenProviderProviderAccountId: primaryKey(table.identifier),
-    }
-  }
 )
 
-export const whitelist = mysqlTable(
+export const whitelist = pgTable(
   "whitelist",
   {
-    id: serial("id").notNull(),
+    id: serial("id").primaryKey().notNull(),
     discordId: varchar("discordId", { length: 256 }).notNull(),
     discordName: varchar("discordName", { length: 256 }).notNull(),
     steamId: varchar("steamId", { length: 256 }).notNull(),
@@ -312,12 +290,9 @@ export const whitelist = mysqlTable(
     approvedDate: varchar("approvedDate", { length: 256 }),
     approvedIp: varchar("approvedIp", { length: 256 }),
     approvedReason: varchar("approvedReason", { length: 256 }),
-    approvedStatus: int("approvedStatus").notNull(),
+    approvedStatus: integer("approvedStatus").notNull(),
   },
-  (table) => {
-    return {
-      discordIdIdx: index("discordId_idx").on(table.discordId),
-      whitelistProviderProviderAccountId: primaryKey(table.id),
-    }
-  }
+  (t) => [
+    index("discordId_idx").on(t.discordId)
+  ]
 )

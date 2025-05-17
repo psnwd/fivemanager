@@ -1,6 +1,7 @@
-import { db } from "@/db"
 import { eq, or } from "drizzle-orm"
 import { players } from "drizzle/schema"
+
+import { db } from "@/lib/database"
 
 // get specific player with id, name, discordId, email or cfxId next js 13 route
 export async function GET(request: Request) {

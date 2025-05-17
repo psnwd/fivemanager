@@ -1,7 +1,8 @@
-import { db } from "@/db"
-import { insertWhitelistSchema } from "@/db/schema/whitelist"
 import { eq } from "drizzle-orm"
 import { whitelist } from "drizzle/schema"
+
+import { db } from "@/lib/database"
+import { insertWhitelistSchema } from "@/lib/database/schema/whitelist"
 
 export async function GET() {
   const result = await db

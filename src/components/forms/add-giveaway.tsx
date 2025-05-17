@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { dashboardConfig } from "@/config/dashboard"
+import { saveGiveaway } from "@/lib/actions/server"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
@@ -34,7 +35,6 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { Textarea } from "@/components/ui/textarea"
-import { saveGiveaway } from "@/app/_actions/server"
 
 function AddGiveaway() {
   const [open, setOpen] = React.useState(false)

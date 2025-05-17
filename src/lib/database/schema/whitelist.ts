@@ -28,7 +28,7 @@ export const whitelist = mysqlTable(
     approvedStatus: int("approvedStatus").notNull(), // Status of the whitelist => 0 = Pending, 1 = Approved, 2 = Denied
   },
   (whitelist) => ({
-    compoundKey: primaryKey(whitelist.id),
+    compoundKey: primaryKey({ columns: [whitelist.id] }),
     discordIdIdx: index("discordId_idx").on(whitelist.discordId),
   })
 )

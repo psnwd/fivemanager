@@ -8,13 +8,13 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod"
 import type { z } from "zod"
 
-export const news = mysqlTable(
-  "news",
+export const events = mysqlTable(
+  "events",
   {
     id: serial("id").primaryKey(),
     title: varchar("title", { length: 256 }).notNull(),
     image: varchar("image", { length: 256 }).notNull(),
-    description: varchar("description", { length: 2000 }).notNull(),
+    description: varchar("description", { length: 256 }).notNull(),
     status: int("status").notNull(),
     lastEditedBy: varchar("lastEditBy", { length: 256 }).notNull(),
     lastEditedAt: varchar("lastEditDate", { length: 256 }).notNull(),
@@ -22,16 +22,16 @@ export const news = mysqlTable(
     createdAt: varchar("createdDate", { length: 256 }).notNull(),
   },
   (event) => ({
-    compoundKey: primaryKey(event.id),
+    compoundKey: primaryKey({ columns: [event.id] }),
   })
 )
 
 // Schema for CRUD - used to validate API requests
-export const insertNewsSchema = createInsertSchema(news)
-export const selectNewsSchema = createSelectSchema(news)
-export const newsIdSchema = selectNewsSchema.pick({ id: true })
-export const updateNewsSchema = selectNewsSchema
+export const insertEventsSchema = createInsertSchema(events)
+export const selectEventsSchema = createSelectSchema(events)
+export const eventsIdSchema = selectEventsSchema.pick({ id: true })
+export const updateEventsSchema = selectEventsSchema
 
-export type News = z.infer<typeof selectNewsSchema>
-export type NewNews = z.infer<typeof insertNewsSchema>
-export type NewsId = z.infer<typeof newsIdSchema>["id"]
+export type Events = z.infer<typeof selectEventsSchema>
+export type NewEvents = z.infer<typeof insertEventsSchema>
+export type EventsId = z.infer<typeof eventsIdSchema>["id"]

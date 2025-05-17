@@ -1,8 +1,9 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { db } from "@/db"
 import { eq } from "drizzle-orm"
 import { news } from "drizzle/schema"
+
+import { db } from "@/lib/database"
 
 export const metadata: Metadata = {
   title: "News title",
@@ -28,11 +29,7 @@ async function page({ params }: NewsPageProps) {
     return notFound()
   }
 
-  return (
-    <>
-      <div>page</div>
-    </>
-  )
+  return <div>page</div>
 }
 
 export default page
