@@ -1,11 +1,11 @@
 import { Suspense } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { db } from "@/db"
 import { asc, eq } from "drizzle-orm"
 import { events, feedbacks, news } from "drizzle/schema"
 
 import { siteConfig } from "@/config/site"
+import { db } from "@/lib/database"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import EventCard from "@/components/cards/event-card"

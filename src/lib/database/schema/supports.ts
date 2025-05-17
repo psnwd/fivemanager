@@ -23,7 +23,7 @@ export const supports = mysqlTable(
     supportedStatus: int("supportedStatus").notNull(),
   },
   (support) => ({
-    compoundKey: primaryKey(support.id),
+    compoundKey: primaryKey({ columns: [support.id] }),
   })
 )
 

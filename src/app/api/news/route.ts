@@ -1,5 +1,5 @@
-import { db } from "@/db"
-import { news } from "@/db/schema/news"
+import { db } from "@/lib/database"
+import { news } from "@/lib/database/schema/news"
 
 export async function GET() {
   try {

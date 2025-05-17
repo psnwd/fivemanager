@@ -1,9 +1,9 @@
 import type { Metadata } from "next"
 import Image from "next/image"
-import { db } from "@/db"
 import { asc } from "drizzle-orm"
 import { giveaway } from "drizzle/schema"
 
+import { db } from "@/lib/database"
 import GiveawayCard from "@/components/cards/giveaway-card"
 
 export const metadata: Metadata = {

@@ -1,12 +1,12 @@
 "use server"
 
 import { revalidatePath } from "next/cache"
-import { db } from "@/db"
-import { newsletter } from "@/db/schema/newsletter"
 import { env } from "@/env.mjs"
 import { eq } from "drizzle-orm"
 import { type z } from "zod"
 
+import { db } from "@/lib/database"
+import { newsletter } from "@/lib/database/schema/newsletter"
 import { resend } from "@/lib/resend"
 import { updateEmailPreferencesSchema } from "@/lib/validations/email"
 import NewsletterWelcomeEmail from "@/components/emails/welcome-email"

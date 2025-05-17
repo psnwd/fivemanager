@@ -21,7 +21,7 @@ export const players = mysqlTable(
     lastLoginDate: varchar("lastLoginDate", { length: 256 }).notNull(),
   },
   (player) => ({
-    compoundKey: primaryKey(player.id),
+    compoundKey: primaryKey({ columns: [player.id] }),
     nameIdx: index("name_idx").on(player.name),
   })
 )
@@ -39,7 +39,7 @@ export const playerName = mysqlTable(
     createdAt: varchar("createdAt", { length: 256 }).notNull(),
   },
   (playerName) => ({
-    compoundKey: primaryKey(playerName.id),
+    compoundKey: primaryKey({ columns: [playerName.id] }),
   })
 )
 

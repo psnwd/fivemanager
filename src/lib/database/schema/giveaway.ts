@@ -30,7 +30,7 @@ export const giveaway = mysqlTable(
     createdAt: varchar("createdDate", { length: 256 }).notNull(),
   },
   (giveaway) => ({
-    compoundKey: primaryKey(giveaway.id),
+    compoundKey: primaryKey({ columns: [giveaway.id] }),
   })
 )
 
@@ -46,7 +46,7 @@ export const giveawayItem = mysqlTable(
     createdAt: varchar("createdDate", { length: 256 }).notNull(),
   },
   (giveawayItem) => ({
-    compoundKey: primaryKey(giveawayItem.id),
+    compoundKey: primaryKey({ columns: [giveawayItem.id] }),
   })
 )
 

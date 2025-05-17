@@ -23,7 +23,7 @@ export const servers = mysqlTable(
     createdAt: varchar("createdDate", { length: 256 }).notNull(),
   },
   (server) => ({
-    compoundKey: primaryKey(server.id),
+    compoundKey: primaryKey({ columns: [server.id] }),
     ipIdx: index("ip_idx").on(server.ip),
   })
 )

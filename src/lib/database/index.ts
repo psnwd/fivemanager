@@ -1,6 +1,5 @@
 import { env } from "@/env.mjs"
-import { connect } from "@planetscale/database"
-import { drizzle } from "drizzle-orm/planetscale-serverless"
+import { drizzle } from "drizzle-orm/node-postgres"
 
 import * as auth from "./schema/auth"
 import * as events from "./schema/events"
@@ -13,11 +12,12 @@ import * as servers from "./schema/servers"
 import * as supports from "./schema/supports"
 import * as whitelist from "./schema/whitelist"
 
-const connection = connect({
-  url: env.DATABASE_URL,
-})
-
-export const db = drizzle(connection, {
+// You can specify any property from the node-postgres connection options
+export const db = drizzle({
+  connection: {
+    connectionString: env.DATABASE_URL,
+    ssl: true,
+  },
   schema: {
     ...auth,
     ...events,

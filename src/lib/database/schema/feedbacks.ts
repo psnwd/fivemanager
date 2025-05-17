@@ -24,7 +24,7 @@ export const feedbacks = mysqlTable(
     createdAt: varchar("createdDate", { length: 256 }).notNull(),
   },
   (feedback) => ({
-    compoundKey: primaryKey(feedback.id),
+    compoundKey: primaryKey({ columns: [feedback.id] }),
   })
 )
 

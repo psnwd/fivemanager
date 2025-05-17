@@ -23,7 +23,7 @@ export const newsletter = mysqlTable(
     createdAt: timestamp("createdAt").defaultNow(),
   },
   (newsletter) => ({
-    compoundKey: primaryKey(newsletter.id),
+    compoundKey: primaryKey({ columns: [newsletter.id] }),
     emailIdx: index("email_idx").on(newsletter.email),
   })
 )

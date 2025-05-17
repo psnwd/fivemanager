@@ -1,10 +1,10 @@
-import { db } from "@/db"
-import { newsletter } from "@/db/schema/newsletter"
 import { env } from "@/env.mjs"
 import { eq } from "drizzle-orm"
 import { type ErrorResponse } from "resend"
 import { z } from "zod"
 
+import { db } from "@/lib/database"
+import { newsletter } from "@/lib/db/schema/newsletter"
 import { resend } from "@/lib/resend"
 import { subscribeToNewsletterSchema } from "@/lib/validations/email"
 import NewsletterWelcomeEmail from "@/components/emails/welcome-email"

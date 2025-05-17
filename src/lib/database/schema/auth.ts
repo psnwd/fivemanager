@@ -43,7 +43,9 @@ export const accounts = mysqlTable(
     metamask_account: varchar("metamask_account", { length: 255 }),
   },
   (account) => ({
-    compoundKey: primaryKey(account.provider, account.providerAccountId),
+    compoundKey: primaryKey({
+      columns: [account.provider, account.providerAccountId],
+    }),
   })
 )
 
@@ -65,6 +67,6 @@ export const verificationTokens = mysqlTable(
     expires: timestamp("expires", { mode: "date" }).notNull(),
   },
   (vt) => ({
-    compoundKey: primaryKey(vt.identifier, vt.token),
+    compoundKey: primaryKey({ columns: [vt.identifier, vt.token] }),
   })
 )

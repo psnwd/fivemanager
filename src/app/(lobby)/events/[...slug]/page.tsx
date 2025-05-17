@@ -1,10 +1,11 @@
 import type { Metadata } from "next"
 import Image from "next/image"
 import { notFound } from "next/navigation"
-import { db } from "@/db"
 import { env } from "@/env.mjs"
 import { eq } from "drizzle-orm"
 import { events } from "drizzle/schema"
+
+import { db } from "@/lib/database"
 
 export const metadata: Metadata = {
   metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),
