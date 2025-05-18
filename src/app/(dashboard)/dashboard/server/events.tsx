@@ -1,7 +1,7 @@
+import { getEvents } from "@/lib/actions/server"
 import { TabsContent } from "@/components/ui/tabs"
 import AddEvent from "@/components/forms/add-event"
 import { EventListTable } from "@/components/tables/event-list-table"
-import { getEvents } from "@/app/_actions/server"
 
 async function Events() {
   const data = await getEvents()

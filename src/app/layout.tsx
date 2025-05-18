@@ -21,7 +21,7 @@ export default function RootLayout({
   readonly children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <NextAuthProvider>
           <ThemeProvider

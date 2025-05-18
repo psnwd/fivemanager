@@ -10,12 +10,10 @@ export const metadata: Metadata = {
 
 function page() {
   return (
-    <>
-      <div className="my-3 flex flex-col items-center">
-        <div className="mb-5 text-2xl font-bold uppercase">Contact</div>
-        <ContactForm />
-      </div>
-    </>
+    <div className="my-3 flex flex-col items-center">
+      <div className="mb-5 text-2xl font-bold uppercase">Contact</div>
+      <ContactForm />
+    </div>
   )
 }
 

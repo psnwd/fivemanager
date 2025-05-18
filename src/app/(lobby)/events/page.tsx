@@ -1,8 +1,8 @@
 import type { Metadata } from "next"
-import { db } from "@/db"
 import { asc } from "drizzle-orm"
 import { events } from "drizzle/schema"
 
+import { db } from "@/lib/database"
 import EventCard from "@/components/cards/event-card"
 
 export const metadata: Metadata = {

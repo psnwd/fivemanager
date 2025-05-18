@@ -1,7 +1,8 @@
-import { db } from "@/db"
-import { insertPlayersSchema } from "@/db/schema/players"
 import { eq } from "drizzle-orm"
 import { players } from "drizzle/schema"
+
+import { db } from "@/lib/database"
+import { insertPlayersSchema } from "@/lib/database/schema/players"
 
 export async function GET() {
   try {

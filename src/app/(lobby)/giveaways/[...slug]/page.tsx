@@ -1,10 +1,10 @@
 import type { Metadata } from "next"
 import Image from "next/image"
 import { notFound } from "next/navigation"
-import { db } from "@/db"
 import { eq } from "drizzle-orm"
 import { giveaway } from "drizzle/schema"
 
+import { db } from "@/lib/database"
 import GiveawayPageCard from "@/components/cards/giveaway-page-card"
 
 export const metadata: Metadata = {

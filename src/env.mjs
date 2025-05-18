@@ -8,34 +8,75 @@ export const env = createEnv({
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),
-    DATABASE_URL: z.string().min(1),
+
     NEXT_PUBLIC_APP_URL: z.string().min(1),
-    EMAIL_FROM_ADDRESS: z.string().min(1).email(),
+
     NEXTAUTH_SECRET:
       process.env.NODE_ENV === "production"
         ? z.string().min(1)
         : z.string().min(1).optional(),
     NEXTAUTH_URL: z.preprocess(
-      // This makes Vercel deployments not fail if you don't set NEXTAUTH_URL
-      // Since NextAuth.js automatically uses the VERCEL_URL if present.
       (str) => process.env.NEXTAUTH_URL ?? str,
-      // VERCEL_URL doesn't include `https` so it cant be validated as a URL
       process.env.NEXTAUTH_URL ? z.string().min(1) : z.string().url()
     ),
-    DISCORD_CLIENT_ID: z.string().min(1),
-    DISCORD_CLIENT_SECRET: z.string().min(1),
+
+    DATABASE_URL: z.string().min(1),
+    DATABASE_HOST: z.string().min(1),
+    DATABASE_PORT: z.coerce.number().default(3306).min(3000).max(65535),
+    DATABASE_USERNAME: z.string().min(1),
+    DATABASE_PASSWORD: z.string().min(1),
+    DATABASE_NAME: z.string().min(1),
+    DATABASE_SSL: z
+      .enum(["true", "false"])
+      .default("false")
+      .transform((val) => val === "true"),
+
     RESEND_API_KEY: z.string().min(1),
+    EMAIL_FROM_ADDRESS: z.string().min(1).email(),
+
+    AUTH_DISCORD_ID: z.string().min(1),
+    AUTH_DISCORD_SECRET: z.string().min(1),
+
+    UPLOADTHING_SECRET: z.string().min(1),
+    UPLOADTHING_ENDPOINT: z.string().min(1),
+
+    JWT_SECRET: z
+      .string()
+      .min(1)
+      .transform((val) => {
+        if (val.length < 32) {
+          throw new Error("JWT_SECRET must be at least 32 characters long")
+        }
+        return val
+      }),
   },
   client: {
-    // NEXT_PUBLIC_PUBLISHABLE_KEY: z.string().min(1),
+    NEXT_PUBLIC_PUBLISHABLE_KEY: z.string().min(1),
   },
-  // If you're using Next.js < 13.4.4, you'll need to specify the runtimeEnv manually
-  // runtimeEnv: {
-  //   DATABASE_URL: process.env.DATABASE_URL,
-  //   NEXT_PUBLIC_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_PUBLISHABLE_KEY,
-  // },
-  // For Next.js >= 13.4.4, you only need to destructure client variables:
-  experimental__runtimeEnv: {
-    // NEXT_PUBLIC_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_PUBLISHABLE_KEY,
+  runtimeEnv: {
+    NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
+    NEXT_PUBLIC_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_PUBLISHABLE_KEY,
+
+    NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
+    NEXTAUTH_URL: process.env.NEXTAUTH_URL,
+
+    DATABASE_URL: process.env.DATABASE_URL,
+    DATABASE_HOST: process.env.DATABASE_HOST,
+    DATABASE_PORT: process.env.DATABASE_PORT,
+    DATABASE_USERNAME: process.env.DATABASE_USERNAME,
+    DATABASE_PASSWORD: process.env.DATABASE_PASSWORD,
+    DATABASE_NAME: process.env.DATABASE_NAME,
+    DATABASE_SSL: process.env.DATABASE_SSL,
+
+    RESEND_API_KEY: process.env.RESEND_API_KEY,
+    EMAIL_FROM_ADDRESS: process.env.EMAIL_FROM_ADDRESS,
+
+    AUTH_DISCORD_ID: process.env.AUTH_DISCORD_ID,
+    AUTH_DISCORD_SECRET: process.env.AUTH_DISCORD_SECRET,
+
+    UPLOADTHING_SECRET: process.env.UPLOADTHING_SECRET,
+    UPLOADTHING_ENDPOINT: process.env.UPLOADTHING_ENDPOINT,
+
+    JWT_SECRET: process.env.JWT_SECRET,
   },
 })

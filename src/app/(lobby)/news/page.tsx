@@ -1,8 +1,8 @@
 import type { Metadata } from "next"
-import { db } from "@/db"
 import { asc } from "drizzle-orm"
 import { news } from "drizzle/schema"
 
+import { db } from "@/lib/database"
 import NewsCard from "@/components/cards/news-card"
 
 export const metadata: Metadata = {
