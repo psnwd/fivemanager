@@ -8,9 +8,9 @@ export const env = createEnv({
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),
-    DATABASE_URL: z.string().min(1),
+
     NEXT_PUBLIC_APP_URL: z.string().min(1),
-    EMAIL_FROM_ADDRESS: z.string().min(1).email(),
+
     NEXTAUTH_SECRET:
       process.env.NODE_ENV === "production"
         ? z.string().min(1)
@@ -19,9 +19,36 @@ export const env = createEnv({
       (str) => process.env.NEXTAUTH_URL ?? str,
       process.env.NEXTAUTH_URL ? z.string().min(1) : z.string().url()
     ),
+
+    DATABASE_URL: z.string().min(1),
+    DATABASE_HOST: z.string().min(1),
+    DATABASE_PORT: z.coerce.number().default(3306).min(3000).max(65535),
+    DATABASE_USERNAME: z.string().min(1),
+    DATABASE_PASSWORD: z.string().min(1),
+    DATABASE_NAME: z.string().min(1),
+    DATABASE_SSL: z
+      .enum(["true", "false"])
+      .default("false")
+      .transform((val) => val === "true"),
+
+    RESEND_API_KEY: z.string().min(1),
+    EMAIL_FROM_ADDRESS: z.string().min(1).email(),
+
     AUTH_DISCORD_ID: z.string().min(1),
     AUTH_DISCORD_SECRET: z.string().min(1),
-    RESEND_API_KEY: z.string().min(1),
+
+    UPLOADTHING_SECRET: z.string().min(1),
+    UPLOADTHING_ENDPOINT: z.string().min(1),
+
+    JWT_SECRET: z
+      .string()
+      .min(1)
+      .transform((val) => {
+        if (val.length < 32) {
+          throw new Error("JWT_SECRET must be at least 32 characters long")
+        }
+        return val
+      }),
   },
   client: {
     NEXT_PUBLIC_PUBLISHABLE_KEY: z.string().min(1),
@@ -34,6 +61,12 @@ export const env = createEnv({
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
 
     DATABASE_URL: process.env.DATABASE_URL,
+    DATABASE_HOST: process.env.DATABASE_HOST,
+    DATABASE_PORT: process.env.DATABASE_PORT,
+    DATABASE_USERNAME: process.env.DATABASE_USERNAME,
+    DATABASE_PASSWORD: process.env.DATABASE_PASSWORD,
+    DATABASE_NAME: process.env.DATABASE_NAME,
+    DATABASE_SSL: process.env.DATABASE_SSL,
 
     RESEND_API_KEY: process.env.RESEND_API_KEY,
     EMAIL_FROM_ADDRESS: process.env.EMAIL_FROM_ADDRESS,

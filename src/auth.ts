@@ -1,10 +1,9 @@
+import { db } from "@/server/database"
 import { DrizzleAdapter } from "@auth/drizzle-adapter"
 import { jwtDecode } from "jwt-decode"
 import NextAuth, { DefaultSession } from "next-auth"
 import type { JWT } from "next-auth/jwt"
 import DiscordProvider from "next-auth/providers/discord"
-
-import { db } from "@/lib/database"
 
 import { env } from "./env.mjs"
 
