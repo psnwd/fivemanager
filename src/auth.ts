@@ -84,9 +84,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
       if (jwtExpire < Date.now() / 1000) {
         try {
-          const [discordAccount] = await prisma.account.findMany({
-            where: { userId: user.id, provider: "discord" },
-          })
+          // const [discordAccount] = await prisma.account.findMany({
+          //   where: { userId: user.id, provider: "discord" },
+          // })
 
           const refreshToken = token.refreshToken
 
@@ -115,27 +115,27 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             refresh_token?: string
           }
 
-          await prisma.account.update({
-            data: {
-              access_token: newTokens.access_token,
-              expires_at: Math.floor(Date.now() / 1000 + newTokens.expires_in),
-              refresh_token:
-                newTokens.refresh_token ?? discordAccount?.refresh_token,
-            },
-            where: {
-              provider_providerAccountId: {
-                provider: "discord",
-                providerAccountId: discordAccount?.providerAccountId ?? "",
-              },
-            },
-          })
+          // await prisma.account.update({
+          //   data: {
+          //     access_token: newTokens.access_token,
+          //     expires_at: Math.floor(Date.now() / 1000 + newTokens.expires_in),
+          //     refresh_token:
+          //       newTokens.refresh_token ?? discordAccount?.refresh_token,
+          //   },
+          //   where: {
+          //     provider_providerAccountId: {
+          //       provider: "discord",
+          //       providerAccountId: discordAccount?.providerAccountId ?? "",
+          //     },
+          //   },
+          // })
 
-          if (newTokens.refresh_token || discordAccount?.refresh_token) {
-            token.accessToken =
-              newTokens.refresh_token ?? discordAccount?.refresh_token ?? ""
-          } else {
-            token.error = "RefreshTokenError"
-          }
+          // if (newTokens.refresh_token || discordAccount?.refresh_token) {
+          //   token.accessToken =
+          //     newTokens.refresh_token ?? discordAccount?.refresh_token ?? ""
+          // } else {
+          //   token.error = "RefreshTokenError"
+          // }
         } catch (error) {
           console.error("JWT refresh error:", error)
           token.error = "RefreshTokenError"
@@ -155,8 +155,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
     async signIn({ user }) {
       try {
-        const exists = await getUserByEmail(user.email as string)
-        return !!exists
+        // const exists = await getUserByEmail(user.email as string)
+        // return !!exists
+        return true
       } catch (err) {
         console.error("signIn error:", err)
         return false
